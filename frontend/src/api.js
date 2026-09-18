@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const API_URL = "https://notehub-0jad.onrender.com";
 
 export const apiFetch = async (endpoint, options = {}) => {
   const token = localStorage.getItem("token");
