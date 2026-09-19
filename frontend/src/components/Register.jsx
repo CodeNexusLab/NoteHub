@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { apiFetch } from "../api";
 
 function Register() {
   const [name, setName] = useState("");
@@ -57,22 +58,15 @@ function Register() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/register",
-        {
-          method: "POST",
+      const response = await apiFetch("/api/register", {
+        method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            name: cleanName,
-            email: cleanEmail,
-            password,
-          }),
-        }
-      );
+        body: JSON.stringify({
+          name: cleanName,
+          email: cleanEmail,
+          password,
+        }),
+      });
 
       const data = await response.json();
 
