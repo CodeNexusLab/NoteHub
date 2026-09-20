@@ -49,7 +49,8 @@ const authenticateToken = (req, res, next) => {
 // MONGODB CONNECTION
 // ===============================
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connected successfully 🥳");
   })
@@ -165,7 +166,6 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
-
     const {
       title,
       subject,
@@ -214,10 +214,17 @@ app.post("/api/notes", authenticateToken, async (req, res) => {
 // ===============================
 // GET ALL NOTES
 // ===============================
+// PERFORMANCE OPTIMIZED
+// fileData is excluded because the Notes
+// listing does not need the actual file data.
+// This makes the response much smaller.
+// ===============================
 
 app.get("/api/notes", async (req, res) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find()
+      .select("-fileData")
+      .lean();
 
     res.json(notes);
 
@@ -258,8 +265,8 @@ app.get("/api/notes/:id", async (req, res) => {
 // ===============================
 // UPDATE NOTE
 // ===============================
+// JWT + OWNER PROTECTED
 
-// UPDATE NOTE - JWT + OWNER PROTECTED
 app.put("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
@@ -309,8 +316,8 @@ app.put("/api/notes/:id", authenticateToken, async (req, res) => {
 // ===============================
 // DELETE NOTE
 // ===============================
+// JWT + OWNER PROTECTED
 
-// DELETE NOTE - JWT + OWNER PROTECTED
 app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const note = await Note.findById(req.params.id);
