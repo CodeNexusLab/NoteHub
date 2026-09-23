@@ -15,6 +15,7 @@ import NoteDetails from "./components/NoteDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MyNotes from "./components/MyNotes";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 function Home() {
 
@@ -144,6 +145,8 @@ function App() {
         />
 
           <Route path="/about" element={<About />} />
+
+          <Route path="/contact" element={<Contact />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
