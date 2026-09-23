@@ -4309,3 +4309,132 @@ nav h2:hover {
     margin: 0 auto;
   }
 }
+
+/* =========================================
+   DASHBOARD RECENT NOTES ALIGNMENT FIX
+========================================= */
+
+/* Recent Notes section heading */
+.dashboard-section-heading {
+  width: 100%;
+  text-align: left;
+  margin: 0 0 24px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Activity label */
+.dashboard-section-heading .dashboard-section-label {
+  display: block;
+  text-align: left;
+  margin: 0 0 8px 0;
+}
+
+/* Recent Notes heading */
+.dashboard-section-heading h2 {
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+
+/* Description */
+.dashboard-section-heading p {
+  margin: 0;
+  text-align: left;
+}
+
+
+/* =========================================
+   RECENT NOTES HEADER
+========================================= */
+
+.dashboard-section-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 0 24px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-section-header > div {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.dashboard-section-header .dashboard-section-label {
+  display: block;
+  text-align: left;
+  margin: 0 0 8px 0;
+}
+
+.dashboard-section-header h2 {
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+
+.dashboard-section-header p {
+  margin: 0;
+  text-align: left;
+}
+
+
+/* =========================================
+   VIEW ALL
+========================================= */
+
+.dashboard-view-all {
+  flex-shrink: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   RECENT NOTES CARDS
+========================================= */
+
+.dashboard-recent-notes {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .dashboard-section-heading {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-section-heading .dashboard-section-label,
+  .dashboard-section-heading h2,
+  .dashboard-section-heading p {
+    text-align: left;
+  }
+
+  .dashboard-section-header {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .dashboard-section-header > div {
+    width: 100%;
+  }
+
+  .dashboard-view-all {
+    align-self: flex-start;
+  }
+
+}
