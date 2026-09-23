@@ -24,6 +24,7 @@ function Notes() {
         }
 
         setNotes(data);
+
       } catch (error) {
         console.error(
           "Error fetching notes:",
@@ -31,6 +32,7 @@ function Notes() {
         );
 
         setNotes([]);
+
       } finally {
         setLoading(false);
       }
@@ -38,74 +40,6 @@ function Notes() {
 
     fetchNotes();
   }, []);
-
-  // Delete note
-  const handleDelete = async (id) => {
-    const loggedInUser =
-      JSON.parse(localStorage.getItem("loggedInUser"));
-
-    const note = notes.find(
-      (note) => note._id === id
-    );
-
-    // Frontend ownership check
-    if (note?.ownerEmail !== loggedInUser?.email) {
-      alert(
-        "You can only delete your own notes!"
-      );
-      return;
-    }
-
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this note?"
-    );
-
-    if (!confirmDelete) {
-      return;
-    }
-
-    try {
-      const response = await apiFetch(
-        `/api/notes/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(
-          data.message ||
-          "Failed to delete note ❌"
-        );
-        return;
-      }
-
-      if (
-        data.message ===
-        "Note deleted successfully 🗑️"
-      ) {
-        alert(data.message);
-
-        setNotes((currentNotes) =>
-          currentNotes.filter(
-            (note) => note._id !== id
-          )
-        );
-      }
-
-    } catch (error) {
-      console.error(
-        "Error deleting note:",
-        error
-      );
-
-      alert(
-        "Unable to connect to server ❌"
-      );
-    }
-  };
 
   // Search notes
   const filteredNotes = notes.filter((note) => {
@@ -121,11 +55,6 @@ function Notes() {
         .includes(searchText)
     );
   });
-
-  const loggedInUser =
-    JSON.parse(
-      localStorage.getItem("loggedInUser")
-    );
 
   return (
     <div className="notes-page">
@@ -155,10 +84,12 @@ function Notes() {
           <p className="no-notes">
             Loading notes... ⏳
           </p>
+
         ) : filteredNotes.length === 0 ? (
           <p className="no-notes">
             No notes found 🔍
           </p>
+
         ) : (
           filteredNotes.map((note) => (
 
@@ -187,6 +118,7 @@ function Notes() {
                 </p>
               )}
 
+              {/* View Only */}
               <Link
                 to={`/note/${note._id}`}
               >
@@ -194,28 +126,6 @@ function Notes() {
                   View Notes
                 </button>
               </Link>
-
-              {note.ownerEmail ===
-                loggedInUser?.email && (
-                <Link
-                  to={`/note/${note._id}/edit`}
-                >
-                  <button>
-                    Edit
-                  </button>
-                </Link>
-              )}
-
-              {note.ownerEmail ===
-                loggedInUser?.email && (
-                <button
-                  onClick={() =>
-                    handleDelete(note._id)
-                  }
-                >
-                  Delete
-                </button>
-              )}
 
             </div>
 

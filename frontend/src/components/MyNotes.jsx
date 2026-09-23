@@ -47,6 +47,59 @@ function MyNotes() {
       note.ownerEmail === loggedInUser?.email
   );
 
+  // Delete note
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      const response = await apiFetch(
+        `/api/notes/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(
+          data.message ||
+          "Failed to delete note ❌"
+        );
+        return;
+      }
+
+      if (
+        data.message ===
+        "Note deleted successfully 🗑️"
+      ) {
+        alert(data.message);
+
+        setNotes((currentNotes) =>
+          currentNotes.filter(
+            (note) => note._id !== id
+          )
+        );
+      }
+
+    } catch (error) {
+      console.error(
+        "Error deleting note:",
+        error
+      );
+
+      alert(
+        "Unable to connect to server ❌"
+      );
+    }
+  };
+
   return (
     <div className="notes-page">
 
@@ -111,6 +164,14 @@ function MyNotes() {
                   Edit
                 </button>
               </Link>
+
+              <button
+                onClick={() =>
+                  handleDelete(note._id)
+                }
+              >
+                Delete
+              </button>
 
             </div>
 
