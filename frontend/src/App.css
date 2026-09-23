@@ -4109,3 +4109,26 @@ nav h2:hover {
   }
 
 }
+
+/* =========================================
+   MOBILE HERO BUTTON FIX
+========================================= */
+
+@media (max-width: 600px) {
+
+  .dashboard-hero {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .dashboard-hero a,
+  .dashboard-hero button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
