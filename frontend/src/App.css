@@ -1702,3 +1702,392 @@ nav h2:hover {
     font-size: 15px;
   }
 }
+
+
+/* =========================================
+   ABOUT US PAGE
+   ========================================= */
+
+.about-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 30px;
+}
+
+/* ===== About Hero ===== */
+
+.about-hero {
+  text-align: center;
+  padding: 50px 25px;
+  margin-bottom: 45px;
+  background: linear-gradient(145deg, #0d1b2e, #080f1a);
+  border: 1px solid #1d3557;
+  border-radius: 18px;
+}
+
+.about-hero h1 {
+  margin: 0 0 15px;
+  color: #f5f7ff;
+  font-size: 46px;
+}
+
+.about-hero p {
+  max-width: 700px;
+  margin: auto;
+  color: #aebbd0;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+/* ===== About Sections ===== */
+
+.about-section {
+  margin-bottom: 45px;
+}
+
+.about-section h2 {
+  margin-bottom: 18px;
+  color: #f5f7ff;
+  font-size: 30px;
+}
+
+.about-section > p {
+  color: #aebbd0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ===== Feature Cards ===== */
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 25px;
+  background: #0d0d0d;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #149cff;
+  box-shadow: 0 10px 25px rgba(20, 156, 255, 0.12);
+}
+
+.feature-card h3 {
+  margin: 0 0 10px;
+  color: #f5f7ff;
+  font-size: 19px;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #aebbd0;
+  line-height: 1.6;
+}
+
+/* ===== Technology Stack ===== */
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-list span {
+  padding: 9px 15px;
+  border: 1px solid #1d3557;
+  border-radius: 20px;
+  background: #0d1b2e;
+  color: #dbe7f5;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.tech-list span:hover {
+  border-color: #149cff;
+  color: #149cff;
+}
+
+/* ===== Developer Section ===== */
+
+.developer-section {
+  padding: 30px;
+  background: #0d0d0d;
+  border: 1px solid #242424;
+  border-radius: 16px;
+}
+
+.developer-section h3 {
+  margin: 5px 0 10px;
+  color: #149cff;
+  font-size: 23px;
+}
+
+.developer-section p {
+  margin-bottom: 20px;
+}
+
+/* ===== GitHub Link ===== */
+
+.github-link {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid #149cff;
+  border-radius: 8px;
+  background: transparent;
+  color: #149cff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.github-link:hover {
+  background: #149cff;
+  color: white;
+  box-shadow: 0 5px 15px rgba(20, 156, 255, 0.2);
+}
+
+/* ===== About Footer ===== */
+
+.about-footer {
+  margin-top: 45px;
+  padding: 35px 25px;
+  text-align: center;
+  background: linear-gradient(145deg, #0d1b2e, #080f1a);
+  border: 1px solid #1d3557;
+  border-radius: 16px;
+}
+
+.about-footer h2 {
+  margin-top: 0;
+  color: #f5f7ff;
+  font-size: 26px;
+}
+
+.about-footer p {
+  max-width: 750px;
+  margin: auto;
+  color: #aebbd0;
+  line-height: 1.7;
+}
+
+/* ===== About Page Responsive ===== */
+
+@media (max-width: 768px) {
+
+  .about-page {
+    padding: 45px 20px;
+  }
+
+  .about-hero {
+    padding: 40px 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 36px;
+  }
+
+  .about-hero p {
+    font-size: 15px;
+  }
+
+  .about-section h2 {
+    font-size: 26px;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 22px;
+  }
+
+  .developer-section {
+    padding: 25px 20px;
+  }
+
+  .tech-list {
+    gap: 8px;
+  }
+
+  .tech-list span {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+/* =========================================
+   ABOUT PAGE - TECHNOLOGY STACK
+   ========================================= */
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.tech-category {
+  padding: 24px;
+  background: #0d0d0d;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.tech-category:hover {
+  border-color: #149cff;
+  box-shadow: 0 10px 25px rgba(20, 156, 255, 0.1);
+}
+
+.tech-category h3 {
+  margin: 0 0 16px;
+  color: #149cff;
+  font-size: 18px;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-list span {
+  padding: 8px 13px;
+  border: 1px solid #1d3557;
+  border-radius: 18px;
+  background: #0d1b2e;
+  color: #dbe7f5;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.tech-list span:hover {
+  border-color: #149cff;
+  color: #149cff;
+  transform: translateY(-1px);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-category {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   TECHNOLOGY STACK - CARD ALIGNMENT
+   ========================================= */
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.tech-category {
+  min-height: 125px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  background: #0d0d0d;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.tech-category h3 {
+  margin: 0 0 16px;
+  text-align: center;
+  color: #149cff;
+  font-size: 18px;
+}
+
+.tech-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Center the last card */
+
+.tech-category:last-child {
+  grid-column: 1 / -1;
+  width: 50%;
+  justify-self: center;
+}
+
+.tech-category:hover {
+  border-color: #149cff;
+  box-shadow: 0 10px 25px rgba(20, 156, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Technology badges */
+
+.tech-list span {
+  padding: 8px 13px;
+  border: 1px solid #1d3557;
+  border-radius: 18px;
+  background: #0d1b2e;
+  color: #dbe7f5;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.tech-list span:hover {
+  border-color: #149cff;
+  color: #149cff;
+  transform: translateY(-1px);
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 768px) {
+
+  .tech-stack {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tech-category {
+    width: 100% !important;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .tech-category:last-child {
+    grid-column: auto;
+  }
+
+  .tech-category h3 {
+    font-size: 17px;
+  }
+
+  .tech-list {
+    gap: 8px;
+  }
+
+  .tech-list span {
+    font-size: 13px;
+    padding: 7px 11px;
+  }
+}

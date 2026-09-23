@@ -14,6 +14,7 @@ import CreateNote from "./components/CreateNote";
 import NoteDetails from "./components/NoteDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MyNotes from "./components/MyNotes";
+import About from "./components/About";
 
 function Home() {
 
@@ -141,6 +142,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+          <Route path="/about" element={<About />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
