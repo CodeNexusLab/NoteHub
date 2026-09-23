@@ -17,6 +17,7 @@ import MyNotes from "./components/MyNotes";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
+import Dashboard from "./components/Dashboard";
 
 function Home() {
 
@@ -90,6 +91,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
 
         <Route
           path="/my-notes"

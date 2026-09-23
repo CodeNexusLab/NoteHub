@@ -31,6 +31,8 @@ function Navbar() {
         {loggedInUser ? (
           <>
             <span>Hi, {loggedInUser.name} 👋</span>
+            
+            <Link to="/dashboard">Dashboard</Link>
 
             <Link to="/profile">Profile</Link>
 
