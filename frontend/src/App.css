@@ -4132,3 +4132,180 @@ nav h2:hover {
   }
 
 }
+
+/* =========================================
+   DASHBOARD HERO - FINAL ALIGNMENT FIX
+========================================= */
+
+.dashboard-hero {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+}
+
+
+/* -----------------------------------------
+   HERO CONTENT
+----------------------------------------- */
+
+.dashboard-hero-content {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left !important;
+}
+
+
+/* -----------------------------------------
+   DASHBOARD BADGE
+----------------------------------------- */
+
+.dashboard-badge {
+  display: inline-flex;
+
+  width: fit-content;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  text-align: left;
+}
+
+
+/* -----------------------------------------
+   WELCOME HEADING
+----------------------------------------- */
+
+.dashboard-hero-content h1 {
+  width: 100%;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* User name inside heading */
+
+.dashboard-hero-content h1 span {
+  text-align: left;
+}
+
+
+/* -----------------------------------------
+   HERO DESCRIPTION
+----------------------------------------- */
+
+.dashboard-hero-content > p {
+  width: 100%;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* -----------------------------------------
+   HERO BUTTONS
+----------------------------------------- */
+
+.dashboard-hero-buttons {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 12px;
+
+  margin-left: 0 !important;
+}
+
+
+/* -----------------------------------------
+   HERO ICON
+----------------------------------------- */
+
+.dashboard-hero-icon {
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .dashboard-hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+  }
+
+  .dashboard-hero-content {
+    width: 100%;
+
+    align-items: center;
+
+    text-align: center !important;
+  }
+
+  .dashboard-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    text-align: center;
+  }
+
+  .dashboard-hero-content h1 {
+    width: 100%;
+
+    text-align: center !important;
+  }
+
+  .dashboard-hero-content h1 span {
+    text-align: center;
+  }
+
+  .dashboard-hero-content > p {
+    width: 100%;
+
+    text-align: center !important;
+  }
+
+  .dashboard-hero-buttons {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    gap: 12px;
+  }
+
+  .dashboard-primary-btn,
+  .dashboard-secondary-btn {
+    width: 100%;
+    box-sizing: border-box;
+
+    text-align: center;
+  }
+
+  .dashboard-hero-icon {
+    margin: 0 auto;
+  }
+}
