@@ -2661,3 +2661,42 @@ nav h2:hover {
     font-size: 17px;
   }
 }
+
+/* ===== GitHub Profile Link ===== */
+
+.contact-option-card a {
+  display: inline-block;
+
+  margin-top: 4px;
+  padding: 8px 16px;
+
+  border: 1px solid #149cff;
+  border-radius: 7px;
+
+  background: rgba(20, 156, 255, 0.08);
+  color: #149cff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-option-card a:hover {
+  background: #149cff;
+  color: #ffffff;
+
+  border-color: #149cff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(20, 156, 255, 0.25);
+}

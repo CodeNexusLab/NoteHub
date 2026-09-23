@@ -91,16 +91,18 @@ function Contact() {
         </div>
 
         <div className="contact-option-card">
-          <div className="contact-icon">🔗</div>
+  <div className="contact-icon">🔗</div>
+  <h3>GitHub</h3>
+  <p>Explore the NoteHub project</p>
 
-          <h3>GitHub</h3>
-
-          <p>
-            Explore the NoteHub project
-          </p>
-
-          <span>View Profile</span>
-        </div>
+  <a
+    href="https://github.com/CodeNexusLab/NoteHub"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    View Profile
+  </a>
+</div>
 
       </section>
 
