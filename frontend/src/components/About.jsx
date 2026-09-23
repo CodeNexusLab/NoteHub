@@ -126,7 +126,7 @@ function About() {
       <section className="about-section developer-section">
         <h2>About the Developer</h2>
 
-        <h3>Sahil Joshi</h3>
+        <h3>Sahil</h3>
 
         <p>
           BCA student and aspiring Full Stack Web Developer interested in
