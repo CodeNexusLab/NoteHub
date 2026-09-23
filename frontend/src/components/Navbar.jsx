@@ -32,6 +32,8 @@ function Navbar() {
           <>
             <span>Hi, {loggedInUser.name} 👋</span>
 
+            <Link to="/profile">Profile</Link>
+
             <Link to="/my-notes">My Notes</Link>
 
             <Link to="/create-note">Create Note</Link>

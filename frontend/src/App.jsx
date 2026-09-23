@@ -16,6 +16,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import MyNotes from "./components/MyNotes";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Profile from "./components/Profile";
 
 function Home() {
 
@@ -98,6 +99,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+          <Route
+  path="/profile"
+  element={
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  }
+/>
 
         <Route
           path="/dsa"

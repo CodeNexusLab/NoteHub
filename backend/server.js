@@ -160,6 +160,44 @@ app.post("/api/login", async (req, res) => {
 });
 
 // ===============================
+// GET CURRENT USER PROFILE
+// JWT PROTECTED
+// ===============================
+
+app.get("/api/profile", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select(
+      "-password"
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found ❌"
+      });
+    }
+
+    res.json({
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt
+      }
+    });
+
+  } catch (error) {
+    console.error(
+      "Error fetching profile:",
+      error
+    );
+
+    res.status(500).json({
+      message: "Failed to fetch profile ❌"
+    });
+  }
+});
+
+// ===============================
 // CREATE NOTE API
 // JWT PROTECTED
 // ===============================
