@@ -18,48 +18,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Dashboard from "./components/Dashboard";
+import Home from "./components/Home"; 
 
-function Home() {
-
-  return (
-    <>
-      <header>
-        <h1>NoteHub</h1>
-        <p>Your personal notes app</p>
-      </header>
-
-      <main>
-        <h2>Latest Notes</h2>
-
-        <div>
-          <div className="home-card">
-            <h3>Data Structures & Algorithms</h3>
-            <p>Learn important concepts and algorithms.</p>
-            <Link className="explore-link" to="/notes">
-              Explore
-            </Link>
-          </div>
-
-          <div className="home-card">
-            <h3>Web Development</h3>
-            <p>Learn HTML, CSS, JavaScript and React.</p>
-            <Link className="explore-link" to="/notes">
-              Explore
-            </Link>
-          </div>
-
-          <div className="home-card">
-            <h3>Database Management</h3>
-            <p>Learn SQL and database concepts.</p>
-            <Link className="explore-link" to="/notes">
-              Explore
-            </Link>
-          </div>
-        </div>
-      </main>
-    </>
-  );
-}
 
 function NotFound() {
   return (

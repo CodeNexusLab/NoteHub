@@ -3372,3 +3372,1401 @@ body,
   }
 
 }
+
+/* =========================================================
+   NOTEHUB HOME PAGE — PREMIUM UI 2.0
+   ========================================================= */
+
+/* ---------- Home Page Base ---------- */
+
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(0, 140, 255, 0.08), transparent 28%),
+    radial-gradient(circle at 85% 30%, rgba(0, 210, 255, 0.06), transparent 30%),
+    #050505;
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.home-hero {
+  width: 100%;
+  min-height: 680px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 60px;
+  padding: 90px 8% 100px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Background glow */
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: -220px;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 153, 255, 0.08);
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+.home-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  right: -220px;
+  bottom: -260px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 210, 255, 0.06);
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+/* ---------- Hero Content ---------- */
+
+.hero-content {
+  width: min(650px, 100%);
+
+  position: relative;
+  z-index: 2;
+
+  animation: homeHeroReveal 0.9s ease-out both;
+}
+
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 9px 16px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid rgba(0, 174, 255, 0.35);
+  border-radius: 999px;
+
+  background: rgba(0, 140, 255, 0.07);
+
+  color: #66cfff;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  box-shadow:
+    0 0 25px rgba(0, 153, 255, 0.08);
+
+  animation:
+    badgeFloat 3s ease-in-out infinite,
+    homeHeroReveal 0.8s ease-out both;
+}
+
+
+.hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(3.2rem, 6vw, 5.8rem);
+
+  line-height: 0.98;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+
+  color: #f5f7fa;
+
+  text-shadow:
+    0 0 35px rgba(255, 255, 255, 0.05);
+
+  animation: titleReveal 1s ease-out 0.15s both;
+}
+
+
+.hero-content h1 span {
+  background: linear-gradient(
+    90deg,
+    #149cff,
+    #53d7ff,
+    #149cff
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientFlow 4s linear infinite;
+}
+
+
+.hero-description {
+  max-width: 610px;
+
+  margin: 26px 0 0;
+
+  color: #aeb8c8;
+
+  font-size: 1.05rem;
+
+  line-height: 1.8;
+
+  animation: homeHeroReveal 0.9s ease-out 0.3s both;
+}
+
+
+/* ---------- Hero Buttons ---------- */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 34px;
+
+  animation: homeHeroReveal 0.9s ease-out 0.45s both;
+}
+
+
+.hero-primary-btn,
+.hero-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 22px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.hero-primary-btn {
+  color: #ffffff;
+
+  background: linear-gradient(
+    135deg,
+    #078fff,
+    #00b7ff
+  );
+
+  border: 1px solid rgba(83, 215, 255, 0.4);
+
+  box-shadow:
+    0 8px 30px rgba(0, 145, 255, 0.2);
+}
+
+
+.hero-primary-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+
+  box-shadow:
+    0 14px 38px rgba(0, 145, 255, 0.35);
+
+  color: #ffffff;
+}
+
+
+.hero-secondary-btn {
+  color: #b9c7d8;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.hero-secondary-btn:hover {
+  transform: translateY(-4px);
+
+  color: #ffffff;
+
+  border-color: rgba(0, 174, 255, 0.4);
+
+  background: rgba(0, 153, 255, 0.06);
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.hero-visual {
+  width: 440px;
+  height: 440px;
+
+  flex-shrink: 0;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: visualReveal 1s ease-out 0.2s both;
+}
+
+
+/* ---------- Orbit ---------- */
+
+.hero-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(0, 174, 255, 0.18);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.orbit-one {
+  width: 330px;
+  height: 330px;
+
+  animation: orbitSpin 18s linear infinite;
+}
+
+
+.orbit-two {
+  width: 430px;
+  height: 430px;
+
+  border-style: dashed;
+
+  border-color: rgba(0, 174, 255, 0.10);
+
+  animation: orbitSpinReverse 28s linear infinite;
+}
+
+
+/* ---------- Core ---------- */
+
+.hero-core {
+  width: 175px;
+  height: 175px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  z-index: 3;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(0, 174, 255, 0.22),
+      rgba(5, 12, 22, 0.95) 65%
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.35);
+
+  box-shadow:
+    0 0 35px rgba(0, 153, 255, 0.16),
+    inset 0 0 35px rgba(0, 153, 255, 0.08);
+
+  animation: corePulse 3s ease-in-out infinite;
+}
+
+
+.hero-core span {
+  font-size: 2.4rem;
+
+  margin-bottom: 8px;
+
+  animation: iconBounce 2.5s ease-in-out infinite;
+}
+
+
+.hero-core strong {
+  color: #ffffff;
+
+  font-size: 1.05rem;
+}
+
+
+.hero-core small {
+  margin-top: 4px;
+
+  color: #7f9bb7;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   FLOATING CARDS
+   ========================================================= */
+
+.floating-card {
+  position: absolute;
+
+  z-index: 4;
+
+  min-width: 150px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 15px;
+
+  border-radius: 12px;
+
+  background: rgba(10, 18, 30, 0.82);
+
+  border: 1px solid rgba(0, 174, 255, 0.18);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.floating-card:hover {
+  transform: translateY(-7px) scale(1.03);
+
+  border-color: rgba(0, 174, 255, 0.45);
+
+  box-shadow:
+    0 16px 40px rgba(0, 140, 255, 0.14);
+}
+
+
+.floating-card > span {
+  font-size: 1.35rem;
+}
+
+
+.floating-card div {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.floating-card strong {
+  color: #ffffff;
+
+  font-size: 0.78rem;
+}
+
+
+.floating-card small {
+  margin-top: 3px;
+
+  color: #8296aa;
+
+  font-size: 0.65rem;
+}
+
+
+.floating-card-one {
+  top: 45px;
+  right: 5px;
+
+  animation: floatingOne 4s ease-in-out infinite;
+}
+
+
+.floating-card-two {
+  bottom: 55px;
+  left: 0;
+
+  animation: floatingTwo 4.5s ease-in-out infinite;
+}
+
+
+.floating-card-three {
+  bottom: 10px;
+  right: 20px;
+
+  animation: floatingThree 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CENTRALIZED KNOWLEDGE SECTION
+   ========================================================= */
+
+.centralized-section {
+  width: 100%;
+
+  padding: 110px 8%;
+
+  position: relative;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.015),
+      rgba(0, 153, 255, 0.025)
+    );
+}
+
+
+.section-heading {
+  max-width: 720px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+
+.section-heading > span {
+  color: #42bfff;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.section-heading h2 {
+  margin: 14px 0 16px;
+
+  color: #f2f5f8;
+
+  font-size: clamp(2rem, 4vw, 3.2rem);
+
+  line-height: 1.15;
+}
+
+
+.section-heading h2 strong {
+  color: #42bfff;
+
+  font-weight: 700;
+}
+
+
+.section-heading p {
+  max-width: 620px;
+
+  margin: auto;
+
+  color: #8999aa;
+
+  line-height: 1.8;
+}
+
+
+/* ---------- Centralized Cards ---------- */
+
+.centralized-grid {
+  width: min(1150px, 100%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+
+.centralized-card {
+  padding: 32px 28px;
+
+  min-height: 220px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(12, 29, 49, 0.85),
+      rgba(7, 14, 24, 0.9)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.13);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+
+  animation: cardReveal 0.7s ease-out both;
+}
+
+
+.centralized-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+
+.centralized-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+
+.centralized-card:hover {
+  transform: translateY(-9px);
+
+  border-color: rgba(0, 174, 255, 0.35);
+
+  box-shadow:
+    0 18px 45px rgba(0, 130, 255, 0.12);
+}
+
+
+.centralized-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 22px;
+
+  border-radius: 13px;
+
+  background: rgba(0, 153, 255, 0.08);
+
+  border: 1px solid rgba(0, 174, 255, 0.16);
+
+  font-size: 1.4rem;
+}
+
+
+.centralized-card h3 {
+  margin: 0 0 10px;
+
+  color: #ffffff;
+
+  font-size: 1.1rem;
+}
+
+
+.centralized-card p {
+  margin: 0;
+
+  color: #8d9aaa;
+
+  line-height: 1.7;
+
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   LEARNING JOURNEY
+   ========================================================= */
+
+.learning-journey {
+  width: 100%;
+
+  padding: 110px 8% 100px;
+}
+
+
+.journey-grid {
+  width: min(1150px, 100%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+}
+
+
+.journey-card {
+  position: relative;
+
+  min-height: 280px;
+
+  padding: 30px 24px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.journey-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  top: -60px;
+  right: -60px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 153, 255, 0.08);
+
+  filter: blur(20px);
+
+  transition: transform 0.4s ease;
+}
+
+
+.journey-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(0, 174, 255, 0.28);
+
+  background: rgba(0, 153, 255, 0.035);
+}
+
+
+.journey-card:hover::before {
+  transform: scale(1.7);
+}
+
+
+.journey-number {
+  position: absolute;
+
+  top: 18px;
+  right: 20px;
+
+  color: rgba(66, 191, 255, 0.25);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.journey-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+
+  border-radius: 14px;
+
+  background: rgba(0, 153, 255, 0.08);
+
+  font-size: 1.35rem;
+}
+
+
+.journey-card h3 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: 1.1rem;
+}
+
+
+.journey-card p {
+  margin: 0;
+
+  color: #8998a8;
+
+  font-size: 0.88rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   DEVELOPER WATERMARK
+   ========================================================= */
+
+.developer-watermark {
+  width: fit-content;
+
+  margin: 10px auto 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #708090;
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.6px;
+
+  opacity: 0.45;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+
+.developer-watermark:hover {
+  opacity: 1;
+
+  transform: translateY(-3px);
+
+  color: #69cfff;
+
+  text-shadow:
+    0 0 12px rgba(0, 174, 255, 0.6);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes homeHeroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+@keyframes visualReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+
+@keyframes badgeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    box-shadow:
+      0 0 35px rgba(0, 153, 255, 0.16),
+      inset 0 0 35px rgba(0, 153, 255, 0.08);
+  }
+
+  50% {
+    transform: scale(1.04);
+
+    box-shadow:
+      0 0 55px rgba(0, 153, 255, 0.26),
+      inset 0 0 40px rgba(0, 153, 255, 0.12);
+  }
+}
+
+
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes orbitSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes floatingOne {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+
+@keyframes floatingTwo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+
+@keyframes floatingThree {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .home-hero {
+    padding-left: 6%;
+    padding-right: 6%;
+
+    gap: 30px;
+  }
+
+  .hero-visual {
+    width: 350px;
+    height: 350px;
+  }
+
+  .orbit-one {
+    width: 270px;
+    height: 270px;
+  }
+
+  .orbit-two {
+    width: 340px;
+    height: 340px;
+  }
+
+  .hero-core {
+    width: 145px;
+    height: 145px;
+  }
+
+  .floating-card {
+    min-width: 130px;
+
+    padding: 10px 12px;
+  }
+
+  .floating-card-one {
+    right: -5px;
+  }
+
+  .centralized-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .centralized-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .home-hero {
+    min-height: auto;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding:
+      70px 20px
+      85px;
+  }
+
+
+  .hero-content {
+    width: 100%;
+  }
+
+
+  .hero-badge {
+    font-size: 0.72rem;
+
+    padding: 8px 13px;
+  }
+
+
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+
+    letter-spacing: -2px;
+  }
+
+
+  .hero-description {
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+  }
+
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    min-height: 46px;
+
+    padding: 0 18px;
+  }
+
+
+  .hero-visual {
+    width: 320px;
+    height: 320px;
+
+    margin-top: 25px;
+  }
+
+
+  .orbit-one {
+    width: 235px;
+    height: 235px;
+  }
+
+
+  .orbit-two {
+    width: 305px;
+    height: 305px;
+  }
+
+
+  .hero-core {
+    width: 125px;
+    height: 125px;
+  }
+
+
+  .hero-core span {
+    font-size: 1.8rem;
+  }
+
+
+  .hero-core strong {
+    font-size: 0.9rem;
+  }
+
+
+  .hero-core small {
+    font-size: 0.58rem;
+  }
+
+
+  .floating-card {
+    min-width: auto;
+
+    padding: 9px 11px;
+  }
+
+
+  .floating-card strong {
+    font-size: 0.68rem;
+  }
+
+
+  .floating-card small {
+    font-size: 0.56rem;
+  }
+
+
+  .floating-card-one {
+    top: 15px;
+    right: -5px;
+  }
+
+
+  .floating-card-two {
+    bottom: 35px;
+    left: -5px;
+  }
+
+
+  .floating-card-three {
+    bottom: -5px;
+    right: 0;
+  }
+
+
+  .centralized-section,
+  .learning-journey {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .centralized-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+
+  .learning-journey {
+    padding-top: 80px;
+    padding-bottom: 70px;
+  }
+
+
+  .section-heading {
+    margin-bottom: 38px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+
+  .section-heading p {
+    font-size: 0.88rem;
+  }
+
+
+  .centralized-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .centralized-card:last-child {
+    grid-column: auto;
+  }
+
+
+  .centralized-card {
+    min-height: auto;
+
+    padding: 27px 23px;
+  }
+
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .journey-card {
+    min-height: auto;
+
+    padding: 27px 22px;
+  }
+
+
+  .developer-watermark {
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .home-hero {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .hero-content h1 {
+    font-size: 2.55rem;
+  }
+
+
+  .hero-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    width: 100%;
+  }
+
+
+  .hero-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+
+  .orbit-one {
+    width: 205px;
+    height: 205px;
+  }
+
+
+  .orbit-two {
+    width: 265px;
+    height: 265px;
+  }
+
+
+  .floating-card {
+    transform: scale(0.88);
+  }
+
+
+  .floating-card-one {
+    right: -20px;
+  }
+
+
+  .floating-card-two {
+    left: -20px;
+  }
+
+
+  .floating-card-three {
+    right: -15px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-page *,
+  .home-page *::before,
+  .home-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   HOME HERO — LEFT ALIGN CONTENT
+   ========================================================= */
+
+.hero-content {
+  text-align: left;
+}
+
+.hero-actions {
+  justify-content: flex-start;
+}
+
+/* Keep the badge aligned with the hero content */
+.hero-badge {
+  margin-left: 0;
+}
+
+/* Keep description naturally aligned */
+.hero-description {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* ---------- Mobile: keep hero centered ---------- */
+
+@media (max-width: 700px) {
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* =========================================================
+   DEVELOPER WATERMARK — CRAFTED BY SAHIL
+   ========================================================= */
+
+.developer-watermark {
+  color: rgba(255, 255, 255, 0.65);
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+  cursor: default;
+}
+
+/* Hover effect */
+.developer-watermark:hover {
+  color: #00bfff;
+  text-shadow:
+    0 0 8px rgba(0, 191, 255, 0.7),
+    0 0 18px rgba(0, 191, 255, 0.4);
+
+  transform: translateY(-2px);
+}
