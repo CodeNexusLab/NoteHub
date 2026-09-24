@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -18,38 +18,86 @@ function Navbar() {
     navigate("/login");
   };
 
-  return (
-    <nav>
-      <h2>NoteHub</h2>
+  // Active navigation styling
+  const navLinkClass = ({ isActive }) =>
+    `nav-item ${isActive ? "active" : ""}`;
 
+  return (
+    <nav className="navbar">
+      {/* ===== Brand ===== */}
+      <NavLink to="/" className="navbar-brand">
+        <span className="brand-dot"></span>
+        <span>NoteHub</span>
+      </NavLink>
+
+      {/* ===== Navigation ===== */}
       <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/notes">Notes</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+
+        <NavLink to="/" className={navLinkClass}>
+          Home
+        </NavLink>
+
+        <NavLink to="/notes" className={navLinkClass}>
+          Notes
+        </NavLink>
+
+        <NavLink to="/about" className={navLinkClass}>
+          About
+        </NavLink>
+
+        <NavLink to="/contact" className={navLinkClass}>
+          Contact
+        </NavLink>
 
         {loggedInUser ? (
           <>
-            <span>Hi, {loggedInUser.name} 👋</span>
-            
-            <Link to="/dashboard">Dashboard</Link>
+            {/* ===== User Identity ===== */}
+            <div className="nav-user">
+              <span className="user-status"></span>
+              <span>Hi, {loggedInUser.name} 👋</span>
+            </div>
 
-            <Link to="/profile">Profile</Link>
+            <NavLink to="/dashboard" className={navLinkClass}>
+              Dashboard
+            </NavLink>
 
-            <Link to="/my-notes">My Notes</Link>
+            <NavLink to="/profile" className={navLinkClass}>
+              Profile
+            </NavLink>
 
-            <Link to="/create-note">Create Note</Link>
+            <NavLink to="/my-notes" className={navLinkClass}>
+              My Notes
+            </NavLink>
 
-            <button onClick={handleLogout}>
+            {/* ===== Primary Action ===== */}
+            <NavLink
+              to="/create-note"
+              className="nav-create"
+            >
+              <span>＋</span>
+              Create Note
+            </NavLink>
+
+            {/* ===== Logout ===== */}
+            <button
+              className="nav-logout"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <NavLink to="/login" className={navLinkClass}>
+              Login
+            </NavLink>
+
+            <NavLink to="/register" className="nav-register">
+              Register
+            </NavLink>
           </>
         )}
+
       </div>
     </nav>
   );
