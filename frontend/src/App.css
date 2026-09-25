@@ -2928,6 +2928,18 @@ nav h2:hover {
     box-shadow 0.28s ease;
 }
 
+/* Align action card text consistently */
+.dashboard-action-card > div:not(.dashboard-action-icon) {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.dashboard-action-card h3,
+.dashboard-action-card p {
+  text-align: center;
+}
+
 
 /* Subtle action card glow */
 .dashboard-action-card::before {
