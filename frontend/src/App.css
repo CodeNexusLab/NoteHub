@@ -5317,3 +5317,2375 @@ body,
     font-size: 10px;
   }
 }
+
+/* =========================================================
+   NOTEHUB PROFILE PAGE
+   Premium • Responsive • Clean Layout
+   ========================================================= */
+
+/* -------------------------
+   PROFILE PAGE WRAPPER
+------------------------- */
+
+.profile-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 70px 7% 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(0, 174, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 55%,
+      rgba(0, 255, 180, 0.06),
+      transparent 28%
+    ),
+    #020608;
+
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.profile-loading {
+  min-height: 60vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+
+  color: #aab8c8;
+  font-size: 15px;
+}
+
+.profile-loading-spinner {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: 3px solid rgba(0, 174, 255, 0.15);
+  border-top-color: #00b7ff;
+
+  animation: profileSpin 0.9s linear infinite;
+}
+
+@keyframes profileSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   ERROR CARD
+   ========================================================= */
+
+.profile-error-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.profile-card {
+  width: min(600px, 100%);
+  padding: 45px 35px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(8, 28, 43, 0.96),
+    rgba(3, 12, 20, 0.96)
+  );
+
+  border: 1px solid rgba(0, 174, 255, 0.2);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 30px rgba(0, 174, 255, 0.03);
+}
+
+.profile-card h2 {
+  margin: 0 0 12px;
+  font-size: 26px;
+}
+
+.profile-card p {
+  margin: 0;
+  color: #94a8b9;
+}
+
+
+/* =========================================================
+   PROFILE HERO
+   ========================================================= */
+
+.profile-hero {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 250px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 42px 55px;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(0, 174, 255, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(8, 28, 45, 0.98),
+      rgba(3, 13, 21, 0.98)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.22);
+  border-radius: 26px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    inset 0 0 35px rgba(0, 174, 255, 0.035);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-hero::before {
+  content: "";
+
+  position: absolute;
+  width: 260px;
+  height: 260px;
+
+  left: -120px;
+  top: -90px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 174, 255, 0.08);
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+.profile-hero:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(0, 174, 255, 0.38);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(0, 174, 255, 0.08);
+}
+
+
+/* =========================================================
+   PROFILE AVATAR
+   ========================================================= */
+
+.profile-avatar {
+  width: 105px;
+  height: 105px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(112, 0, 255, 0.32),
+      rgba(0, 174, 255, 0.10)
+    );
+
+  border: 1px solid rgba(0, 183, 255, 0.65);
+
+  box-shadow:
+    0 0 25px rgba(0, 174, 255, 0.2),
+    inset 0 0 25px rgba(0, 174, 255, 0.08);
+
+  position: relative;
+  z-index: 1;
+
+  margin-right: 42px;
+}
+
+.profile-avatar span {
+  font-size: 50px;
+
+  filter:
+    drop-shadow(0 0 10px rgba(170, 0, 255, 0.45));
+
+  transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover span {
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.profile-hero-content {
+  flex: 1;
+
+  position: relative;
+  z-index: 1;
+
+  text-align: center;
+}
+
+.profile-eyebrow {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #00b7ff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.profile-hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.05;
+
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.profile-hero-content h1 span {
+  color: #00b7ff;
+
+  text-shadow:
+    0 0 20px rgba(0, 183, 255, 0.25);
+}
+
+.profile-hero-content p {
+  max-width: 580px;
+
+  margin: 16px auto 18px;
+
+  color: #91a4b5;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   MEMBER BADGE
+   ========================================================= */
+
+.profile-member-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 183, 255, 0.06);
+
+  border: 1px solid rgba(0, 183, 255, 0.2);
+
+  color: #a9c4d6;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow:
+    0 0 20px rgba(0, 183, 255, 0.04);
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background: #20e88a;
+
+  box-shadow:
+    0 0 10px rgba(32, 232, 138, 0.7);
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+   ========================================================= */
+
+.profile-edit-btn {
+  position: absolute;
+  top: 28px;
+  right: 30px;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  background: rgba(0, 174, 255, 0.05);
+
+  border: 1px solid rgba(0, 174, 255, 0.4);
+
+  color: #c5d9e8;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    0.25s ease;
+
+  z-index: 2;
+}
+
+.profile-edit-btn:hover {
+  color: #ffffff;
+
+  background: rgba(0, 174, 255, 0.12);
+
+  border-color: #00b7ff;
+
+  box-shadow:
+    0 0 18px rgba(0, 174, 255, 0.18);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   PROFILE SECTION
+   ========================================================= */
+
+.profile-section {
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+.profile-section-heading {
+  width: 100%;
+
+  text-align: left;
+}
+
+.profile-section-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #00b7ff;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.profile-section-heading h2 {
+  margin: 0;
+
+  font-size: clamp(27px, 3vw, 38px);
+  line-height: 1.1;
+
+  letter-spacing: -0.8px;
+}
+
+.profile-section-heading p {
+  margin: 10px 0 0;
+
+  color: #75899b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PERSONAL INFORMATION GRID
+   ========================================================= */
+
+.profile-info-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   INFORMATION CARD
+   ========================================================= */
+
+.profile-info-card {
+  min-height: 135px;
+
+  padding: 26px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 28, 44, 0.95),
+      rgba(3, 14, 23, 0.96)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.16);
+
+  border-radius: 18px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-info-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 183, 255, 0.5);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(0, 174, 255, 0.06);
+}
+
+
+/* =========================================================
+   INFO ICON
+   ========================================================= */
+
+.profile-info-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+
+  background: rgba(0, 174, 255, 0.06);
+
+  border: 1px solid rgba(0, 174, 255, 0.22);
+
+  font-size: 22px;
+
+  box-shadow:
+    inset 0 0 15px rgba(0, 174, 255, 0.04);
+}
+
+
+/* =========================================================
+   INFO TEXT
+   ========================================================= */
+
+.profile-info-card > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.profile-label {
+  display: block;
+
+  color: #617688;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.profile-value {
+  display: block;
+
+  color: #f1f7fb;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   LEARNING JOURNEY
+   ========================================================= */
+
+.profile-learning {
+  width: 100%;
+  max-width: 1100px;
+
+  min-height: 270px;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 48px 65px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 50%,
+      rgba(0, 174, 255, 0.12),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(7, 27, 42, 0.96),
+      rgba(2, 13, 21, 0.98)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.2);
+
+  border-radius: 25px;
+
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.profile-learning:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(0, 183, 255, 0.4);
+}
+
+.profile-learning-content {
+  max-width: 720px;
+
+  text-align: left;
+
+  position: relative;
+  z-index: 2;
+}
+
+.profile-learning-content .profile-section-label {
+  text-align: center;
+}
+
+.profile-learning-content h2 {
+  margin: 0;
+
+  font-size: clamp(30px, 4vw, 48px);
+
+  line-height: 1.08;
+
+  letter-spacing: -1.2px;
+}
+
+.profile-learning-content h2 span {
+  display: block;
+
+  color: #00b7ff;
+
+  text-shadow:
+    0 0 20px rgba(0, 183, 255, 0.2);
+}
+
+.profile-learning-content p {
+  max-width: 680px;
+
+  margin: 18px 0 0;
+
+  color: #879aaa;
+
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   LEARNING ICON
+   ========================================================= */
+
+.profile-learning-icon {
+  width: 105px;
+  height: 105px;
+
+  flex-shrink: 0;
+
+  margin-left: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  font-size: 46px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 105, 180, 0.13),
+      rgba(0, 174, 255, 0.03)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.22);
+
+  box-shadow:
+    0 0 35px rgba(0, 174, 255, 0.07);
+
+  animation: profileBrainFloat 4s ease-in-out infinite;
+}
+
+@keyframes profileBrainFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+/* =========================================================
+   ACCOUNT STATUS
+   ========================================================= */
+
+.profile-status {
+  width: 100%;
+  max-width: 1100px;
+
+  min-height: 95px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding: 25px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7, 23, 36, 0.95),
+      rgba(3, 13, 21, 0.96)
+    );
+
+  border: 1px solid rgba(0, 174, 255, 0.15);
+
+  border-radius: 18px;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-status:hover {
+  border-color: rgba(0, 174, 255, 0.35);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.profile-status h3 {
+  margin: 4px 0 0;
+
+  color: #d8e5ee;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   ACTIVE BADGE
+   ========================================================= */
+
+.profile-active-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 17px;
+
+  flex-shrink: 0;
+
+  border-radius: 999px;
+
+  color: #70eeb0;
+
+  background: rgba(32, 232, 138, 0.06);
+
+  border: 1px solid rgba(32, 232, 138, 0.22);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  box-shadow:
+    0 0 20px rgba(32, 232, 138, 0.04);
+}
+
+
+/* =========================================================
+   PROFILE FOOTER
+   ========================================================= */
+
+.profile-footer {
+  width: 100%;
+
+  text-align: center;
+
+  margin-top: -8px;
+
+  color: rgba(126, 145, 158, 0.55);
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.profile-footer:hover {
+  color: rgba(0, 183, 255, 0.85);
+
+  text-shadow:
+    0 0 12px rgba(0, 183, 255, 0.3);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .profile-page {
+    padding: 55px 5% 50px;
+    gap: 34px;
+  }
+
+  .profile-hero {
+    padding: 38px 35px;
+  }
+
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+    margin-right: 28px;
+  }
+
+  .profile-avatar span {
+    font-size: 42px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-info-card {
+    min-height: 110px;
+  }
+
+  .profile-learning {
+    padding: 42px 40px;
+  }
+
+  .profile-learning-content {
+    max-width: 620px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .profile-page {
+    padding: 38px 18px 45px;
+
+    gap: 28px;
+  }
+
+
+  /* HERO */
+
+  .profile-hero {
+    min-height: auto;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 55px 22px 30px;
+
+    border-radius: 22px;
+  }
+
+  .profile-avatar {
+    width: 88px;
+    height: 88px;
+
+    margin: 0 0 20px;
+  }
+
+  .profile-avatar span {
+    font-size: 40px;
+  }
+
+  .profile-hero-content {
+    width: 100%;
+  }
+
+  .profile-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .profile-hero-content h1 {
+    font-size: 34px;
+
+    line-height: 1.1;
+  }
+
+  .profile-hero-content p {
+    font-size: 13px;
+
+    max-width: 340px;
+  }
+
+  .profile-edit-btn {
+    top: 16px;
+    right: 16px;
+
+    padding: 8px 11px;
+
+    font-size: 10px;
+  }
+
+
+  /* SECTION */
+
+  .profile-section {
+    gap: 20px;
+  }
+
+  .profile-section-heading {
+    text-align: center;
+  }
+
+  .profile-section-heading h2 {
+    font-size: 28px;
+  }
+
+  .profile-section-heading p {
+    font-size: 12px;
+  }
+
+
+  /* INFO CARDS */
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+  }
+
+  .profile-info-card {
+    min-height: 100px;
+
+    padding: 20px;
+
+    gap: 16px;
+
+    border-radius: 16px;
+  }
+
+  .profile-info-icon {
+    width: 46px;
+    height: 46px;
+
+    font-size: 19px;
+  }
+
+  .profile-value {
+    font-size: 14px;
+  }
+
+
+  /* LEARNING */
+
+  .profile-learning {
+    min-height: auto;
+
+    flex-direction: column;
+
+    padding: 38px 24px;
+
+    text-align: center;
+
+    border-radius: 22px;
+  }
+
+  .profile-learning-content {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .profile-learning-content .profile-section-label {
+    text-align: center;
+  }
+
+  .profile-learning-content h2 {
+    font-size: 30px;
+
+    line-height: 1.12;
+  }
+
+  .profile-learning-content p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .profile-learning-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 10px auto 0;
+
+    font-size: 36px;
+  }
+
+
+  /* STATUS */
+
+  .profile-status {
+    min-height: auto;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    border-radius: 16px;
+  }
+
+  .profile-status h3 {
+    line-height: 1.5;
+  }
+
+  .profile-active-badge {
+    align-self: flex-start;
+  }
+
+
+  /* FOOTER */
+
+  .profile-footer {
+    font-size: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .profile-page {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .profile-hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .profile-hero-content h1 {
+    font-size: 29px;
+  }
+
+  .profile-info-card {
+    padding: 17px;
+  }
+
+  .profile-info-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .profile-learning-content h2 {
+    font-size: 27px;
+  }
+
+}
+
+/* =========================================================
+   PROFILE FINAL ALIGNMENT FIX
+   ========================================================= */
+
+/* 1. WELCOME CARD — CONTENT SLIGHTLY LEFT */
+.profile-hero-content {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.profile-hero-content p {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.profile-member-badge {
+  display: flex;
+  width: fit-content;
+}
+
+
+/* Keep avatar + content nicely balanced */
+.profile-avatar {
+  margin-right: 28px;
+}
+
+
+/* 2. ACCOUNT LABEL — LEFT + SLIGHTLY BIGGER */
+.profile-section-heading .profile-section-label {
+  text-align: left;
+
+  font-size: 12px;
+  letter-spacing: 3.5px;
+}
+
+
+/* PERSONAL INFORMATION — RIGHT ALIGNED */
+.profile-section-heading h2 {
+  text-align: right;
+}
+
+.profile-section-heading p {
+  text-align: right;
+}
+
+
+/* 3. YOUR JOURNEY — LABEL CENTER ONLY */
+.profile-learning-content .profile-section-label {
+  text-align: center;
+  width: 100%;
+}
+
+
+/* Keep journey heading + description left aligned */
+.profile-learning-content h2 {
+  text-align: left;
+}
+
+.profile-learning-content p {
+  text-align: left;
+}
+
+
+/* =========================================================
+   MOBILE — RESTORE NATURAL ALIGNMENT
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  /* Welcome */
+  .profile-hero-content {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .profile-hero-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .profile-member-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* Personal Information */
+  .profile-section-heading {
+    text-align: center;
+  }
+
+  .profile-section-heading .profile-section-label {
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .profile-section-heading h2,
+  .profile-section-heading p {
+    text-align: center;
+  }
+
+
+  /* Your Journey */
+  .profile-learning-content .profile-section-label {
+    text-align: center;
+  }
+
+  .profile-learning-content h2,
+  .profile-learning-content p {
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   PROFILE FINAL ALIGNMENT POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   1. WELCOME CARD — CENTER ALL CONTENT
+   ========================================================= */
+
+.profile-hero {
+  justify-content: flex-start;
+}
+
+.profile-hero-content {
+  text-align: center !important;
+  padding-left: 0 !important;
+}
+
+.profile-hero-content h1 {
+  text-align: center !important;
+}
+
+.profile-hero-content p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  text-align: center !important;
+}
+
+.profile-member-badge {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+/* Keep avatar balanced */
+
+.profile-avatar {
+  margin-right: 30px;
+}
+
+
+/* =========================================================
+   2. ACCOUNT / PERSONAL INFORMATION
+   ========================================================= */
+
+.profile-section-heading {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 180px 1fr;
+
+  grid-template-areas:
+    "account title"
+    "account description";
+
+  align-items: center;
+
+  column-gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+
+/* ACCOUNT stays on left */
+
+.profile-section-heading .profile-section-label {
+  grid-area: account;
+
+  align-self: start;
+
+  margin: 5px 0 0;
+
+  text-align: left !important;
+
+  font-size: 12px !important;
+
+  letter-spacing: 3.5px;
+}
+
+
+/* Personal Information gets clean centered alignment */
+
+.profile-section-heading h2 {
+  grid-area: title;
+
+  margin: 0;
+
+  text-align: center !important;
+}
+
+
+/* Description */
+
+.profile-section-heading p {
+  grid-area: description;
+
+  margin: 7px 0 0;
+
+  text-align: center !important;
+}
+
+
+/* =========================================================
+   3. YOUR JOURNEY — CENTER LABEL ACROSS WHOLE CARD
+   ========================================================= */
+
+.profile-learning {
+  position: relative;
+
+  padding-top: 70px;
+}
+
+
+/* Exact center of the card */
+
+.profile-learning > .profile-learning-content
+.profile-section-label {
+  position: absolute;
+
+  top: 27px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: max-content;
+
+  margin: 0 !important;
+
+  text-align: center !important;
+}
+
+
+/* Keep actual learning content left aligned */
+
+.profile-learning-content {
+  text-align: left !important;
+}
+
+.profile-learning-content h2 {
+  text-align: left !important;
+}
+
+.profile-learning-content p {
+  text-align: left !important;
+}
+
+
+/* =========================================================
+   MOBILE — KEEP EVERYTHING NATURAL
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  /* Welcome */
+
+  .profile-hero {
+    justify-content: center;
+  }
+
+  .profile-hero-content {
+    text-align: center !important;
+  }
+
+  .profile-hero-content h1,
+  .profile-hero-content p {
+    text-align: center !important;
+  }
+
+  .profile-member-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .profile-avatar {
+    margin-right: 0;
+  }
+
+
+  /* Account section */
+
+  .profile-section-heading {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .profile-section-heading .profile-section-label {
+    text-align: center !important;
+
+    margin: 0 !important;
+
+    font-size: 11px !important;
+  }
+
+  .profile-section-heading h2,
+  .profile-section-heading p {
+    text-align: center !important;
+  }
+
+
+  /* Journey */
+
+  .profile-learning {
+    padding-top: 75px;
+  }
+
+  .profile-learning >
+  .profile-learning-content
+  .profile-section-label {
+    top: 28px;
+  }
+
+  .profile-learning-content {
+    text-align: center !important;
+  }
+
+  .profile-learning-content h2,
+  .profile-learning-content p {
+    text-align: center !important;
+  }
+}
+
+/* =========================================================
+   PROFILE - FINAL ALIGNMENT
+   Only targeted alignment fixes
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. ACCOUNT + PERSONAL INFORMATION
+   CENTER BOTH
+   --------------------------------------------------------- */
+
+.profile-section-heading {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  width: 100%;
+
+  text-align: center !important;
+}
+
+.profile-section-heading .profile-section-label {
+  margin: 0 0 8px !important;
+
+  text-align: center !important;
+
+  font-size: 12px !important;
+  letter-spacing: 3.5px;
+}
+
+.profile-section-heading h2 {
+  margin: 0 !important;
+
+  text-align: center !important;
+}
+
+.profile-section-heading p {
+  margin: 8px 0 0 !important;
+
+  text-align: center !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. WELCOME CARD
+   SLIGHTLY LEFT FROM VISUAL CENTER
+   --------------------------------------------------------- */
+
+@media (min-width: 651px) {
+
+  .profile-hero {
+    position: relative;
+  }
+
+  .profile-hero-content {
+    position: absolute;
+
+    left: 49%;
+
+    top: 50%;
+
+    width: 56%;
+
+    transform: translate(-50%, -50%);
+
+    padding: 0 !important;
+
+    text-align: center !important;
+  }
+
+  .profile-hero-content h1,
+  .profile-hero-content p {
+    text-align: center !important;
+  }
+
+  .profile-hero-content p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .profile-member-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   3. YOUR JOURNEY
+   LABEL EXACTLY CENTERED IN CARD
+   --------------------------------------------------------- */
+
+.profile-learning {
+  position: relative;
+
+  padding-top: 75px !important;
+}
+
+.profile-learning-content .profile-section-label {
+  position: absolute;
+
+  top: 27px;
+  left: 50%;
+
+  width: max-content;
+
+  margin: 0 !important;
+
+  transform: translateX(-50%);
+
+  text-align: center !important;
+}
+
+
+/* Learning content stays LEFT */
+
+.profile-learning-content {
+  text-align: left !important;
+}
+
+.profile-learning-content h2,
+.profile-learning-content p {
+  text-align: left !important;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+  /* Welcome returns to normal mobile flow */
+
+  .profile-hero-content {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    width: 100%;
+
+    transform: none;
+
+    text-align: center !important;
+  }
+
+
+  /* Account + Personal Information */
+
+  .profile-section-heading {
+    align-items: center !important;
+
+    text-align: center !important;
+  }
+
+  .profile-section-heading
+  .profile-section-label,
+  .profile-section-heading h2,
+  .profile-section-heading p {
+    text-align: center !important;
+  }
+
+
+  /* Journey */
+
+  .profile-learning {
+    padding-top: 75px !important;
+  }
+
+  .profile-learning-content .profile-section-label {
+    top: 27px;
+  }
+
+  .profile-learning-content {
+    text-align: center !important;
+  }
+
+  .profile-learning-content h2,
+  .profile-learning-content p {
+    text-align: center !important;
+  }
+}
+
+/* =========================================================
+   PROFILE — FINAL STRUCTURAL ALIGNMENT FIX
+   ========================================================= */
+
+
+/* =========================================================
+   1. WELCOME CARD
+   Avatar = LEFT
+   Content = CENTER
+   Edit = TOP RIGHT
+   ========================================================= */
+
+.profile-hero {
+  position: relative !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: hidden;
+}
+
+
+/* Avatar stays permanently on left */
+
+.profile-hero .profile-avatar {
+  position: absolute !important;
+
+  left: 42px !important;
+  top: 50% !important;
+
+  margin: 0 !important;
+
+  transform: translateY(-50%) !important;
+
+  z-index: 3 !important;
+}
+
+
+/* Center the complete welcome content */
+
+.profile-hero .profile-hero-content {
+  position: relative !important;
+
+  left: auto !important;
+  top: auto !important;
+
+  width: min(700px, 72%) !important;
+
+  margin: 0 auto !important;
+
+  padding: 0 !important;
+
+  transform: none !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  text-align: center !important;
+}
+
+
+/* Identity */
+
+.profile-hero .profile-eyebrow {
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  text-align: center !important;
+}
+
+
+/* Welcome */
+
+.profile-hero .profile-hero-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center !important;
+}
+
+
+/* Subtitle */
+
+.profile-hero .profile-hero-content p {
+  width: 100%;
+
+  max-width: 620px;
+
+  margin: 15px auto 17px !important;
+
+  text-align: center !important;
+}
+
+
+/* Member badge */
+
+.profile-hero .profile-member-badge {
+  margin: 0 auto !important;
+}
+
+
+/* Edit Profile stays top-right */
+
+.profile-hero .profile-edit-btn {
+  position: absolute !important;
+
+  top: 27px !important;
+  right: 28px !important;
+
+  z-index: 5 !important;
+}
+
+
+/* =========================================================
+   2. ACCOUNT + PERSONAL INFORMATION
+   ACCOUNT DIRECTLY ABOVE PERSONAL INFORMATION
+   ========================================================= */
+
+.profile-section-heading {
+  width: 100% !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  gap: 0 !important;
+
+  margin: 0 0 24px !important;
+
+  text-align: center !important;
+}
+
+
+/* ACCOUNT */
+
+.profile-section-heading .profile-section-label {
+  position: static !important;
+
+  width: auto !important;
+
+  margin: 0 0 9px !important;
+
+  transform: none !important;
+
+  text-align: center !important;
+
+  font-size: 12px !important;
+
+  letter-spacing: 3.5px;
+}
+
+
+/* Personal Information */
+
+.profile-section-heading h2 {
+  width: 100% !important;
+
+  margin: 0 !important;
+
+  text-align: center !important;
+}
+
+
+/* Description */
+
+.profile-section-heading p {
+  width: 100% !important;
+
+  margin: 8px 0 0 !important;
+
+  text-align: center !important;
+}
+
+
+/* =========================================================
+   3. YOUR JOURNEY
+   LEFT ALIGN — NO OVERLAP
+   ========================================================= */
+
+.profile-learning {
+  position: relative !important;
+
+  padding-top: 48px !important;
+}
+
+
+/* IMPORTANT:
+   Remove previous absolute positioning */
+.profile-learning
+.profile-learning-content
+.profile-section-label {
+  position: static !important;
+
+  display: block !important;
+
+  width: auto !important;
+
+  margin: 0 0 14px !important;
+
+  transform: none !important;
+
+  text-align: left !important;
+}
+
+
+/* Learning content */
+
+.profile-learning .profile-learning-content {
+  width: 100% !important;
+
+  max-width: 720px;
+
+  text-align: left !important;
+}
+
+
+/* Learning heading */
+
+.profile-learning .profile-learning-content h2 {
+  margin: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* Learning description */
+
+.profile-learning .profile-learning-content p {
+  margin: 18px 0 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* Brain stays on right */
+
+.profile-learning .profile-learning-icon {
+  flex-shrink: 0;
+
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  /* ---------- Welcome ---------- */
+
+  .profile-hero {
+    flex-direction: column !important;
+
+    padding-top: 65px !important;
+  }
+
+  .profile-hero .profile-avatar {
+    position: static !important;
+
+    width: 82px !important;
+    height: 82px !important;
+
+    margin: 0 auto 18px !important;
+
+    transform: none !important;
+  }
+
+  .profile-hero .profile-hero-content {
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    text-align: center !important;
+  }
+
+  .profile-hero .profile-eyebrow,
+  .profile-hero .profile-hero-content h1,
+  .profile-hero .profile-hero-content p {
+    text-align: center !important;
+  }
+
+  .profile-hero .profile-member-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .profile-hero .profile-edit-btn {
+    top: 15px !important;
+    right: 15px !important;
+  }
+
+
+  /* ---------- Account ---------- */
+
+  .profile-section-heading {
+    align-items: center !important;
+
+    text-align: center !important;
+  }
+
+  .profile-section-heading
+  .profile-section-label,
+  .profile-section-heading h2,
+  .profile-section-heading p {
+    text-align: center !important;
+  }
+
+
+  /* ---------- Journey ---------- */
+
+  .profile-learning {
+    padding-top: 35px !important;
+
+    flex-direction: column !important;
+  }
+
+  .profile-learning
+  .profile-learning-content {
+    width: 100% !important;
+
+    text-align: left !important;
+  }
+
+  .profile-learning
+  .profile-learning-content
+  .profile-section-label {
+    text-align: left !important;
+  }
+
+  .profile-learning
+  .profile-learning-content h2,
+  .profile-learning
+  .profile-learning-content p {
+    text-align: left !important;
+  }
+
+  .profile-learning
+  .profile-learning-icon {
+    margin: 24px auto 0 !important;
+  }
+}
+
+/* =========================================================
+   PROFILE — ACCOUNT HARD CENTER FIX
+   ========================================================= */
+
+.profile-section-heading {
+  position: relative !important;
+
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+}
+
+
+/* ACCOUNT — FORCE EXACT CENTER */
+
+.profile-section-heading .profile-section-label {
+  position: absolute !important;
+
+  top: 0 !important;
+  left: 50% !important;
+
+  transform: translateX(-50%) !important;
+
+  width: max-content !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+
+  font-size: 12px !important;
+  letter-spacing: 3.5px !important;
+
+  z-index: 5 !important;
+}
+
+
+/* Move title down so ACCOUNT sits above it */
+
+.profile-section-heading h2 {
+  margin-top: 28px !important;
+
+  width: 100% !important;
+
+  text-align: center !important;
+}
+
+
+/* Description */
+
+.profile-section-heading p {
+  width: 100% !important;
+
+  margin-top: 8px !important;
+
+  text-align: center !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .profile-section-heading {
+    position: relative !important;
+  }
+
+  .profile-section-heading .profile-section-label {
+    left: 50% !important;
+
+    transform: translateX(-50%) !important;
+
+    text-align: center !important;
+  }
+
+  .profile-section-heading h2 {
+    margin-top: 27px !important;
+
+    text-align: center !important;
+  }
+
+  .profile-section-heading p {
+    text-align: center !important;
+  }
+}
+
+/* =========================================
+   EDIT PROFILE MODAL
+========================================= */
+
+.profile-edit-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(5, 10, 25, 0.72);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  animation: profileModalOverlayIn 0.2s ease;
+}
+
+.profile-edit-modal {
+  width: min(100%, 500px);
+
+  background: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.28),
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  animation: profileModalIn 0.25s ease;
+}
+
+/* MODAL HEADER */
+
+.profile-edit-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.profile-edit-modal-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+
+  color: #7c3aed;
+}
+
+.profile-edit-modal-header h2 {
+  margin: 0;
+
+  font-size: 1.65rem;
+  font-weight: 800;
+
+  color: #111827;
+}
+
+.profile-edit-modal-header p {
+  margin: 7px 0 0;
+
+  font-size: 0.92rem;
+  line-height: 1.5;
+
+  color: #6b7280;
+}
+
+/* CLOSE BUTTON */
+
+.profile-edit-close {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #374151;
+
+  font-size: 1.6rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profile-edit-close:hover {
+  background: #e5e7eb;
+  transform: rotate(90deg);
+}
+
+.profile-edit-close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* FORM */
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-form label {
+  margin-bottom: 9px;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  color: #6b7280;
+}
+
+.profile-edit-form input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 16px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #f9fafb;
+
+  color: #111827;
+
+  font-size: 1rem;
+  font-family: inherit;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.profile-edit-form input:focus {
+  border-color: #8b5cf6;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.profile-edit-form input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.profile-edit-hint {
+  margin-top: 7px;
+
+  font-size: 0.78rem;
+
+  color: #9ca3af;
+}
+
+/* ACTION BUTTONS */
+
+.profile-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+.profile-edit-cancel,
+.profile-edit-save {
+  min-height: 44px;
+
+  padding: 0 20px;
+
+  border-radius: 11px;
+
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.profile-edit-cancel {
+  border: 1px solid #d1d5db;
+
+  background: #ffffff;
+
+  color: #374151;
+}
+
+.profile-edit-cancel:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.profile-edit-save {
+  border: 1px solid transparent;
+
+  background: #7c3aed;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(124, 58, 237, 0.22);
+}
+
+.profile-edit-save:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 12px 25px rgba(124, 58, 237, 0.3);
+}
+
+.profile-edit-cancel:disabled,
+.profile-edit-save:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================
+   MODAL ANIMATIONS
+========================================= */
+
+@keyframes profileModalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes profileModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .profile-edit-overlay {
+    padding: 16px;
+  }
+
+  .profile-edit-modal {
+    padding: 24px 20px;
+
+    border-radius: 20px;
+  }
+
+  .profile-edit-modal-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .profile-edit-actions {
+    flex-direction: column-reverse;
+  }
+
+  .profile-edit-cancel,
+  .profile-edit-save {
+    width: 100%;
+  }
+
+}
