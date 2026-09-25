@@ -7689,3 +7689,98 @@ body,
   }
 
 }
+
+/* =========================================
+   PROFILE ACCOUNT STATUS ALIGNMENT
+========================================= */
+
+.profile-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+}
+
+.profile-status > div:first-child {
+  text-align: left;
+}
+
+.profile-status .profile-section-label {
+  display: block;
+  text-align: left;
+}
+
+.profile-status h3 {
+  margin: 10px 0 0;
+  text-align: left;
+}
+
+/* Active badge stays on the right */
+.profile-active-badge {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   MOBILE ACCOUNT STATUS
+========================================= */
+
+@media (max-width: 600px) {
+
+  .profile-status {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .profile-status > div:first-child {
+    text-align: left;
+  }
+
+  .profile-status .profile-section-label {
+    text-align: left;
+  }
+
+  .profile-status h3 {
+    text-align: left;
+  }
+
+}
+
+/* =========================================
+   ACCOUNT STATUS - MOBILE CENTER ALIGNMENT
+========================================= */
+
+@media (max-width: 600px) {
+
+  .profile-status {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 24px;
+  }
+
+  .profile-status > div:first-child {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-status .profile-section-label {
+    text-align: center;
+  }
+
+  .profile-status h3 {
+    margin: 10px 0 0;
+
+    text-align: center;
+
+    line-height: 1.5;
+  }
+
+  .profile-active-badge {
+    margin: 0 auto;
+  }
+
+}
