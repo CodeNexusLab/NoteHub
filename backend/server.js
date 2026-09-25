@@ -198,6 +198,74 @@ app.get("/api/profile", authenticateToken, async (req, res) => {
 });
 
 // ===============================
+// UPDATE CURRENT USER PROFILE
+// JWT PROTECTED
+// ===============================
+
+app.put("/api/profile", authenticateToken, async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    // Check name
+    if (!name || !name.trim()) {
+      return res.status(400).json({
+        message: "Name is required ❌"
+      });
+    }
+
+    const cleanName = name.trim();
+
+    // Minimum name length
+    if (cleanName.length < 2) {
+      return res.status(400).json({
+        message: "Name must contain at least 2 characters ❌"
+      });
+    }
+
+    // Maximum name length
+    if (cleanName.length > 50) {
+      return res.status(400).json({
+        message: "Name cannot exceed 50 characters ❌"
+      });
+    }
+
+    // Find logged-in user
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found ❌"
+      });
+    }
+
+    // Update name
+    user.name = cleanName;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      message: "Profile updated successfully ✅",
+      user: {
+        id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        createdAt: updatedUser.createdAt
+      }
+    });
+
+  } catch (error) {
+    console.error(
+      "Error updating profile:",
+      error
+    );
+
+    res.status(500).json({
+      message: "Failed to update profile ❌"
+    });
+  }
+});
+
+// ===============================
 // CREATE NOTE API
 // JWT PROTECTED
 // ===============================
@@ -373,7 +441,9 @@ app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
       });
     }
 
-    const deletedNote = await Note.findByIdAndDelete(req.params.id);
+    const deletedNote = await Note.findByIdAndDelete(
+      req.params.id
+    );
 
     res.json({
       message: "Note deleted successfully 🗑️",
