@@ -8400,3 +8400,5217 @@ body,
     text-align: center;
   }
 }
+
+/* =========================================================
+   DASHBOARD 2.0 — BASE LAYOUT
+   ========================================================= */
+
+.dashboard-page {
+  position: relative;
+  width: min(1100px, calc(100% - 40px));
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 0 40px;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+/* Dashboard background atmosphere */
+
+.dashboard-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(0, 174, 255, 0.09),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(0, 110, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 85%,
+      rgba(0, 210, 255, 0.05),
+      transparent 35%
+    );
+}
+
+/* Main sections */
+
+.dashboard-hero-v2,
+.dashboard-overview,
+.dashboard-journey,
+.dashboard-actions-v2,
+.dashboard-notes-v2,
+.dashboard-final-cta {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Common section spacing */
+
+.dashboard-overview,
+.dashboard-journey,
+.dashboard-actions-v2,
+.dashboard-notes-v2,
+.dashboard-final-cta {
+  margin-top: 95px;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.dashboard-section-heading-v2 {
+  max-width: 720px;
+  margin-bottom: 35px;
+}
+
+.dashboard-section-heading-v2 > span,
+.dashboard-section-header-v2 > div > span,
+.dashboard-final-cta-content > span {
+  display: block;
+  margin-bottom: 10px;
+  color: #18c8ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.dashboard-section-heading-v2 h2,
+.dashboard-section-header-v2 h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.dashboard-section-heading-v2 h2 strong,
+.dashboard-section-header-v2 h2 strong {
+  color: #20cfff;
+  font-weight: 700;
+}
+
+.dashboard-section-heading-v2 p,
+.dashboard-section-header-v2 p {
+  margin: 12px 0 0;
+  color: rgba(205, 220, 240, 0.68);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   MOBILE BASE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .dashboard-page {
+    width: calc(100% - 28px);
+    padding: 45px 0 30px;
+  }
+
+  .dashboard-overview,
+  .dashboard-journey,
+  .dashboard-actions-v2,
+  .dashboard-notes-v2,
+  .dashboard-final-cta {
+    margin-top: 70px;
+  }
+
+  .dashboard-section-heading-v2 h2,
+  .dashboard-section-header-v2 h2 {
+    font-size: 27px;
+  }
+
+  .dashboard-section-heading-v2 p,
+  .dashboard-section-header-v2 p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .dashboard-page {
+    width: calc(100% - 20px);
+    padding-top: 35px;
+  }
+
+  .dashboard-section-heading-v2 h2,
+  .dashboard-section-header-v2 h2 {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+   NOTEHUB DASHBOARD 2.0
+   STEP 2 — HERO SECTION
+   ---------------------------------------------------------
+   Premium dashboard hero inspired by NoteHub Home UI.
+   ========================================================= */
+
+.dashboard-hero-v2 {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  align-items: center;
+  gap: 45px;
+  padding: 55px 55px;
+  overflow: hidden;
+  border: 1px solid rgba(77, 190, 255, 0.18);
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 85% 25%,
+      rgba(0, 194, 255, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 85%,
+      rgba(0, 90, 255, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(7, 29, 70, 0.96),
+      rgba(4, 17, 42, 0.98)
+    );
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  box-sizing: border-box;
+}
+
+/* Hero ambient glow */
+
+.dashboard-hero-v2::before {
+  content: "";
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  right: -160px;
+  top: -190px;
+  border-radius: 50%;
+  background: rgba(0, 195, 255, 0.12);
+  filter: blur(25px);
+  pointer-events: none;
+}
+
+/* Secondary hero glow */
+
+.dashboard-hero-v2::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  left: -140px;
+  bottom: -150px;
+  border-radius: 50%;
+  background: rgba(0, 100, 255, 0.10);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.dashboard-hero-content-v2 {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.dashboard-hero-eyebrow-v2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+
+  border: 1px solid rgba(0, 205, 255, 0.22);
+  border-radius: 999px;
+
+  background: rgba(0, 160, 255, 0.07);
+
+  color: #38d8ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.dashboard-hero-content-v2 h1 {
+  margin: 0;
+  max-width: 650px;
+
+  color: #ffffff;
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1.05;
+  font-weight: 750;
+  letter-spacing: -1.5px;
+}
+
+.dashboard-hero-content-v2 h1 span {
+  color: #22d4ff;
+}
+
+.dashboard-hero-content-v2 > p {
+  max-width: 570px;
+  margin: 20px 0 0;
+
+  color: rgba(205, 220, 240, 0.72);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   HERO ACTION BUTTONS
+   ========================================================= */
+
+.dashboard-hero-actions-v2 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.dashboard-primary-btn-v2,
+.dashboard-secondary-btn-v2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+
+  border-radius: 12px;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.dashboard-primary-btn-v2 {
+  color: #031427;
+
+  background: linear-gradient(
+    135deg,
+    #36dcff,
+    #16b8f5
+  );
+
+  box-shadow:
+    0 10px 28px rgba(0, 195, 255, 0.18);
+}
+
+.dashboard-primary-btn-v2:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(0, 195, 255, 0.28);
+}
+
+.dashboard-secondary-btn-v2 {
+  color: #bfefff;
+
+  background: rgba(0, 125, 210, 0.08);
+  border: 1px solid rgba(90, 195, 255, 0.20);
+}
+
+.dashboard-secondary-btn-v2:hover {
+  transform: translateY(-3px);
+
+  background: rgba(0, 155, 235, 0.13);
+  border-color: rgba(70, 210, 255, 0.40);
+}
+
+
+/* =========================================================
+   HERO VISUAL AREA
+   ========================================================= */
+
+.dashboard-hero-visual-v2 {
+  position: relative;
+  min-height: 330px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   HERO ORBITS
+   ========================================================= */
+
+.dashboard-orbit-v2 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(45, 202, 255, 0.16);
+
+  pointer-events: none;
+}
+
+.dashboard-orbit-one-v2 {
+  width: 300px;
+  height: 300px;
+  animation: dashboardOrbitRotate 18s linear infinite;
+}
+
+.dashboard-orbit-two-v2 {
+  width: 220px;
+  height: 220px;
+  border-color: rgba(0, 195, 255, 0.20);
+
+  animation: dashboardOrbitRotateReverse 14s linear infinite;
+}
+
+
+/* =========================================================
+   HERO CORE
+   ========================================================= */
+
+.dashboard-hero-core-v2 {
+  position: relative;
+  z-index: 3;
+
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(40, 205, 255, 0.18),
+      rgba(5, 27, 64, 0.96) 65%
+    );
+
+  border: 1px solid rgba(67, 211, 255, 0.30);
+
+  box-shadow:
+    0 0 35px rgba(0, 190, 255, 0.14),
+    inset 0 0 25px rgba(0, 190, 255, 0.07);
+}
+
+.dashboard-hero-core-v2 span {
+  margin-bottom: 8px;
+  font-size: 38px;
+}
+
+.dashboard-hero-core-v2 strong {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.dashboard-hero-core-v2 small {
+  margin-top: 4px;
+  color: #7fa8cc;
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   FLOATING HERO CARDS
+   ========================================================= */
+
+.dashboard-floating-card-v2 {
+  position: absolute;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 135px;
+  padding: 11px 14px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 52, 105, 0.90),
+      rgba(6, 24, 55, 0.94)
+    );
+
+  border: 1px solid rgba(80, 195, 255, 0.18);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-floating-card-v2 > span {
+  font-size: 20px;
+}
+
+.dashboard-floating-card-v2 div {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-floating-card-v2 strong {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.dashboard-floating-card-v2 small {
+  margin-top: 2px;
+  color: #7898ba;
+  font-size: 9px;
+}
+
+.dashboard-floating-one-v2 {
+  top: 18px;
+  right: 8px;
+  animation: dashboardFloatOne 4s ease-in-out infinite;
+}
+
+.dashboard-floating-two-v2 {
+  left: 0;
+  bottom: 30px;
+  animation: dashboardFloatTwo 4.5s ease-in-out infinite;
+}
+
+.dashboard-floating-three-v2 {
+  right: 5px;
+  bottom: 12px;
+  animation: dashboardFloatThree 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HERO ANIMATIONS
+   ========================================================= */
+
+@keyframes dashboardOrbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dashboardOrbitRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dashboardFloatOne {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dashboardFloatTwo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes dashboardFloatThree {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+/* =========================================================
+   HERO — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .dashboard-hero-v2 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 45px 35px;
+  }
+
+  .dashboard-hero-content-v2 {
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-hero-content-v2 h1,
+  .dashboard-hero-content-v2 > p {
+    max-width: 700px;
+  }
+
+  .dashboard-hero-actions-v2 {
+    justify-content: center;
+  }
+
+  .dashboard-hero-visual-v2 {
+    min-height: 300px;
+  }
+}
+
+
+/* =========================================================
+   HERO — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .dashboard-hero-v2 {
+    min-height: auto;
+    padding: 38px 22px 30px;
+    border-radius: 24px;
+  }
+
+  .dashboard-hero-content-v2 h1 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  .dashboard-hero-content-v2 > p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .dashboard-hero-actions-v2 {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .dashboard-primary-btn-v2,
+  .dashboard-secondary-btn-v2 {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dashboard-hero-visual-v2 {
+    width: 100%;
+    min-height: 270px;
+  }
+
+  .dashboard-orbit-one-v2 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .dashboard-orbit-two-v2 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .dashboard-hero-core-v2 {
+    width: 125px;
+    height: 125px;
+  }
+
+  .dashboard-hero-core-v2 span {
+    font-size: 32px;
+  }
+
+  .dashboard-floating-card-v2 {
+    min-width: 115px;
+    padding: 9px 11px;
+  }
+
+  .dashboard-floating-one-v2 {
+    right: -2px;
+    top: 8px;
+  }
+
+  .dashboard-floating-two-v2 {
+    left: -2px;
+    bottom: 20px;
+  }
+
+  .dashboard-floating-three-v2 {
+    right: -2px;
+    bottom: 2px;
+  }
+}
+
+
+/* =========================================================
+   HERO — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .dashboard-hero-v2 {
+    padding: 32px 17px 25px;
+  }
+
+  .dashboard-hero-content-v2 h1 {
+    font-size: 29px;
+  }
+
+  .dashboard-hero-eyebrow-v2 {
+    font-size: 9px;
+    padding: 7px 11px;
+  }
+
+  .dashboard-hero-visual-v2 {
+    min-height: 245px;
+  }
+
+  .dashboard-floating-card-v2 {
+    min-width: 105px;
+    padding: 8px 9px;
+  }
+
+  .dashboard-floating-card-v2 strong {
+    font-size: 10px;
+  }
+
+  .dashboard-floating-card-v2 small {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   NOTEHUB DASHBOARD 2.0
+   COMPLETE PAGE DESIGN
+   ---------------------------------------------------------
+   Visual language:
+   - NoteHub Home
+   - NoteHub Profile
+   - Premium dark/cyan workspace
+   - Responsive desktop/tablet/mobile
+   ========================================================= */
+
+
+/* =========================================================
+   01. DASHBOARD PAGE — BASE
+   ========================================================= */
+
+.dashboard-page {
+  position: relative;
+
+  width: min(1120px, calc(100% - 40px));
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  padding: 70px 0 45px;
+
+  box-sizing: border-box;
+
+  isolation: isolate;
+}
+
+
+/* Atmospheric background */
+
+.dashboard-page::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -2;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(0, 170, 255, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 28%,
+      rgba(0, 110, 255, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 52% 82%,
+      rgba(0, 210, 255, 0.05),
+      transparent 35%
+    );
+}
+
+
+/* Subtle page grid atmosphere */
+
+.dashboard-page::after {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -3;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(
+      rgba(50, 180, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(50, 180, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+}
+
+
+/* =========================================================
+   02. COMMON SECTION SPACING
+   ========================================================= */
+
+.dashboard-overview,
+.dashboard-journey,
+.dashboard-actions-v2,
+.dashboard-notes-v2,
+.dashboard-final-cta {
+  width: 100%;
+
+  margin-top: 100px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   03. COMMON SECTION HEADINGS
+   ========================================================= */
+
+.dashboard-section-heading-v2 {
+  max-width: 760px;
+
+  margin: 0 0 35px;
+}
+
+.dashboard-section-heading-v2 > span,
+.dashboard-section-header-v2 > div > span,
+.dashboard-final-cta-content > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #28d7ff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.dashboard-section-heading-v2 h2,
+.dashboard-section-header-v2 h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 34px;
+
+  line-height: 1.18;
+
+  font-weight: 700;
+
+  letter-spacing: -0.7px;
+}
+
+.dashboard-section-heading-v2 h2 strong,
+.dashboard-section-header-v2 h2 strong {
+  color: #28d7ff;
+
+  font-weight: 700;
+}
+
+.dashboard-section-heading-v2 p,
+.dashboard-section-header-v2 p {
+  margin: 12px 0 0;
+
+  max-width: 650px;
+
+  color: #8fa8ca;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   04. HERO — MAIN CONTAINER
+   ========================================================= */
+
+.dashboard-hero-v2 {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(380px, 0.95fr);
+
+  align-items: center;
+
+  gap: 45px;
+
+  min-height: 450px;
+
+  padding: 55px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  border: 1px solid
+    rgba(65, 195, 255, 0.22);
+
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(0, 195, 255, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 95%,
+      rgba(0, 90, 255, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #0d2456 0%,
+      #071734 55%,
+      #041126 100%
+    );
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.04);
+}
+
+
+/* Hero ambient glow */
+
+.dashboard-hero-v2::before {
+  content: "";
+
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  right: -170px;
+  top: -190px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 195, 255, 0.10);
+
+  filter: blur(8px);
+
+  pointer-events: none;
+}
+
+
+/* Hero secondary glow */
+
+.dashboard-hero-v2::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: -180px;
+  bottom: -190px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 100, 255, 0.08);
+
+  filter: blur(15px);
+
+  pointer-events: none;
+}
+
+
+/* Extra hero glow element */
+
+.dashboard-hero-v2-glow {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  right: 28%;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(44, 213, 255, 0.07);
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   05. HERO — CONTENT
+   ========================================================= */
+
+.dashboard-hero-v2-content {
+  position: relative;
+
+  z-index: 5;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+
+/* Eyebrow */
+
+.dashboard-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  margin-bottom: 18px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  border: 1px solid
+    rgba(40, 215, 255, 0.25);
+
+  background:
+    rgba(0, 195, 255, 0.07);
+
+  color: #8fe9ff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.dashboard-hero-v2-content h1 {
+  margin: 0;
+
+  max-width: 700px;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    40px,
+    4.5vw,
+    60px
+  );
+
+  line-height: 1.04;
+
+  font-weight: 750;
+
+  letter-spacing: -1.8px;
+}
+
+.dashboard-hero-v2-content h1 span {
+  color: #28d7ff;
+
+  text-shadow:
+    0 0 28px
+    rgba(40, 215, 255, 0.18);
+}
+
+
+/* Hero description */
+
+.dashboard-hero-v2-content > p {
+  max-width: 590px;
+
+  margin: 20px 0 0;
+
+  color: #b8cae4;
+
+  font-size: 15px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   06. HERO — BUTTONS
+   ========================================================= */
+
+.dashboard-hero-v2-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.dashboard-v2-primary-btn,
+.dashboard-v2-secondary-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 47px;
+
+  padding: 0 21px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dashboard-v2-primary-btn {
+  color: #031423;
+
+  background:
+    linear-gradient(
+      135deg,
+      #38ddff,
+      #16b9ef
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(30, 210, 255, 0.20);
+}
+
+.dashboard-v2-primary-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 38px
+    rgba(30, 210, 255, 0.32);
+}
+
+.dashboard-v2-secondary-btn {
+  color: #d6f5ff;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid
+    rgba(76, 190, 255, 0.22);
+
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-v2-secondary-btn:hover {
+  transform: translateY(-3px);
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  border-color:
+    rgba(70, 210, 255, 0.40);
+}
+
+
+/* =========================================================
+   07. HERO — VISUAL
+   ========================================================= */
+
+.dashboard-hero-v2-visual {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 340px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* Orbit rings */
+
+.dashboard-orbit {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(45, 202, 255, 0.16);
+
+  pointer-events: none;
+}
+
+.dashboard-orbit-one {
+  width: 320px;
+  height: 320px;
+
+  animation:
+    dashboardOrbitClockwise
+    18s linear infinite;
+}
+
+.dashboard-orbit-two {
+  width: 235px;
+  height: 235px;
+
+  border-color:
+    rgba(0, 195, 255, 0.22);
+
+  animation:
+    dashboardOrbitReverse
+    13s linear infinite;
+}
+
+
+/* =========================================================
+   08. HERO — CORE
+   ========================================================= */
+
+.dashboard-hero-v2-core {
+  position: relative;
+
+  z-index: 5;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(70, 215, 255, 0.32);
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      rgba(40, 215, 255, 0.18),
+      rgba(5, 26, 61, 0.97) 68%
+    );
+
+  box-shadow:
+    0 0 45px
+    rgba(0, 195, 255, 0.14),
+    inset 0 0 28px
+    rgba(0, 195, 255, 0.07);
+
+  animation:
+    dashboardCoreFloat
+    4s ease-in-out infinite;
+}
+
+.dashboard-hero-v2-core span {
+  margin-bottom: 8px;
+
+  font-size: 39px;
+}
+
+.dashboard-hero-v2-core strong {
+  color: #ffffff;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+.dashboard-hero-v2-core small {
+  margin-top: 4px;
+
+  color: #7fa4c5;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   09. HERO — FLOATING CARDS
+   ========================================================= */
+
+.dashboard-floating-card {
+  position: absolute;
+
+  z-index: 7;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 142px;
+
+  padding: 11px 14px;
+
+  border-radius: 13px;
+
+  border:
+    1px solid
+    rgba(90, 200, 255, 0.19);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(21, 54, 108, 0.92),
+      rgba(5, 24, 55, 0.95)
+    );
+
+  box-shadow:
+    0 15px 35px
+    rgba(0, 0, 0, 0.26);
+
+  backdrop-filter: blur(12px);
+}
+
+.dashboard-floating-card > span {
+  font-size: 20px;
+}
+
+.dashboard-floating-card div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.dashboard-floating-card strong {
+  color: #ffffff;
+
+  font-size: 12px;
+}
+
+.dashboard-floating-card small {
+  margin-top: 2px;
+
+  color: #7f9cbb;
+
+  font-size: 9px;
+}
+
+.dashboard-floating-one {
+  top: 20px;
+  right: 2px;
+
+  animation:
+    dashboardFloatingOne
+    4s ease-in-out infinite;
+}
+
+.dashboard-floating-two {
+  left: 0;
+  bottom: 45px;
+
+  animation:
+    dashboardFloatingTwo
+    4.5s ease-in-out infinite;
+}
+
+.dashboard-floating-three {
+  right: 0;
+  bottom: 18px;
+
+  animation:
+    dashboardFloatingThree
+    5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   10. LEARNING OVERVIEW
+   ========================================================= */
+
+.dashboard-overview-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.dashboard-overview-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 122px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  border:
+    1px solid
+    rgba(90, 190, 255, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 55, 112, 0.80),
+      rgba(6, 24, 55, 0.94)
+    );
+
+  box-shadow:
+    0 15px 34px
+    rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.dashboard-overview-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 20px;
+  right: 20px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(40, 215, 255, 0.35),
+      transparent
+    );
+}
+
+.dashboard-overview-card:hover {
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(40, 215, 255, 0.34);
+
+  box-shadow:
+    0 22px 42px
+    rgba(0, 0, 0, 0.28),
+    0 0 24px
+    rgba(0, 195, 255, 0.05);
+}
+
+.dashboard-overview-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 15px;
+
+  font-size: 24px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(40, 215, 255, 0.15),
+      rgba(0, 195, 255, 0.04)
+    );
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.18);
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.dashboard-overview-card:hover
+.dashboard-overview-icon {
+  transform: scale(1.06);
+
+  border-color:
+    rgba(40, 215, 255, 0.34);
+}
+
+.dashboard-overview-card > div:last-child {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.dashboard-overview-card span {
+  color: #9bb0d0;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.dashboard-overview-card strong {
+  margin: 5px 0 3px;
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.dashboard-overview-card small {
+  color: #7087a8;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+.dashboard-overview-date {
+  font-size: 14px !important;
+}
+
+
+/* =========================================================
+   11. LEARNING JOURNEY
+   ========================================================= */
+
+.dashboard-journey-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.dashboard-journey-card {
+  position: relative;
+
+  min-height: 245px;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  border:
+    1px solid
+    rgba(90, 190, 255, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17, 45, 95, 0.76),
+      rgba(5, 22, 50, 0.94)
+    );
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.dashboard-journey-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -75px;
+  top: -75px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  filter: blur(2px);
+
+  pointer-events: none;
+}
+
+.dashboard-journey-card:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(40, 215, 255, 0.30);
+
+  box-shadow:
+    0 20px 42px
+    rgba(0, 0, 0, 0.28);
+}
+
+.dashboard-journey-number {
+  display: block;
+
+  color: rgba(40, 215, 255, 0.50);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.dashboard-journey-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 24px 0 18px;
+
+  border-radius: 14px;
+
+  font-size: 22px;
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  border:
+    1px solid
+    rgba(0, 195, 255, 0.16);
+}
+
+.dashboard-journey-card h3 {
+  margin: 0 0 8px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+}
+
+.dashboard-journey-card p {
+  margin: 0;
+
+  color: #8ea5c6;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   12. QUICK ACTIONS
+   ========================================================= */
+
+.dashboard-action-grid-v2 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.dashboard-action-card-v2 {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  min-height: 100px;
+
+  padding: 21px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  border:
+    1px solid
+    rgba(90, 190, 255, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 55, 110, 0.80),
+      rgba(7, 24, 55, 0.95)
+    );
+
+  text-decoration: none;
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.dashboard-action-card-v2::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 22px;
+  right: 22px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(40, 215, 255, 0.34),
+      transparent
+    );
+}
+
+.dashboard-action-card-v2:hover {
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(40, 215, 255, 0.34);
+
+  box-shadow:
+    0 20px 42px
+    rgba(0, 0, 0, 0.28);
+}
+
+.dashboard-action-icon-v2 {
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 24px;
+
+  background:
+    rgba(0, 195, 255, 0.09);
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.18);
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.dashboard-action-card-v2:hover
+.dashboard-action-icon-v2 {
+  transform: scale(1.06);
+
+  border-color:
+    rgba(40, 215, 255, 0.36);
+}
+
+.dashboard-action-content-v2 {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.dashboard-action-content-v2 h3 {
+  margin: 0 0 6px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+}
+
+.dashboard-action-content-v2 p {
+  margin: 0;
+
+  color: #89a3c6;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.dashboard-action-arrow-v2 {
+  flex-shrink: 0;
+
+  color: #28d7ff;
+
+  font-size: 22px;
+
+  transition:
+    transform 0.28s ease,
+    color 0.28s ease;
+}
+
+.dashboard-action-card-v2:hover
+.dashboard-action-arrow-v2 {
+  transform: translateX(6px);
+
+  color: #8fe9ff;
+}
+
+
+/* =========================================================
+   13. RECENT NOTES HEADER
+   ========================================================= */
+
+.dashboard-section-header-v2 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-bottom: 30px;
+}
+
+.dashboard-section-header-v2 > div {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.dashboard-view-all-v2 {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.22);
+
+  background:
+    rgba(0, 195, 255, 0.03);
+
+  color: #28d7ff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dashboard-view-all-v2:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  border-color:
+    rgba(40, 215, 255, 0.38);
+}
+
+
+/* =========================================================
+   14. RECENT NOTES GRID
+   ========================================================= */
+
+.dashboard-notes-grid-v2 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* Note card */
+
+.dashboard-note-card-v2 {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 270px;
+
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 21px;
+
+  border:
+    1px solid
+    rgba(90, 190, 255, 0.14);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22, 52, 105, 0.82),
+      rgba(6, 23, 52, 0.96)
+    );
+
+  box-shadow:
+    0 13px 32px
+    rgba(0, 0, 0, 0.20);
+
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.dashboard-note-card-v2::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 22px;
+  right: 22px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(40, 215, 255, 0.34),
+      transparent
+    );
+}
+
+.dashboard-note-card-v2:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(40, 215, 255, 0.32);
+
+  box-shadow:
+    0 22px 42px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+/* Note card top */
+
+.dashboard-note-top-v2 {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.dashboard-note-icon-v2 {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.16);
+
+  font-size: 20px;
+}
+
+.dashboard-note-top-v2 > span {
+  color: #5d83aa;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Note content */
+
+.dashboard-note-content-v2 {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.dashboard-note-content-v2 h3 {
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  line-height: 1.35;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+.dashboard-note-subject-v2,
+.dashboard-note-owner-v2 {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin: 0 0 12px;
+
+  color: #8fa7c8;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.dashboard-note-subject-v2 strong,
+.dashboard-note-owner-v2 strong {
+  color: #5e83aa;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+
+/* Note link */
+
+.dashboard-note-link-v2 {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  margin-top: 18px;
+
+  color: #28d7ff;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.dashboard-note-link-v2:hover {
+  transform: translateX(5px);
+
+  color: #8fe9ff;
+}
+
+
+/* =========================================================
+   15. EMPTY NOTES STATE
+   ========================================================= */
+
+.dashboard-empty-v2 {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  border-radius: 22px;
+
+  border:
+    1px dashed
+    rgba(90, 190, 255, 0.24);
+
+  background:
+    radial-gradient(
+      circle at center top,
+      rgba(0, 195, 255, 0.08),
+      transparent 48%
+    ),
+    rgba(8, 25, 56, 0.65);
+}
+
+.dashboard-empty-icon {
+  margin-bottom: 15px;
+
+  font-size: 42px;
+}
+
+.dashboard-empty-v2 h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 22px;
+}
+
+.dashboard-empty-v2 p {
+  margin: 9px 0 18px;
+
+  color: #89a3c6;
+
+  font-size: 13px;
+}
+
+.dashboard-empty-v2 a {
+  color: #28d7ff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.dashboard-empty-v2 a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   16. FINAL CTA
+   ========================================================= */
+
+.dashboard-final-cta {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 35px;
+
+  min-height: 260px;
+
+  padding: 42px 46px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 26px;
+
+  border:
+    1px solid
+    rgba(90, 195, 255, 0.19);
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(40, 215, 255, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(15, 48, 98, 0.90),
+      rgba(5, 23, 53, 0.97)
+    );
+
+  box-shadow:
+    0 25px 60px
+    rgba(0, 0, 0, 0.30);
+}
+
+.dashboard-final-cta-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 700px;
+}
+
+.dashboard-final-cta-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.8px;
+}
+
+.dashboard-final-cta-content h2 strong {
+  display: block;
+
+  color: #28d7ff;
+}
+
+.dashboard-final-cta-content p {
+  margin: 12px 0 24px;
+
+  color: #8fa8c8;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.dashboard-final-cta-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 45px;
+
+  padding: 0 20px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #35dcff,
+      #18bced
+    );
+
+  color: #031321;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 10px 26px
+    rgba(20, 200, 255, 0.18);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.dashboard-final-cta-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 32px
+    rgba(20, 200, 255, 0.30);
+}
+
+.dashboard-final-cta-icon {
+  position: relative;
+
+  z-index: 2;
+
+  width: 115px;
+  height: 115px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(40, 215, 255, 0.17),
+      rgba(0, 195, 255, 0.03)
+    );
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.25);
+
+  font-size: 46px;
+
+  box-shadow:
+    0 0 35px
+    rgba(0, 195, 255, 0.10);
+
+  animation:
+    dashboardCoreFloat
+    4.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   17. DASHBOARD FOOTER
+   ========================================================= */
+
+.dashboard-footer-v2 {
+  margin-top: 35px;
+
+  text-align: center;
+
+  color: rgba(112, 140, 170, 0.65);
+
+  font-size: 10px;
+
+  letter-spacing: 0.6px;
+}
+
+
+/* =========================================================
+   18. LOADING STATE
+   ========================================================= */
+
+.dashboard-loading {
+  min-height: 70vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.dashboard-loading-icon {
+  margin-bottom: 15px;
+
+  font-size: 42px;
+}
+
+.dashboard-loading h2 {
+  margin: 0;
+
+  color: #ffffff;
+}
+
+.dashboard-loading p {
+  margin: 9px 0 0;
+
+  color: #8199ba;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   19. ANIMATIONS
+   ========================================================= */
+
+@keyframes dashboardOrbitClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dashboardOrbitReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dashboardCoreFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes dashboardFloatingOne {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dashboardFloatingTwo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes dashboardFloatingThree {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+/* =========================================================
+   20. TABLET — 1000px
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .dashboard-overview-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-journey-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-notes-grid-v2 {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-hero-v2 {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding: 45px 40px;
+  }
+
+  .dashboard-hero-v2-content {
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .dashboard-hero-v2-content > p {
+    max-width: 700px;
+  }
+
+  .dashboard-hero-v2-actions {
+    justify-content: center;
+  }
+
+  .dashboard-hero-v2-visual {
+    min-height: 310px;
+  }
+}
+
+
+/* =========================================================
+   21. MOBILE — 700px
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-page {
+    width: calc(100% - 28px);
+
+    padding: 45px 0 35px;
+  }
+
+
+  /* Hero */
+
+  .dashboard-hero-v2 {
+    min-height: auto;
+
+    padding: 38px 24px 32px;
+
+    border-radius: 24px;
+  }
+
+  .dashboard-hero-v2-content h1 {
+    font-size: 35px;
+
+    letter-spacing: -0.8px;
+  }
+
+  .dashboard-hero-v2-content > p {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  .dashboard-hero-v2-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .dashboard-v2-primary-btn,
+  .dashboard-v2-secondary-btn {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .dashboard-hero-v2-visual {
+    width: 100%;
+
+    min-height: 275px;
+  }
+
+  .dashboard-orbit-one {
+    width: 255px;
+    height: 255px;
+  }
+
+  .dashboard-orbit-two {
+    width: 190px;
+    height: 190px;
+  }
+
+  .dashboard-hero-v2-core {
+    width: 125px;
+    height: 125px;
+  }
+
+  .dashboard-hero-v2-core span {
+    font-size: 32px;
+  }
+
+
+  /* Sections */
+
+  .dashboard-overview,
+  .dashboard-journey,
+  .dashboard-actions-v2,
+  .dashboard-notes-v2,
+  .dashboard-final-cta {
+    margin-top: 75px;
+  }
+
+  .dashboard-section-heading-v2 h2,
+  .dashboard-section-header-v2 h2 {
+    font-size: 27px;
+  }
+
+
+  /* Overview */
+
+  .dashboard-overview-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .dashboard-overview-card {
+    min-height: 100px;
+
+    padding: 18px;
+  }
+
+
+  /* Journey */
+
+  .dashboard-journey-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .dashboard-journey-card {
+    min-height: 210px;
+
+    padding: 22px;
+  }
+
+
+  /* Quick actions */
+
+  .dashboard-action-grid-v2 {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .dashboard-action-card-v2 {
+    min-height: 88px;
+
+    padding: 18px;
+  }
+
+
+  /* Recent notes */
+
+  .dashboard-section-header-v2 {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+  }
+
+  .dashboard-view-all-v2 {
+    align-self: flex-start;
+  }
+
+  .dashboard-notes-grid-v2 {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .dashboard-note-card-v2 {
+    min-height: 245px;
+
+    padding: 20px;
+  }
+
+
+  /* Final CTA */
+
+  .dashboard-final-cta {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 34px 25px;
+
+    gap: 25px;
+  }
+
+  .dashboard-final-cta-content h2 {
+    font-size: 30px;
+  }
+
+  .dashboard-final-cta-icon {
+    width: 90px;
+    height: 90px;
+
+    font-size: 36px;
+
+    align-self: center;
+  }
+}
+
+
+/* =========================================================
+   22. SMALL MOBILE — 420px
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .dashboard-page {
+    width: calc(100% - 20px);
+
+    padding-top: 35px;
+  }
+
+
+  /* Hero */
+
+  .dashboard-hero-v2 {
+    padding: 32px 18px 26px;
+  }
+
+  .dashboard-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    padding: 7px 11px;
+  }
+
+  .dashboard-hero-v2-content h1 {
+    font-size: 29px;
+  }
+
+  .dashboard-hero-v2-content > p {
+    font-size: 12px;
+  }
+
+  .dashboard-hero-v2-visual {
+    min-height: 245px;
+  }
+
+  .dashboard-orbit-one {
+    width: 225px;
+    height: 225px;
+  }
+
+  .dashboard-orbit-two {
+    width: 165px;
+    height: 165px;
+  }
+
+  .dashboard-hero-v2-core {
+    width: 112px;
+    height: 112px;
+  }
+
+  .dashboard-hero-v2-core span {
+    font-size: 28px;
+  }
+
+  .dashboard-hero-v2-core strong {
+    font-size: 15px;
+  }
+
+  .dashboard-floating-card {
+    min-width: 100px;
+
+    padding: 8px 9px;
+
+    gap: 7px;
+  }
+
+  .dashboard-floating-card > span {
+    font-size: 17px;
+  }
+
+  .dashboard-floating-card strong {
+    font-size: 10px;
+  }
+
+  .dashboard-floating-card small {
+    font-size: 8px;
+  }
+
+  .dashboard-floating-one {
+    right: -3px;
+  }
+
+  .dashboard-floating-two {
+    left: -3px;
+  }
+
+  .dashboard-floating-three {
+    right: -3px;
+  }
+
+
+  /* Headings */
+
+  .dashboard-section-heading-v2 h2,
+  .dashboard-section-header-v2 h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-section-heading-v2 p,
+  .dashboard-section-header-v2 p {
+    font-size: 12px;
+  }
+
+
+  /* Overview */
+
+  .dashboard-overview-card {
+    min-height: 92px;
+
+    padding: 16px;
+
+    gap: 13px;
+  }
+
+  .dashboard-overview-icon {
+    width: 46px;
+    height: 46px;
+
+    font-size: 21px;
+
+    border-radius: 14px;
+  }
+
+  .dashboard-overview-card span {
+    font-size: 11px;
+  }
+
+  .dashboard-overview-card strong {
+    font-size: 20px;
+  }
+
+  .dashboard-overview-card small {
+    font-size: 9px;
+  }
+
+  .dashboard-overview-date {
+    font-size: 13px !important;
+  }
+
+
+  /* Journey */
+
+  .dashboard-journey-card {
+    min-height: 190px;
+
+    padding: 19px;
+  }
+
+  .dashboard-journey-icon {
+    width: 44px;
+    height: 44px;
+
+    margin: 20px 0 15px;
+
+    font-size: 20px;
+  }
+
+  .dashboard-journey-card h3 {
+    font-size: 17px;
+  }
+
+  .dashboard-journey-card p {
+    font-size: 12px;
+  }
+
+
+  /* Actions */
+
+  .dashboard-action-card-v2 {
+    gap: 13px;
+
+    min-height: 80px;
+
+    padding: 16px;
+  }
+
+  .dashboard-action-icon-v2 {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
+
+    font-size: 21px;
+  }
+
+  .dashboard-action-content-v2 h3 {
+    font-size: 15px;
+  }
+
+  .dashboard-action-content-v2 p {
+    font-size: 11px;
+  }
+
+  .dashboard-action-arrow-v2 {
+    font-size: 19px;
+  }
+
+
+  /* Notes */
+
+  .dashboard-note-card-v2 {
+    min-height: 225px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .dashboard-note-icon-v2 {
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+  }
+
+  .dashboard-note-content-v2 h3 {
+    font-size: 16px;
+  }
+
+  .dashboard-note-subject-v2,
+  .dashboard-note-owner-v2 {
+    font-size: 11px;
+  }
+
+
+  /* Final CTA */
+
+  .dashboard-final-cta {
+    padding: 28px 20px;
+  }
+
+  .dashboard-final-cta-content h2 {
+    font-size: 27px;
+  }
+
+  .dashboard-final-cta-content p {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   23. ACCESSIBILITY — REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-hero-v2-core,
+  .dashboard-floating-card,
+  .dashboard-orbit {
+    animation: none;
+  }
+
+  .dashboard-overview-card,
+  .dashboard-journey-card,
+  .dashboard-action-card-v2,
+  .dashboard-note-card-v2 {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — FOOTER WATERMARK
+   ========================================================= */
+
+.dashboard-footer-v2 {
+  margin-top: 35px;
+
+  text-align: center;
+
+  color: rgba(112, 140, 170, 0.62);
+
+  font-size: 10px;
+
+  letter-spacing: 0.7px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.dashboard-footer-v2:hover {
+  color: #52ddff;
+
+  transform: translateY(-2px);
+
+  text-shadow:
+    0 0 12px rgba(40, 215, 255, 0.35);
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — TEXT ALIGNMENT
+   ========================================================= */
+
+/* Main section headings */
+.dashboard-section-heading-v2 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashboard-section-heading-v2 > span {
+  text-align: center;
+}
+
+.dashboard-section-heading-v2 h2 {
+  text-align: center;
+}
+
+.dashboard-section-heading-v2 p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+/* Learning overview text */
+.dashboard-overview-card > div:last-child {
+  min-width: 0;
+}
+
+.dashboard-overview-card > div:last-child span,
+.dashboard-overview-card > div:last-child strong,
+.dashboard-overview-card > div:last-child small {
+  display: block;
+}
+
+.dashboard-overview-card > div:last-child strong,
+.dashboard-overview-card > div:last-child small {
+  text-align: left;
+}
+
+
+/* Journey cards */
+.dashboard-journey-card {
+  text-align: left;
+}
+
+.dashboard-journey-card h3,
+.dashboard-journey-card p {
+  text-align: left;
+}
+
+
+/* Quick action text */
+.dashboard-action-content-v2 h3,
+.dashboard-action-content-v2 p {
+  text-align: left;
+}
+
+
+/* Recent note content */
+.dashboard-note-content-v2 h3,
+.dashboard-note-subject-v2,
+.dashboard-note-owner-v2 {
+  text-align: left;
+}
+
+
+/* Mobile alignment */
+@media (max-width: 700px) {
+  .dashboard-section-heading-v2 {
+    text-align: center;
+  }
+
+  .dashboard-section-heading-v2 > span,
+  .dashboard-section-heading-v2 h2,
+  .dashboard-section-heading-v2 p {
+    text-align: center;
+  }
+
+  .dashboard-overview-card {
+    align-items: center;
+  }
+
+  .dashboard-overview-card > div:last-child {
+    text-align: center;
+  }
+
+  .dashboard-overview-card > div:last-child span,
+  .dashboard-overview-card > div:last-child strong,
+  .dashboard-overview-card > div:last-child small {
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — LEARNING CTA DESKTOP ALIGNMENT FIX
+   Desktop: text left aligned
+   Mobile: existing mobile alignment remains unchanged
+   ========================================================= */
+
+@media (min-width: 601px) {
+  .dashboard-learning-cta {
+    text-align: left;
+  }
+
+  .dashboard-learning-cta-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .dashboard-learning-cta-content h2,
+  .dashboard-learning-cta-content p,
+  .dashboard-learning-cta-content span {
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — KNOWLEDGE FEED ALIGNMENT FIX
+   Center the heading and description on all screen sizes
+   ========================================================= */
+
+.dashboard-section-header {
+  text-align: center;
+}
+
+.dashboard-section-header > div {
+  text-align: center;
+}
+
+.dashboard-section-header .dashboard-section-label,
+.dashboard-section-header h2,
+.dashboard-section-header p {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .dashboard-section-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-section-header > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dashboard-section-header .dashboard-section-label,
+  .dashboard-section-header h2,
+  .dashboard-section-header p {
+    text-align: center;
+  }
+
+  .dashboard-view-all {
+    align-self: center;
+  }
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — FINAL ALIGNMENT FIX
+   ---------------------------------------------------------
+   1. Knowledge Feed heading + description centered
+   2. View All remains on the right on desktop
+   3. Learning Overview card text centered
+   4. Overview icons remain fixed on the left
+   ========================================================= */
+
+
+/* =========================================================
+   01. KNOWLEDGE FEED HEADER
+   ========================================================= */
+
+.dashboard-section-header-v2 {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.dashboard-section-header-v2 > div {
+  width: 100%;
+
+  flex: none;
+
+  text-align: center;
+}
+
+.dashboard-section-header-v2 > div > span,
+.dashboard-section-header-v2 > div h2,
+.dashboard-section-header-v2 > div p {
+  width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+}
+
+
+/* Keep View All at the desktop right side */
+
+.dashboard-view-all-v2 {
+  position: absolute;
+
+  top: 50%;
+
+  right: 0;
+
+  transform: translateY(-50%);
+}
+
+.dashboard-view-all-v2:hover {
+  transform: translateY(
+    calc(-50% - 2px)
+  );
+}
+
+
+/* =========================================================
+   02. LEARNING OVERVIEW CARDS
+   ---------------------------------------------------------
+   Icons stay on the left.
+   Text stays exactly centered inside the card.
+   ========================================================= */
+
+.dashboard-overview-card {
+  position: relative;
+
+  justify-content: flex-start;
+}
+
+
+/* Keep icon fixed on the left */
+
+.dashboard-overview-icon {
+  position: absolute;
+
+  left: 20px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  margin: 0;
+
+  z-index: 2;
+}
+
+
+/* Center the complete text group */
+
+.dashboard-overview-card > div:last-child {
+  width: 100%;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.dashboard-overview-card > div:last-child span,
+.dashboard-overview-card > div:last-child strong,
+.dashboard-overview-card > div:last-child small {
+  width: 100%;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   03. MOBILE ALIGNMENT
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-section-header-v2 {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 16px;
+
+    padding-bottom: 58px;
+  }
+
+  .dashboard-section-header-v2 > div {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .dashboard-view-all-v2 {
+    position: absolute;
+
+    top: auto;
+    right: auto;
+    bottom: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+  }
+
+  .dashboard-view-all-v2:hover {
+    transform: translate(
+      -50%,
+      -2px
+    );
+  }
+
+
+  /* Overview cards */
+
+  .dashboard-overview-card {
+    min-height: 100px;
+
+    justify-content: flex-start;
+  }
+
+  .dashboard-overview-icon {
+    left: 18px;
+  }
+
+  .dashboard-overview-card > div:last-child {
+    width: 100%;
+
+    padding: 0 55px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+  }
+
+  .dashboard-overview-card > div:last-child span,
+  .dashboard-overview-card > div:last-child strong,
+  .dashboard-overview-card > div:last-child small {
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   04. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .dashboard-section-header-v2 {
+    padding-bottom: 55px;
+  }
+
+  .dashboard-overview-card > div:last-child {
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+
+  .dashboard-overview-icon {
+    left: 16px;
+  }
+}
+
+/* =========================================================
+   DASHBOARD 2.0 — KNOWLEDGE STACK VISUAL
+   ---------------------------------------------------------
+   Replaces the old circular Dashboard orbit/ball.
+   This visual is intentionally different from the Home page.
+   ========================================================= */
+
+
+/* =========================================================
+   01. KNOWLEDGE VISUAL CONTAINER
+   ========================================================= */
+
+.dashboard-knowledge-visual {
+  position: relative;
+
+  width: 500px;
+  height: 360px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1000px;
+}
+
+
+/* =========================================================
+   02. MAIN KNOWLEDGE STACK
+   ---------------------------------------------------------
+   Three layered panels create a depth effect instead of
+   the circular Home-page orb.
+   ========================================================= */
+
+.dashboard-knowledge-stack {
+  position: relative;
+
+  width: 220px;
+  height: 145px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+
+  animation: dashboardStackFloat 5s ease-in-out infinite;
+}
+
+
+/* Back layers */
+
+.knowledge-stack-layer {
+  position: absolute;
+
+  width: 200px;
+  height: 125px;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(36, 202, 255, 0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 54, 112, 0.65),
+      rgba(3, 23, 52, 0.8)
+    );
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25);
+
+  transform-origin: center;
+}
+
+
+.layer-back {
+  transform:
+    translate3d(20px, 22px, -25px)
+    rotate(-6deg);
+
+  opacity: 0.4;
+}
+
+
+.layer-middle {
+  transform:
+    translate3d(10px, 11px, -10px)
+    rotate(-3deg);
+
+  opacity: 0.7;
+}
+
+
+/* Main stack */
+
+.knowledge-stack-main {
+  position: relative;
+
+  z-index: 3;
+
+  width: 220px;
+  height: 145px;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(36, 202, 255, 0.35);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(12, 48, 105, 0.96),
+      rgba(3, 24, 55, 0.96)
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(0, 194, 255, 0.12);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+.knowledge-stack-main:hover {
+  transform:
+    translateY(-6px)
+    rotateX(3deg);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.45),
+    0 0 45px rgba(0, 194, 255, 0.22);
+}
+
+
+/* Main icon */
+
+.knowledge-stack-icon {
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 8px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    rgba(23, 142, 220, 0.15);
+
+  border: 1px solid rgba(36, 202, 255, 0.22);
+
+  font-size: 25px;
+
+  box-shadow:
+    0 0 20px rgba(0, 194, 255, 0.08);
+}
+
+
+.knowledge-stack-main strong {
+  font-size: 21px;
+
+  color: #ffffff;
+
+  letter-spacing: 0.2px;
+}
+
+
+.knowledge-stack-main small {
+  margin-top: 4px;
+
+  font-size: 11px;
+
+  color: rgba(190, 215, 240, 0.72);
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   03. KNOWLEDGE FLOATING CARDS
+   ========================================================= */
+
+.dashboard-knowledge-card {
+  position: absolute;
+
+  z-index: 5;
+
+  min-width: 145px;
+
+  padding: 14px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(36, 202, 255, 0.24);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(9, 42, 87, 0.94),
+      rgba(4, 24, 51, 0.96)
+    );
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3),
+    0 0 22px rgba(0, 194, 255, 0.06);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.dashboard-knowledge-card:hover {
+  border-color:
+    rgba(36, 202, 255, 0.48);
+
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(0, 194, 255, 0.12);
+}
+
+
+.dashboard-knowledge-card > span {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    rgba(24, 151, 225, 0.12);
+
+  border:
+    1px solid rgba(36, 202, 255, 0.16);
+
+  font-size: 19px;
+}
+
+
+.dashboard-knowledge-card > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.dashboard-knowledge-card strong {
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.dashboard-knowledge-card small {
+  color:
+    rgba(184, 210, 236, 0.68);
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   04. INDIVIDUAL CARD POSITIONS
+   ========================================================= */
+
+.knowledge-card-learn {
+  top: 24px;
+  right: 0;
+
+  animation:
+    dashboardCardLearn 4.5s ease-in-out infinite;
+}
+
+
+.knowledge-card-create {
+  bottom: 25px;
+  left: 0;
+
+  animation:
+    dashboardCardCreate 5s ease-in-out infinite;
+}
+
+
+.knowledge-card-grow {
+  bottom: 20px;
+  right: 10px;
+
+  animation:
+    dashboardCardGrow 4.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   05. KNOWLEDGE STACK ANIMATIONS
+   ========================================================= */
+
+@keyframes dashboardStackFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-9px);
+  }
+}
+
+
+@keyframes dashboardCardLearn {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-8px);
+  }
+}
+
+
+@keyframes dashboardCardCreate {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(7px);
+  }
+}
+
+
+@keyframes dashboardCardGrow {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-6px);
+  }
+}
+
+
+/* =========================================================
+   06. REDUCE MOTION
+   ---------------------------------------------------------
+   Accessibility: respect users who prefer reduced motion.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-knowledge-stack,
+  .knowledge-card-learn,
+  .knowledge-card-create,
+  .knowledge-card-grow {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   07. TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .dashboard-knowledge-visual {
+    width: 430px;
+    height: 330px;
+  }
+
+  .dashboard-knowledge-stack {
+    transform: scale(0.92);
+  }
+
+  .dashboard-knowledge-card {
+    transform: scale(0.92);
+  }
+}
+
+
+/* =========================================================
+   08. MOBILE
+   ---------------------------------------------------------
+   Stack becomes compact and remains fully visible.
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-knowledge-visual {
+    width: 100%;
+
+    max-width: 420px;
+
+    height: 310px;
+
+    margin: 0 auto;
+  }
+
+
+  .dashboard-knowledge-stack {
+    width: 190px;
+    height: 125px;
+  }
+
+
+  .knowledge-stack-layer {
+    width: 175px;
+    height: 108px;
+  }
+
+
+  .knowledge-stack-main {
+    width: 190px;
+    height: 125px;
+
+    border-radius: 20px;
+  }
+
+
+  .knowledge-stack-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 22px;
+
+    border-radius: 12px;
+  }
+
+
+  .knowledge-stack-main strong {
+    font-size: 18px;
+  }
+
+
+  .knowledge-stack-main small {
+    font-size: 10px;
+  }
+
+
+  .dashboard-knowledge-card {
+    min-width: 125px;
+
+    padding: 11px 12px;
+
+    gap: 8px;
+
+    border-radius: 13px;
+  }
+
+
+  .dashboard-knowledge-card > span {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+  }
+
+
+  .dashboard-knowledge-card strong {
+    font-size: 12px;
+  }
+
+
+  .dashboard-knowledge-card small {
+    font-size: 9px;
+  }
+
+
+  .knowledge-card-learn {
+    top: 8px;
+    right: 2px;
+  }
+
+
+  .knowledge-card-create {
+    bottom: 12px;
+    left: 2px;
+  }
+
+
+  .knowledge-card-grow {
+    bottom: 5px;
+    right: 2px;
+  }
+}
+
+
+/* =========================================================
+   09. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .dashboard-knowledge-visual {
+    height: 285px;
+  }
+
+
+  .dashboard-knowledge-stack {
+    transform: scale(0.84);
+  }
+
+
+  .dashboard-knowledge-card {
+    transform: scale(0.84);
+  }
+
+
+  .knowledge-card-learn {
+    top: 2px;
+    right: -2px;
+  }
+
+
+  .knowledge-card-create {
+    bottom: 8px;
+    left: -2px;
+  }
+
+
+  .knowledge-card-grow {
+    bottom: 2px;
+    right: -2px;
+  }
+}
+
+/* =========================================================
+   NOTEHUB DASHBOARD 2.0
+   KNOWLEDGE PRISM VISUAL
+   ---------------------------------------------------------
+   Replaces the old Dashboard orbit/ball visual.
+
+   Design concept:
+   - Glass knowledge prism
+   - Connected learning nodes
+   - Subtle animated light
+   - Floating particles
+   - Different identity from Home page
+   ========================================================= */
+
+
+/* =========================================================
+   01. PRISM VISUAL CONTAINER
+   ========================================================= */
+
+.dashboard-prism-visual {
+  position: relative;
+
+  width: 500px;
+  height: 355px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1200px;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   02. AMBIENT PRISM GLOW
+   ========================================================= */
+
+.dashboard-prism-glow {
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 205, 255, 0.18),
+      rgba(0, 130, 255, 0.07) 40%,
+      transparent 72%
+    );
+
+  filter: blur(16px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   03. SUBTLE DIGITAL GRID
+   ========================================================= */
+
+.dashboard-prism-grid {
+  position: absolute;
+
+  inset: 18px;
+
+  opacity: 0.32;
+
+  border-radius: 30px;
+
+  background-image:
+    linear-gradient(
+      rgba(48, 185, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(48, 185, 255, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 34px 34px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 25%,
+      transparent 74%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   04. MAIN PRISM WRAPPER
+   ========================================================= */
+
+.dashboard-prism-wrap {
+  position: relative;
+
+  z-index: 5;
+
+  width: 245px;
+  height: 220px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+
+  animation:
+    dashboardPrismFloat
+    5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   05. PRISM SHADOW
+   ========================================================= */
+
+.dashboard-prism-shadow {
+  position: absolute;
+
+  width: 175px;
+  height: 42px;
+
+  left: 50%;
+  bottom: 15px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 0, 0, 0.35);
+
+  filter: blur(18px);
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   06. MAIN GLASS PRISM
+   ========================================================= */
+
+.dashboard-prism {
+  position: relative;
+
+  width: 220px;
+  height: 190px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+
+  transform:
+    rotateX(10deg)
+    rotateY(-14deg)
+    rotateZ(4deg);
+
+  clip-path:
+    polygon(
+      17% 4%,
+      76% 0%,
+      100% 40%,
+      83% 92%,
+      28% 100%,
+      0% 58%
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(92, 220, 255, 0.18),
+      rgba(10, 82, 150, 0.12) 42%,
+      rgba(3, 24, 58, 0.94) 100%
+    );
+
+  border: 1px solid
+    rgba(83, 218, 255, 0.28);
+
+  box-shadow:
+    0 35px 65px rgba(0, 0, 0, 0.34),
+    0 0 45px rgba(0, 195, 255, 0.10);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+
+/* Prism outer glow */
+
+.dashboard-prism:hover {
+  transform:
+    rotateX(5deg)
+    rotateY(-20deg)
+    rotateZ(4deg)
+    translateY(-7px);
+
+  box-shadow:
+    0 40px 75px rgba(0, 0, 0, 0.40),
+    0 0 65px rgba(0, 195, 255, 0.18);
+}
+
+
+/* =========================================================
+   07. PRISM FRONT FACE
+   ========================================================= */
+
+.dashboard-prism-face {
+  position: relative;
+
+  z-index: 3;
+
+  width: 145px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  transform:
+    translateZ(25px);
+}
+
+
+/* Prism icon */
+
+.dashboard-prism-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+
+  border-radius: 17px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(57, 214, 255, 0.18),
+      rgba(0, 105, 180, 0.08)
+    );
+
+  border:
+    1px solid
+    rgba(65, 215, 255, 0.25);
+
+  box-shadow:
+    inset 0 0 20px
+    rgba(0, 195, 255, 0.06),
+    0 0 25px
+    rgba(0, 195, 255, 0.08);
+
+  font-size: 29px;
+}
+
+
+.dashboard-prism-face strong {
+  color: #ffffff;
+
+  font-size: 22px;
+
+  letter-spacing: 0.2px;
+}
+
+
+.dashboard-prism-face small {
+  margin-top: 5px;
+
+  color:
+    rgba(190, 220, 244, 0.68);
+
+  font-size: 10px;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* =========================================================
+   08. MOVING PRISM REFLECTION
+   ========================================================= */
+
+.dashboard-prism-reflection {
+  position: absolute;
+
+  z-index: 4;
+
+  width: 35px;
+  height: 250px;
+
+  left: -65px;
+  top: -30px;
+
+  transform:
+    rotate(32deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.13),
+      transparent
+    );
+
+  filter: blur(4px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation:
+    prismLightSweep
+    5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   09. INNER PRISM GLOW
+   ========================================================= */
+
+.dashboard-prism-inner-glow {
+  position: absolute;
+
+  inset: 18px;
+
+  border-radius: 40%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(40, 215, 255, 0.08),
+      transparent 68%
+    );
+
+  filter: blur(4px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   10. NETWORK CONNECTION LINES
+   ========================================================= */
+
+.dashboard-prism-line {
+  position: absolute;
+
+  z-index: 2;
+
+  height: 1px;
+
+  transform-origin: left center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(40, 215, 255, 0.0),
+      rgba(40, 215, 255, 0.42),
+      rgba(40, 215, 255, 0.0)
+    );
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+
+/* Learn → prism */
+
+.prism-line-learn {
+  width: 120px;
+
+  top: 92px;
+  right: 210px;
+
+  transform:
+    rotate(24deg);
+}
+
+
+/* Create → prism */
+
+.prism-line-create {
+  width: 125px;
+
+  left: 125px;
+  bottom: 91px;
+
+  transform:
+    rotate(-16deg);
+}
+
+
+/* Discover → prism */
+
+.prism-line-discover {
+  width: 125px;
+
+  top: 160px;
+  right: 205px;
+
+  transform:
+    rotate(-5deg);
+}
+
+
+/* Grow → prism */
+
+.prism-line-grow {
+  width: 110px;
+
+  bottom: 67px;
+  right: 198px;
+
+  transform:
+    rotate(12deg);
+}
+
+
+/* =========================================================
+   11. KNOWLEDGE NODES
+   ========================================================= */
+
+.dashboard-prism-node {
+  position: absolute;
+
+  z-index: 8;
+
+  min-width: 125px;
+
+  padding: 10px 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border-radius: 13px;
+
+  border:
+    1px solid
+    rgba(74, 205, 255, 0.20);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(11, 43, 82, 0.92),
+      rgba(4, 23, 51, 0.96)
+    );
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.dashboard-prism-node:hover {
+  border-color:
+    rgba(40, 215, 255, 0.45);
+
+  box-shadow:
+    0 16px 34px
+    rgba(0, 0, 0, 0.34),
+    0 0 22px
+    rgba(0, 195, 255, 0.08);
+}
+
+
+.dashboard-prism-node > span {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(0, 195, 255, 0.08);
+
+  border:
+    1px solid
+    rgba(40, 215, 255, 0.15);
+
+  font-size: 17px;
+}
+
+
+.dashboard-prism-node > strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 12px;
+}
+
+
+.dashboard-prism-node > small {
+  display: block;
+
+  margin-top: 2px;
+
+  color:
+    rgba(165, 198, 225, 0.65);
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   12. NODE POSITIONS
+   ========================================================= */
+
+.prism-node-learn {
+  top: 12px;
+  right: -2px;
+
+  animation:
+    prismNodeLearn
+    4.2s ease-in-out infinite;
+}
+
+
+.prism-node-create {
+  left: -4px;
+  bottom: 28px;
+
+  animation:
+    prismNodeCreate
+    4.8s ease-in-out infinite;
+}
+
+
+.prism-node-discover {
+  top: 170px;
+  left: -8px;
+
+  animation:
+    prismNodeDiscover
+    5s ease-in-out infinite;
+}
+
+
+.prism-node-grow {
+  right: 0;
+  bottom: 8px;
+
+  animation:
+    prismNodeGrow
+    4.6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   13. AMBIENT PARTICLES
+   ========================================================= */
+
+.dashboard-prism-particle {
+  position: absolute;
+
+  z-index: 3;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #36d9ff;
+
+  box-shadow:
+    0 0 12px
+    rgba(40, 215, 255, 0.55);
+
+  pointer-events: none;
+}
+
+
+.particle-one {
+  top: 45px;
+  left: 110px;
+
+  animation:
+    prismParticleOne
+    4s ease-in-out infinite;
+}
+
+
+.particle-two {
+  top: 62px;
+  right: 115px;
+
+  animation:
+    prismParticleTwo
+    4.5s ease-in-out infinite;
+}
+
+
+.particle-three {
+  bottom: 78px;
+  left: 180px;
+
+  animation:
+    prismParticleThree
+    5s ease-in-out infinite;
+}
+
+
+.particle-four {
+  bottom: 120px;
+  right: 80px;
+
+  animation:
+    prismParticleFour
+    4.2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   14. PRISM ANIMATIONS
+   ========================================================= */
+
+@keyframes dashboardPrismFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotateZ(0deg);
+  }
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotateZ(1deg);
+  }
+}
+
+
+@keyframes prismLightSweep {
+
+  0% {
+    left: -75px;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.4;
+  }
+
+  55% {
+    left: 270px;
+    opacity: 0.18;
+  }
+
+  70%,
+  100% {
+    left: 340px;
+    opacity: 0;
+  }
+}
+
+
+@keyframes prismNodeLearn {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-7px);
+  }
+}
+
+
+@keyframes prismNodeCreate {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(6px);
+  }
+}
+
+
+@keyframes prismNodeDiscover {
+
+  0%,
+  100% {
+    transform:
+      translateX(0);
+  }
+
+  50% {
+    transform:
+      translateX(-6px);
+  }
+}
+
+
+@keyframes prismNodeGrow {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-5px);
+  }
+}
+
+
+@keyframes prismParticleOne {
+
+  0%,
+  100% {
+    transform:
+      translate(0, 0);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform:
+      translate(8px, -12px);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes prismParticleTwo {
+
+  0%,
+  100% {
+    transform:
+      translate(0, 0);
+
+    opacity: 0.25;
+  }
+
+  50% {
+    transform:
+      translate(-6px, 10px);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes prismParticleThree {
+
+  0%,
+  100% {
+    transform:
+      translate(0, 0);
+
+    opacity: 0.25;
+  }
+
+  50% {
+    transform:
+      translate(10px, -8px);
+
+    opacity: 0.9;
+  }
+}
+
+
+@keyframes prismParticleFour {
+
+  0%,
+  100% {
+    transform:
+      translate(0, 0);
+
+    opacity: 0.2;
+  }
+
+  50% {
+    transform:
+      translate(-8px, -6px);
+
+    opacity: 0.9;
+  }
+}
+
+
+/* =========================================================
+   15. TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .dashboard-prism-visual {
+    width: 440px;
+    height: 335px;
+  }
+
+  .dashboard-prism {
+    transform:
+      rotateX(10deg)
+      rotateY(-12deg)
+      rotateZ(3deg)
+      scale(0.92);
+  }
+
+  .dashboard-prism-node {
+    transform: scale(0.92);
+  }
+}
+
+
+/* =========================================================
+   16. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-prism-visual {
+    width: 100%;
+
+    max-width: 430px;
+
+    height: 315px;
+
+    margin: 0 auto;
+  }
+
+  .dashboard-prism {
+    width: 190px;
+    height: 165px;
+  }
+
+  .dashboard-prism-face {
+    width: 125px;
+  }
+
+  .dashboard-prism-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 24px;
+  }
+
+  .dashboard-prism-face strong {
+    font-size: 18px;
+  }
+
+  .dashboard-prism-face small {
+    font-size: 9px;
+  }
+
+  .dashboard-prism-node {
+    min-width: 108px;
+
+    padding: 8px 9px;
+
+    gap: 7px;
+  }
+
+  .dashboard-prism-node > span {
+    width: 29px;
+    height: 29px;
+
+    font-size: 14px;
+  }
+
+  .dashboard-prism-node > strong {
+    font-size: 10px;
+  }
+
+  .dashboard-prism-node > small {
+    font-size: 7px;
+  }
+
+  .prism-node-learn {
+    top: 4px;
+    right: 0;
+  }
+
+  .prism-node-create {
+    left: 0;
+    bottom: 15px;
+  }
+
+  .prism-node-discover {
+    top: 150px;
+    left: 0;
+  }
+
+  .prism-node-grow {
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+/* =========================================================
+   17. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .dashboard-prism-visual {
+    height: 285px;
+  }
+
+  .dashboard-prism {
+    width: 170px;
+    height: 145px;
+  }
+
+  .dashboard-prism-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 21px;
+
+    border-radius: 12px;
+  }
+
+  .dashboard-prism-face strong {
+    font-size: 16px;
+  }
+
+  .dashboard-prism-node {
+    min-width: 96px;
+
+    padding: 7px 8px;
+  }
+
+  .dashboard-prism-node > span {
+    width: 26px;
+    height: 26px;
+
+    font-size: 13px;
+  }
+
+  .dashboard-prism-node > strong {
+    font-size: 9px;
+  }
+
+  .dashboard-prism-node > small {
+    font-size: 6.5px;
+  }
+
+  .prism-node-discover {
+    display: none;
+  }
+
+  .prism-line-discover {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   18. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dashboard-prism-wrap,
+  .dashboard-prism-reflection,
+  .dashboard-prism-node,
+  .dashboard-prism-particle {
+    animation: none;
+  }
+
+  .dashboard-prism {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   DASHBOARD PRISM — FINAL POSITION FIX
+   ---------------------------------------------------------
+   Fixes:
+   1. Desktop Discover/Create spacing
+   2. Keeps all 4 prism nodes visible on mobile
+   3. Improves small-screen node positioning
+   ========================================================= */
+
+
+/* =========================================================
+   01. DESKTOP — BETTER NODE SPACING
+   ========================================================= */
+
+@media (min-width: 701px) {
+
+  /* Move Discover further away from Create */
+  .prism-node-discover {
+    top: 145px;
+    left: -38px;
+  }
+
+  /* Move Create slightly lower and further left */
+  .prism-node-create {
+    left: -22px;
+    bottom: 12px;
+  }
+
+  /* Keep the connecting lines visually balanced */
+  .prism-line-discover {
+    top: 145px;
+    right: 218px;
+
+    transform: rotate(-8deg);
+  }
+
+  .prism-line-create {
+    left: 105px;
+    bottom: 75px;
+
+    transform: rotate(-20deg);
+  }
+}
+
+
+/* =========================================================
+   02. MOBILE — SHOW ALL FOUR PRISM NODES
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .prism-node-discover {
+    display: flex;
+
+    top: 145px;
+    left: 0;
+  }
+
+  .prism-line-discover {
+    display: block;
+  }
+
+  .prism-node-create {
+    left: 0;
+    bottom: 12px;
+  }
+}
+
+
+/* =========================================================
+   03. SMALL MOBILE — KEEP ALL FOUR NODES
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  /*
+     Discover was previously hidden here.
+     Keep it visible so the Prism always has
+     all four learning dimensions.
+  */
+
+  .prism-node-discover {
+    display: flex;
+
+    top: 142px;
+    left: -2px;
+  }
+
+  .prism-line-discover {
+    display: block;
+  }
+
+  .prism-node-create {
+    left: -2px;
+    bottom: 8px;
+  }
+
+  .prism-node-learn {
+    top: 0;
+    right: -2px;
+  }
+
+  .prism-node-grow {
+    right: -2px;
+    bottom: 0;
+  }
+}
+
+/* =========================================================
+   DASHBOARD PRISM — DISCOVER MICRO POSITION FIX
+   Learn remains untouched.
+   Only Discover moves slightly upward.
+   ========================================================= */
+
+@media (min-width: 701px) {
+  .prism-node-discover {
+    top: 78px;
+    left: -28px;
+    right: auto;
+  }
+}
+
+/* =========================================================
+   DASHBOARD PRISM — MOBILE DISCOVER POSITION
+   ---------------------------------------------------------
+   Desktop position is untouched.
+   On mobile, Discover moves to the top-left corner
+   so it does NOT intersect the central prism.
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .prism-node-discover {
+    top: 12px;
+    left: 10px;
+    right: auto;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE — KEEP DISCOVER INSIDE THE CARD
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .prism-node-discover {
+    top: 8px;
+    left: 8px;
+    right: auto;
+  }
+
+}
