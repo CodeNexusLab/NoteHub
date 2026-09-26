@@ -31,6 +31,35 @@ function Notes() {
 
 
   // ======================================================
+  // FIXED STREAM OPTIONS
+  // ======================================================
+
+  const streamOptions = [
+    "BCA",
+    "BBA",
+    "B.Com",
+    "BA",
+    "B.Sc",
+    "Other",
+  ];
+
+
+  // ======================================================
+  // FIXED SEMESTER OPTIONS
+  // ======================================================
+
+  const semesterOptions = [
+    "1st Semester",
+    "2nd Semester",
+    "3rd Semester",
+    "4th Semester",
+    "5th Semester",
+    "6th Semester",
+    "Other",
+  ];
+
+
+  // ======================================================
   // FETCH ALL NOTES
   // ======================================================
 
@@ -53,7 +82,16 @@ function Notes() {
           return;
         }
 
-        setNotes(data);
+        // Make sure API returned an array
+        if (Array.isArray(data)) {
+          setNotes(data);
+        } else {
+          console.error(
+            "Invalid notes data received from API."
+          );
+
+          setNotes([]);
+        }
 
       } catch (error) {
         console.error(
@@ -73,54 +111,32 @@ function Notes() {
 
 
   // ======================================================
-  // CREATE UNIQUE STREAM LIST
-  // ======================================================
-
-  const streams = useMemo(() => {
-    return [
-      ...new Set(
-        notes
-          .map((note) => note.stream)
-          .filter(Boolean)
-      ),
-    ].sort();
-
-  }, [notes]);
-
-
-  // ======================================================
-  // CREATE UNIQUE SEMESTER LIST
-  // ======================================================
-
-  const semesters = useMemo(() => {
-    return [
-      ...new Set(
-        notes
-          .map((note) => note.semester)
-          .filter(Boolean)
-      ),
-    ];
-
-  }, [notes]);
-
-
-  // ======================================================
   // CREATE UNIQUE TAG LIST
+  // Tags remain dynamic because users can create
+  // different tags while uploading notes.
   // ======================================================
 
   const tags = useMemo(() => {
     const allTags = [];
 
     notes.forEach((note) => {
+
       if (Array.isArray(note.tags)) {
+
         note.tags.forEach((tag) => {
+
           if (tag) {
             allTags.push(
-              tag.toLowerCase()
+              String(tag)
+                .trim()
+                .toLowerCase()
             );
           }
+
         });
+
       }
+
     });
 
     return [
@@ -141,36 +157,68 @@ function Notes() {
 
 
     // ----------------------------------------------------
-    // SEARCH + FILTER
+    // FILTER NOTES
     // ----------------------------------------------------
 
     const filtered = notes.filter((note) => {
 
+      // ----------------------------------------------
+      // TITLE
+      // ----------------------------------------------
+
       const title =
-        (note.title || "")
+        String(note.title || "")
           .toLowerCase();
+
+
+      // ----------------------------------------------
+      // SUBJECT
+      // ----------------------------------------------
 
       const subject =
-        (note.subject || "")
+        String(note.subject || "")
           .toLowerCase();
+
+
+      // ----------------------------------------------
+      // CONTENT
+      // ----------------------------------------------
 
       const content =
-        (note.content || "")
+        String(note.content || "")
           .toLowerCase();
 
+
+      // ----------------------------------------------
+      // OWNER / USER
+      // ----------------------------------------------
+
       const owner =
-        (note.ownerName || "")
-          .toLowerCase();
+        String(
+          note.ownerName ||
+          note.ownerEmail ||
+          ""
+        ).toLowerCase();
+
+
+      // ----------------------------------------------
+      // TAGS
+      // ----------------------------------------------
 
       const noteTags =
         Array.isArray(note.tags)
           ? note.tags
+              .map((tag) =>
+                String(tag).toLowerCase()
+              )
               .join(" ")
-              .toLowerCase()
           : "";
 
 
-      // Advanced search
+      // ----------------------------------------------
+      // SEARCH
+      // ----------------------------------------------
+
       const matchesSearch =
         !searchText ||
         title.includes(searchText) ||
@@ -180,30 +228,44 @@ function Notes() {
         noteTags.includes(searchText);
 
 
-      // Stream filter
+      // ----------------------------------------------
+      // STREAM FILTER
+      // ----------------------------------------------
+
       const matchesStream =
         !streamFilter ||
         note.stream === streamFilter;
 
 
-      // Semester filter
+      // ----------------------------------------------
+      // SEMESTER FILTER
+      // ----------------------------------------------
+
       const matchesSemester =
         !semesterFilter ||
         note.semester === semesterFilter;
 
 
-      // Tag filter
+      // ----------------------------------------------
+      // TAG FILTER
+      // ----------------------------------------------
+
       const matchesTag =
         !tagFilter ||
         (
           Array.isArray(note.tags) &&
           note.tags.some(
             (tag) =>
-              tag.toLowerCase() ===
+              String(tag)
+                .toLowerCase() ===
               tagFilter.toLowerCase()
           )
         );
 
+
+      // ----------------------------------------------
+      // FINAL FILTER RESULT
+      // ----------------------------------------------
 
       return (
         matchesSearch &&
@@ -215,54 +277,67 @@ function Notes() {
     });
 
 
-    // ----------------------------------------------------
+    // ==================================================
     // SORT NOTES
-    // ----------------------------------------------------
+    // ==================================================
 
     const sortedNotes =
       [...filtered].sort((a, b) => {
 
-        // Newest first
+        // ----------------------------------------------
+        // NEWEST FIRST
+        // ----------------------------------------------
+
         if (sortBy === "newest") {
           return (
-            new Date(b.createdAt) -
-            new Date(a.createdAt)
+            new Date(b.createdAt || 0) -
+            new Date(a.createdAt || 0)
           );
         }
 
 
-        // Oldest first
+        // ----------------------------------------------
+        // OLDEST FIRST
+        // ----------------------------------------------
+
         if (sortBy === "oldest") {
           return (
-            new Date(a.createdAt) -
-            new Date(b.createdAt)
+            new Date(a.createdAt || 0) -
+            new Date(b.createdAt || 0)
           );
         }
 
 
+        // ----------------------------------------------
         // A → Z
+        // ----------------------------------------------
+
         if (sortBy === "az") {
           return (
-            (a.title || "")
+            String(a.title || "")
               .localeCompare(
-                b.title || ""
+                String(b.title || "")
               )
           );
         }
 
 
+        // ----------------------------------------------
         // Z → A
+        // ----------------------------------------------
+
         if (sortBy === "za") {
           return (
-            (b.title || "")
+            String(b.title || "")
               .localeCompare(
-                a.title || ""
+                String(a.title || "")
               )
           );
         }
 
 
         return 0;
+
       });
 
 
@@ -283,11 +358,13 @@ function Notes() {
   // ======================================================
 
   const clearFilters = () => {
+
     setSearch("");
     setStreamFilter("");
     setSemesterFilter("");
     setTagFilter("");
     setSortBy("newest");
+
   };
 
 
@@ -296,7 +373,7 @@ function Notes() {
   // ======================================================
 
   const hasActiveFilters =
-    search !== "" ||
+    search.trim() !== "" ||
     streamFilter !== "" ||
     semesterFilter !== "" ||
     tagFilter !== "" ||
@@ -327,13 +404,13 @@ function Notes() {
         </p>
 
 
-        {/* ================================================
+        {/* =================================================
             ADVANCED SEARCH
         ================================================= */}
 
         <input
           type="text"
-          placeholder="Search by title, subject, content, tags..."
+          placeholder="Search by title, subject, content, tags, user..."
           value={search}
           onChange={(e) =>
             setSearch(e.target.value)
@@ -341,16 +418,16 @@ function Notes() {
         />
 
 
-        {/* ================================================
+        {/* =================================================
             FILTER CONTROLS
         ================================================= */}
 
         <div className="notes-filters">
 
 
-          {/* ----------------------------------------------
+          {/* ===============================================
               STREAM FILTER
-          ---------------------------------------------- */}
+          =============================================== */}
 
           <select
             value={streamFilter}
@@ -365,21 +442,25 @@ function Notes() {
               All Streams
             </option>
 
-            {streams.map((stream) => (
-              <option
-                value={stream}
-                key={stream}
-              >
-                {stream}
-              </option>
-            ))}
+            {streamOptions.map(
+              (stream) => (
+
+                <option
+                  value={stream}
+                  key={stream}
+                >
+                  {stream}
+                </option>
+
+              )
+            )}
 
           </select>
 
 
-          {/* ----------------------------------------------
+          {/* ===============================================
               SEMESTER FILTER
-          ---------------------------------------------- */}
+          =============================================== */}
 
           <select
             value={semesterFilter}
@@ -394,21 +475,25 @@ function Notes() {
               All Semesters
             </option>
 
-            {semesters.map((semester) => (
-              <option
-                value={semester}
-                key={semester}
-              >
-                {semester}
-              </option>
-            ))}
+            {semesterOptions.map(
+              (semester) => (
+
+                <option
+                  value={semester}
+                  key={semester}
+                >
+                  {semester}
+                </option>
+
+              )
+            )}
 
           </select>
 
 
-          {/* ----------------------------------------------
+          {/* ===============================================
               TAG FILTER
-          ---------------------------------------------- */}
+          =============================================== */}
 
           <select
             value={tagFilter}
@@ -423,21 +508,25 @@ function Notes() {
               All Tags
             </option>
 
-            {tags.map((tag) => (
-              <option
-                value={tag}
-                key={tag}
-              >
-                #{tag}
-              </option>
-            ))}
+            {tags.map(
+              (tag) => (
+
+                <option
+                  value={tag}
+                  key={tag}
+                >
+                  #{tag}
+                </option>
+
+              )
+            )}
 
           </select>
 
 
-          {/* ----------------------------------------------
+          {/* ===============================================
               SORT
-          ---------------------------------------------- */}
+          =============================================== */}
 
           <select
             value={sortBy}
@@ -467,38 +556,48 @@ function Notes() {
           </select>
 
 
-          {/* ----------------------------------------------
+          {/* ===============================================
               CLEAR FILTERS
-          ---------------------------------------------- */}
+          =============================================== */}
 
           {hasActiveFilters && (
+
             <button
               type="button"
               onClick={clearFilters}
             >
               Clear Filters
             </button>
+
           )}
 
         </div>
 
 
-        {/* ================================================
+        {/* =================================================
             RESULT COUNT
         ================================================= */}
 
         {!loading && (
+
           <p className="notes-result-count">
+
             Showing{" "}
+
             <strong>
               {filteredNotes.length}
             </strong>{" "}
+
             of{" "}
+
             <strong>
               {notes.length}
             </strong>{" "}
+
             notes
+
           </p>
+
         )}
 
       </div>
@@ -541,12 +640,14 @@ function Notes() {
             </p>
 
             {hasActiveFilters && (
+
               <button
                 type="button"
                 onClick={clearFilters}
               >
                 Clear Filters
               </button>
+
             )}
 
           </div>
@@ -559,160 +660,187 @@ function Notes() {
              NOTE CARDS
           =============================================== */
 
-          filteredNotes.map((note) => (
+          filteredNotes.map(
+            (note) => (
 
-            <div
-              className="note-card"
-              key={note._id}
-            >
-
-
-              {/* -------------------------------------------
-                  NOTE TITLE
-              ------------------------------------------- */}
-
-              <h3>
-                {note.title}
-              </h3>
+              <div
+                className="note-card"
+                key={note._id}
+              >
 
 
-              {/* -------------------------------------------
-                  SUBJECT
-              ------------------------------------------- */}
+                {/* -----------------------------------------
+                    NOTE TITLE
+                ----------------------------------------- */}
 
-              <p>
-                <strong>
-                  Subject:
-                </strong>{" "}
-                {note.subject}
-              </p>
+                <h3>
+                  {note.title}
+                </h3>
 
 
-              {/* -------------------------------------------
-                  STREAM
-              ------------------------------------------- */}
+                {/* -----------------------------------------
+                    SUBJECT
+                ----------------------------------------- */}
 
-              {note.stream && (
                 <p>
+
                   <strong>
-                    Stream:
+                    Subject:
                   </strong>{" "}
-                  {note.stream}
+
+                  {note.subject}
+
                 </p>
-              )}
 
 
-              {/* -------------------------------------------
-                  SEMESTER
-              ------------------------------------------- */}
+                {/* -----------------------------------------
+                    STREAM
+                ----------------------------------------- */}
 
-              {note.semester && (
-                <p>
-                  <strong>
-                    Semester:
-                  </strong>{" "}
-                  {note.semester}
-                </p>
-              )}
+                {note.stream && (
 
+                  <p>
 
-              {/* -------------------------------------------
-                  UPLOADED BY
-              ------------------------------------------- */}
+                    <strong>
+                      Stream:
+                    </strong>{" "}
 
-              <p>
-                <strong>
-                  Uploaded by:
-                </strong>{" "}
-                {note.ownerName ||
-                  "Unknown"}
-              </p>
+                    {note.stream}
 
-
-              {/* -------------------------------------------
-                  NOTE CONTENT
-              ------------------------------------------- */}
-
-              <p>
-                {note.content}
-              </p>
-
-
-              {/* -------------------------------------------
-                  TAGS
-              ------------------------------------------- */}
-
-              {Array.isArray(note.tags) &&
-                note.tags.length > 0 && (
-
-                  <div className="note-tags">
-
-                    {note.tags.map(
-                      (tag, index) => (
-
-                        <span
-                          key={`${tag}-${index}`}
-                        >
-                          #{tag}
-                        </span>
-
-                      )
-                    )}
-
-                  </div>
+                  </p>
 
                 )}
 
 
-              {/* -------------------------------------------
-                  FILE NAME
-              ------------------------------------------- */}
+                {/* -----------------------------------------
+                    SEMESTER
+                ----------------------------------------- */}
 
-              {note.fileName && (
+                {note.semester && (
+
+                  <p>
+
+                    <strong>
+                      Semester:
+                    </strong>{" "}
+
+                    {note.semester}
+
+                  </p>
+
+                )}
+
+
+                {/* -----------------------------------------
+                    UPLOADED BY
+                ----------------------------------------- */}
+
                 <p>
-                  📎 {note.fileName}
-                </p>
-              )}
 
-
-              {/* -------------------------------------------
-                  CREATED DATE
-              ------------------------------------------- */}
-
-              {note.createdAt && (
-                <p>
                   <strong>
-                    Added:
+                    Uploaded by:
                   </strong>{" "}
-                  {new Date(
-                    note.createdAt
-                  ).toLocaleDateString(
-                    "en-IN",
-                    {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    }
-                  )}
+
+                  {note.ownerName ||
+                    "Unknown"}
+
                 </p>
-              )}
 
 
-              {/* -------------------------------------------
-                  VIEW NOTE
-              ------------------------------------------- */}
+                {/* -----------------------------------------
+                    NOTE CONTENT
+                ----------------------------------------- */}
 
-              <Link
-                to={`/note/${note._id}`}
-              >
-                <button>
-                  View Note →
-                </button>
-              </Link>
+                <p>
+                  {note.content}
+                </p>
 
-            </div>
 
-          ))
+                {/* -----------------------------------------
+                    TAGS
+                ----------------------------------------- */}
+
+                {Array.isArray(note.tags) &&
+                  note.tags.length > 0 && (
+
+                    <div className="note-tags">
+
+                      {note.tags.map(
+                        (tag, index) => (
+
+                          <span
+                            key={`${tag}-${index}`}
+                          >
+                            #{tag}
+                          </span>
+
+                        )
+                      )}
+
+                    </div>
+
+                  )}
+
+
+                {/* -----------------------------------------
+                    FILE NAME
+                ----------------------------------------- */}
+
+                {note.fileName && (
+
+                  <p>
+                    📎 {note.fileName}
+                  </p>
+
+                )}
+
+
+                {/* -----------------------------------------
+                    CREATED DATE
+                ----------------------------------------- */}
+
+                {note.createdAt && (
+
+                  <p>
+
+                    <strong>
+                      Added:
+                    </strong>{" "}
+
+                    {new Date(
+                      note.createdAt
+                    ).toLocaleDateString(
+                      "en-IN",
+                      {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      }
+                    )}
+
+                  </p>
+
+                )}
+
+
+                {/* -----------------------------------------
+                    VIEW NOTE
+                ----------------------------------------- */}
+
+                <Link
+                  to={`/note/${note._id}`}
+                >
+
+                  <button>
+                    View Note →
+                  </button>
+
+                </Link>
+
+              </div>
+
+            )
+          )
 
         )}
 
