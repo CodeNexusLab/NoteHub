@@ -2,153 +2,275 @@ import { apiFetch } from "../api";
 import { useState } from "react";
 
 function CreateNote() {
-  // =========================================
+  // =========================================================
   // NOTE INFORMATION
-  // =========================================
+  // =========================================================
 
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
 
-
-  // =========================================
+  // =========================================================
   // ACADEMIC INFORMATION
-  // =========================================
+  // =========================================================
 
   const [stream, setStream] = useState("");
   const [semester, setSemester] = useState("");
 
+  // =========================================================
+  // RESOURCE TYPE
+  // =========================================================
 
-  // =========================================
-  // NOTE TAGS
-  // Example:
-  // javascript, react, frontend
-  // =========================================
+  const [resourceType, setResourceType] = useState("");
+
+  // =========================================================
+  // TAGS
+  // =========================================================
 
   const [tags, setTags] = useState("");
 
-
-  // =========================================
+  // =========================================================
   // FILE + LOADING
-  // =========================================
+  // =========================================================
 
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // =========================================================
+  // STREAM OPTIONS
+  // =========================================================
 
-  // =========================================
+  const streamOptions = [
+    "BCA",
+    "BBA",
+    "B.Com",
+    "BA",
+    "B.Sc",
+    "Other",
+  ];
+
+  // =========================================================
+  // SEMESTER OPTIONS
+  // =========================================================
+
+  const semesterOptions = [
+    "1st Semester",
+    "2nd Semester",
+    "3rd Semester",
+    "4th Semester",
+    "5th Semester",
+    "6th Semester",
+    "Other",
+  ];
+
+  // =========================================================
+  // BCA SUBJECT STRUCTURE
+  // NOTEHUB GENERAL SUBJECT NAMES
+  // =========================================================
+
+  const bcaSubjects = {
+    "1st Semester": [
+      "C Programming",
+      "Computer Fundamentals",
+      "Computer Organization",
+      "Mathematics",
+    ],
+
+    "2nd Semester": [
+      "C++ Programming",
+      "Web Technology",
+      "Operating System",
+      "Mathematics",
+    ],
+
+    "3rd Semester": [
+      "Java Programming",
+      "Linux and Shell Programming",
+      "Database Technology",
+      "Data Science",
+    ],
+
+    "4th Semester": [
+      "Data Structures",
+      "Frontend Development",
+      "Computer Graphics",
+      "Software Testing",
+    ],
+
+    "5th Semester": [
+      "Software Engineering",
+      "Backend Development",
+      "Computer Networks",
+      "Web Designing",
+    ],
+
+    "6th Semester": [
+      "Python Programming",
+      "Advanced Web Development",
+      "Artificial Intelligence",
+      "Data Science",
+    ],
+  };
+
+  // =========================================================
+  // RESOURCE TYPES
+  // =========================================================
+
+  const resourceTypes = [
+    "Notes",
+    "Previous Year Question Paper",
+    "Study Material",
+    "Other",
+  ];
+
+  // =========================================================
+  // HANDLE STREAM CHANGE
+  // =========================================================
+
+  const handleStreamChange = (e) => {
+    const selectedStream = e.target.value;
+
+    setStream(selectedStream);
+
+    // Reset semester and subject whenever stream changes
+    setSemester("");
+    setSubject("");
+  };
+
+  // =========================================================
+  // HANDLE SEMESTER CHANGE
+  // =========================================================
+
+  const handleSemesterChange = (e) => {
+    const selectedSemester = e.target.value;
+
+    setSemester(selectedSemester);
+    setSubject("");
+  };
+
+  // =========================================================
+  // GET SUBJECT OPTIONS
+  // =========================================================
+
+  const getSubjectOptions = () => {
+    if (stream === "BCA" && semester) {
+      return bcaSubjects[semester] || [];
+    }
+
+    return [];
+  };
+
+  // =========================================================
   // FILE VALIDATION
-  // =========================================
+  // =========================================================
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
 
-    if (selectedFile) {
-      const allowedTypes = [
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "text/plain",
-      ];
-
-      if (!allowedTypes.includes(selectedFile.type)) {
-        alert(
-          "Only PDF, DOC, DOCX and TXT files are allowed! ❌"
-        );
-
-        e.target.value = "";
-        setFile(null);
-        return;
-      }
-
-      setFile(selectedFile);
+    if (!selectedFile) {
+      setFile(null);
+      return;
     }
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "text/plain",
+    ];
+
+    if (!allowedTypes.includes(selectedFile.type)) {
+      alert(
+        "Only PDF, DOC, DOCX and TXT files are allowed! ❌"
+      );
+
+      e.target.value = "";
+      setFile(null);
+
+      return;
+    }
+
+    setFile(selectedFile);
   };
 
-
-  // =========================================
+  // =========================================================
   // FORM SUBMISSION
-  // =========================================
+  // =========================================================
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Remove extra spaces
+    // -------------------------------------------------------
+    // CLEAN VALUES
+    // -------------------------------------------------------
+
     const cleanTitle = title.trim();
     const cleanSubject = subject.trim();
     const cleanContent = content.trim();
     const cleanStream = stream.trim();
     const cleanSemester = semester.trim();
+    const cleanResourceType = resourceType.trim();
 
-
-    // =========================================
+    // -------------------------------------------------------
     // TAG PROCESSING
-    // Convert comma-separated text into array
-    // =========================================
+    // -------------------------------------------------------
 
     const cleanTags = tags
       .split(",")
       .map((tag) => tag.trim().toLowerCase())
       .filter((tag) => tag !== "");
 
-
-    // =========================================
+    // =======================================================
     // VALIDATION
-    // =========================================
+    // =======================================================
 
-    // Title validation
     if (!cleanTitle) {
       alert("Please enter a note title! ❌");
       return;
     }
 
-    // Stream validation
     if (!cleanStream) {
       alert("Please select your stream! ❌");
       return;
     }
 
-    // Semester validation
     if (!cleanSemester) {
       alert("Please select your semester! ❌");
       return;
     }
 
-    // Subject validation
     if (!cleanSubject) {
-      alert("Please enter a subject! ❌");
+      alert("Please select or enter a subject! ❌");
       return;
     }
 
-    // Content validation
+    if (!cleanResourceType) {
+      alert("Please select resource type! ❌");
+      return;
+    }
+
     if (!cleanContent) {
-      alert(
-        "Please write some content in your note! ❌"
-      );
+      alert("Please write some content in your note! ❌");
       return;
     }
 
-    // File validation
     if (!file) {
       alert("Please select a file! ❌");
       return;
     }
 
-
-    // =========================================
+    // =======================================================
     // START LOADING
-    // =========================================
+    // =======================================================
 
     setLoading(true);
 
     const reader = new FileReader();
 
-
     reader.onload = async () => {
-
-      // =======================================
+      // =====================================================
       // CREATE NOTE OBJECT
-      // =======================================
+      // =====================================================
 
       const newNote = {
         title: cleanTitle,
@@ -159,6 +281,8 @@ function CreateNote() {
 
         subject: cleanSubject,
 
+        resourceType: cleanResourceType,
+
         tags: cleanTags,
 
         content: cleanContent,
@@ -168,8 +292,10 @@ function CreateNote() {
         fileData: reader.result,
       };
 
-
       try {
+        // ===================================================
+        // SEND NOTE TO BACKEND
+        // ===================================================
 
         const response = await apiFetch(
           "/api/notes",
@@ -181,10 +307,9 @@ function CreateNote() {
 
         const data = await response.json();
 
-
-        // =====================================
+        // ===================================================
         // API ERROR
-        // =====================================
+        // ===================================================
 
         if (!response.ok) {
           alert(
@@ -195,31 +320,36 @@ function CreateNote() {
           return;
         }
 
+        console.log(
+          "Created note:",
+          data
+        );
 
-        console.log(data);
-
-
-        // =====================================
+        // ===================================================
         // SUCCESS
-        // =====================================
+        // ===================================================
 
         alert(
           "Note published successfully! 🚀"
         );
 
-
-        // Reset form
+        // ===================================================
+        // RESET FORM
+        // ===================================================
 
         setTitle("");
         setStream("");
         setSemester("");
         setSubject("");
+        setResourceType("");
         setTags("");
         setContent("");
         setFile(null);
 
+        // ===================================================
+        // RESET FILE INPUT
+        // ===================================================
 
-        // Reset file input
         const fileInput =
           document.querySelector(
             'input[type="file"]'
@@ -230,7 +360,6 @@ function CreateNote() {
         }
 
       } catch (error) {
-
         console.error(
           "Error publishing note:",
           error
@@ -241,40 +370,44 @@ function CreateNote() {
         );
 
       } finally {
-
-        // Stop loading
         setLoading(false);
-
       }
     };
 
+    // =======================================================
+    // READ FILE
+    // =======================================================
 
     reader.readAsDataURL(file);
   };
 
-
-  // =========================================
+  // =========================================================
   // UI
-  // =========================================
+  // =========================================================
 
   return (
     <div className="create-note-page">
 
       <div className="create-note-card">
 
-        <h1>Create a Note</h1>
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
+        <h1>
+          Create a Note
+        </h1>
 
         <p>
           Share your knowledge with the
           NoteHub community.
         </p>
 
-
         <form onSubmit={handleSubmit}>
 
-          {/* =================================
+          {/* =================================================
               NOTE TITLE
-          ================================== */}
+          ================================================= */}
 
           <input
             type="text"
@@ -286,16 +419,13 @@ function CreateNote() {
             disabled={loading}
           />
 
-
-          {/* =================================
+          {/* =================================================
               STREAM
-          ================================== */}
+          ================================================= */}
 
           <select
             value={stream}
-            onChange={(e) =>
-              setStream(e.target.value)
-            }
+            onChange={handleStreamChange}
             disabled={loading}
           >
 
@@ -303,98 +433,138 @@ function CreateNote() {
               Select Stream
             </option>
 
-            <option value="BCA">
-              BCA
-            </option>
-
-            <option value="BBA">
-              BBA
-            </option>
-
-            <option value="B.Com">
-              B.Com
-            </option>
-
-            <option value="BA">
-              BA
-            </option>
-
-            <option value="B.Sc">
-              B.Sc
-            </option>
-
-            <option value="Other">
-              Other
-            </option>
+            {streamOptions.map(
+              (option) => (
+                <option
+                  key={option}
+                  value={option}
+                >
+                  {option}
+                </option>
+              )
+            )}
 
           </select>
 
-
-          {/* =================================
+          {/* =================================================
               SEMESTER
-          ================================== */}
+          ================================================= */}
 
           <select
             value={semester}
+            onChange={handleSemesterChange}
+            disabled={
+              loading ||
+              !stream
+            }
+          >
+
+            <option value="">
+              {stream
+                ? "Select Semester"
+                : "Select Stream First"}
+            </option>
+
+            {semesterOptions.map(
+              (option) => (
+                <option
+                  key={option}
+                  value={option}
+                >
+                  {option}
+                </option>
+              )
+            )}
+
+          </select>
+
+          {/* =================================================
+              SUBJECT
+          ================================================= */}
+
+          {stream === "BCA" &&
+          bcaSubjects[semester] ? (
+
+            <select
+              value={subject}
+              onChange={(e) =>
+                setSubject(
+                  e.target.value
+                )
+              }
+              disabled={loading}
+            >
+
+              <option value="">
+                Select Subject
+              </option>
+
+              {getSubjectOptions().map(
+                (option) => (
+                  <option
+                    key={option}
+                    value={option}
+                  >
+                    {option}
+                  </option>
+                )
+              )}
+
+            </select>
+
+          ) : (
+
+            <input
+              type="text"
+              placeholder="Subject"
+              value={subject}
+              onChange={(e) =>
+                setSubject(
+                  e.target.value
+                )
+              }
+              disabled={
+                loading ||
+                !semester
+              }
+            />
+
+          )}
+
+          {/* =================================================
+              RESOURCE TYPE
+          ================================================= */}
+
+          <select
+            value={resourceType}
             onChange={(e) =>
-              setSemester(e.target.value)
+              setResourceType(
+                e.target.value
+              )
             }
             disabled={loading}
           >
 
             <option value="">
-              Select Semester
+              Select Resource Type
             </option>
 
-            <option value="1st Semester">
-              1st Semester
-            </option>
-
-            <option value="2nd Semester">
-              2nd Semester
-            </option>
-
-            <option value="3rd Semester">
-              3rd Semester
-            </option>
-
-            <option value="4th Semester">
-              4th Semester
-            </option>
-
-            <option value="5th Semester">
-              5th Semester
-            </option>
-
-            <option value="6th Semester">
-              6th Semester
-            </option>
-
-            <option value="Other">
-              Other
-            </option>
+            {resourceTypes.map(
+              (type) => (
+                <option
+                  key={type}
+                  value={type}
+                >
+                  {type}
+                </option>
+              )
+            )}
 
           </select>
 
-
-          {/* =================================
-              SUBJECT
-          ================================== */}
-
-          <input
-            type="text"
-            placeholder="Subject"
-            value={subject}
-            onChange={(e) =>
-              setSubject(e.target.value)
-            }
-            disabled={loading}
-          />
-
-
-          {/* =================================
+          {/* =================================================
               TAGS
-          ================================== */}
+          ================================================= */}
 
           <input
             type="text"
@@ -406,10 +576,9 @@ function CreateNote() {
             disabled={loading}
           />
 
-
-          {/* =================================
+          {/* =================================================
               FILE
-          ================================== */}
+          ================================================= */}
 
           <input
             type="file"
@@ -418,35 +587,33 @@ function CreateNote() {
             disabled={loading}
           />
 
-
-          {/* =================================
+          {/* =================================================
               CONTENT
-          ================================== */}
+          ================================================= */}
 
           <textarea
             placeholder="Write your note here..."
             rows="8"
             value={content}
             onChange={(e) =>
-              setContent(e.target.value)
+              setContent(
+                e.target.value
+              )
             }
             disabled={loading}
           ></textarea>
 
-
-          {/* =================================
+          {/* =================================================
               SUBMIT
-          ================================== */}
+          ================================================= */}
 
           <button
             type="submit"
             disabled={loading}
           >
-
             {loading
               ? "Publishing Note..."
               : "Publish Note"}
-
           </button>
 
         </form>

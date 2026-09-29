@@ -25,8 +25,40 @@ const noteSchema = new mongoose.Schema(
 
 
     // =========================================
-    // ACADEMIC INFORMATION
-    // Used for Stream + Semester filtering
+    // ACADEMIC COURSE
+    // Example:
+    // BCA
+    // =========================================
+
+    course: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+
+    // =========================================
+    // SEMESTER
+    // Example:
+    // 1st Semester
+    // 2nd Semester
+    // ...
+    // 6th Semester
+    // =========================================
+
+    semester: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+
+    // =========================================
+    // ACADEMIC STREAM
+    // Kept for backward compatibility
+    // with existing NoteHub notes.
+    // Example:
+    // BCA
     // =========================================
 
     stream: {
@@ -35,9 +67,23 @@ const noteSchema = new mongoose.Schema(
       trim: true,
     },
 
-    semester: {
+
+    // =========================================
+    // RESOURCE TYPE
+    //
+    // note            → Normal study note
+    // previous-paper  → Previous year question paper
+    // other            → Other / uncategorized
+    // =========================================
+
+    resourceType: {
       type: String,
-      required: true,
+      enum: [
+        "note",
+        "previous-paper",
+        "other",
+      ],
+      default: "note",
       trim: true,
     },
 
@@ -90,4 +136,12 @@ const noteSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Note", noteSchema);
+
+// =========================================
+// EXPORT NOTE MODEL
+// =========================================
+
+module.exports = mongoose.model(
+  "Note",
+  noteSchema
+);

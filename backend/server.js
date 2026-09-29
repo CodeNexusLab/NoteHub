@@ -373,10 +373,6 @@ app.put(
       } = req.body;
 
 
-      // --------------------------------------------------
-      // Validate name
-      // --------------------------------------------------
-
       if (
         !name ||
         !name.trim()
@@ -418,10 +414,6 @@ app.put(
       }
 
 
-      // --------------------------------------------------
-      // Find logged-in user
-      // --------------------------------------------------
-
       const user =
         await User.findById(
           req.user.id
@@ -437,10 +429,6 @@ app.put(
 
       }
 
-
-      // --------------------------------------------------
-      // Update name
-      // --------------------------------------------------
 
       user.name =
         cleanName;
@@ -497,13 +485,22 @@ app.put(
 // ======================================================
 //
 // Supports:
+//
 // - Title
+// - Course
 // - Stream
 // - Semester
 // - Subject
+// - Resource Type
 // - Tags
 // - Content
 // - File
+//
+// Resource Types:
+//
+// note
+// previous-paper
+// other
 // ======================================================
 
 app.post(
@@ -515,9 +512,11 @@ app.post(
 
       const {
         title,
+        course,
         stream,
         semester,
         subject,
+        resourceType,
         tags,
         content,
         fileName,
@@ -562,6 +561,27 @@ app.post(
       }
 
 
+      // --------------------------------------------------
+      // COURSE
+      // --------------------------------------------------
+
+      if (
+        !course ||
+        !course.trim()
+      ) {
+
+        return res.status(400).json({
+          message:
+            "Course is required ❌"
+        });
+
+      }
+
+
+      // --------------------------------------------------
+      // STREAM
+      // --------------------------------------------------
+
       if (
         !stream ||
         !stream.trim()
@@ -574,6 +594,10 @@ app.post(
 
       }
 
+
+      // --------------------------------------------------
+      // SEMESTER
+      // --------------------------------------------------
 
       if (
         !semester ||
@@ -588,6 +612,10 @@ app.post(
       }
 
 
+      // --------------------------------------------------
+      // SUBJECT
+      // --------------------------------------------------
+
       if (
         !subject ||
         !subject.trim()
@@ -600,6 +628,10 @@ app.post(
 
       }
 
+
+      // --------------------------------------------------
+      // CONTENT
+      // --------------------------------------------------
 
       if (
         !content ||
@@ -615,7 +647,27 @@ app.post(
 
 
       // --------------------------------------------------
-      // Clean tags
+      // RESOURCE TYPE
+      // --------------------------------------------------
+
+      const allowedResourceTypes = [
+        "note",
+        "previous-paper",
+        "other",
+      ];
+
+
+      const cleanResourceType =
+        resourceType &&
+        allowedResourceTypes.includes(
+          resourceType
+        )
+          ? resourceType
+          : "note";
+
+
+      // --------------------------------------------------
+      // CLEAN TAGS
       // --------------------------------------------------
 
       const cleanTags =
@@ -634,7 +686,7 @@ app.post(
 
 
       // --------------------------------------------------
-      // Create new note
+      // CREATE NEW NOTE
       // --------------------------------------------------
 
       const newNote =
@@ -642,6 +694,9 @@ app.post(
 
           title:
             title.trim(),
+
+          course:
+            course.trim(),
 
           stream:
             stream.trim(),
@@ -651,6 +706,9 @@ app.post(
 
           subject:
             subject.trim(),
+
+          resourceType:
+            cleanResourceType,
 
           tags:
             cleanTags,
@@ -664,6 +722,7 @@ app.post(
 
           // Owner comes from
           // verified JWT user
+
           ownerEmail:
             user.email,
 
@@ -674,7 +733,7 @@ app.post(
 
 
       // --------------------------------------------------
-      // Save note
+      // SAVE NOTE
       // --------------------------------------------------
 
       const savedNote =
@@ -713,17 +772,18 @@ app.post(
 // GET ALL NOTES
 // ======================================================
 //
-// NOTES PAGE FEATURES:
+// Supports:
 //
 // 1. Advanced Search
-// 2. Stream Filter
-// 3. Semester Filter
-// 4. Subject Filter
-// 5. Tag Filter
-// 6. Sorting
+// 2. Course Filter
+// 3. Stream Filter
+// 4. Semester Filter
+// 5. Subject Filter
+// 6. Resource Type Filter
+// 7. Tag Filter
+// 8. Sorting
 //
-// fileData is excluded from listing response
-// for better performance.
+// fileData is excluded from listing response.
 // ======================================================
 
 app.get(
@@ -734,9 +794,11 @@ app.get(
 
       const {
         search,
+        course,
         stream,
         semester,
         subject,
+        resourceType,
         tag,
         sort
       } = req.query;
@@ -754,12 +816,15 @@ app.get(
       // --------------------------------------------------
       //
       // Search across:
+      //
       // - Title
       // - Subject
       // - Content
-      // - Owner name
+      // - Owner
+      // - Course
       // - Stream
       // - Semester
+      // - Tags
       // --------------------------------------------------
 
       if (
@@ -797,6 +862,11 @@ app.get(
           },
 
           {
+            course:
+              searchRegex
+          },
+
+          {
             stream:
               searchRegex
           },
@@ -804,9 +874,29 @@ app.get(
           {
             semester:
               searchRegex
+          },
+
+          {
+            tags:
+              searchRegex
           }
 
         ];
+
+      }
+
+
+      // --------------------------------------------------
+      // COURSE FILTER
+      // --------------------------------------------------
+
+      if (
+        course &&
+        course.trim()
+      ) {
+
+        filter.course =
+          course.trim();
 
       }
 
@@ -857,6 +947,21 @@ app.get(
 
 
       // --------------------------------------------------
+      // RESOURCE TYPE FILTER
+      // --------------------------------------------------
+
+      if (
+        resourceType &&
+        resourceType.trim()
+      ) {
+
+        filter.resourceType =
+          resourceType.trim();
+
+      }
+
+
+      // --------------------------------------------------
       // TAG FILTER
       // --------------------------------------------------
 
@@ -880,7 +985,7 @@ app.get(
       // SORTING
       // --------------------------------------------------
       //
-      // Supported values:
+      // Supported:
       //
       // newest
       // oldest
@@ -921,7 +1026,7 @@ app.get(
 
 
       // --------------------------------------------------
-      // Fetch notes
+      // FETCH NOTES
       // --------------------------------------------------
 
       const notes =
@@ -938,7 +1043,7 @@ app.get(
 
 
       // --------------------------------------------------
-      // Send response
+      // SEND RESPONSE
       // --------------------------------------------------
 
       res.json(
@@ -1018,10 +1123,13 @@ app.get(
 // JWT + OWNER PROTECTED
 //
 // Supports:
+//
 // - Title
+// - Course
 // - Stream
 // - Semester
 // - Subject
+// - Resource Type
 // - Tags
 // - Content
 // - File
@@ -1051,7 +1159,7 @@ app.put(
 
 
       // --------------------------------------------------
-      // Check ownership
+      // CHECK OWNERSHIP
       // --------------------------------------------------
 
       if (
@@ -1068,7 +1176,7 @@ app.put(
 
 
       // --------------------------------------------------
-      // Prepare tags
+      // PREPARE TAGS
       // --------------------------------------------------
 
       const cleanTags =
@@ -1089,7 +1197,27 @@ app.put(
 
 
       // --------------------------------------------------
-      // Prepare updated note
+      // RESOURCE TYPE
+      // --------------------------------------------------
+
+      const allowedResourceTypes = [
+        "note",
+        "previous-paper",
+        "other",
+      ];
+
+
+      const cleanResourceType =
+        req.body.resourceType &&
+        allowedResourceTypes.includes(
+          req.body.resourceType
+        )
+          ? req.body.resourceType
+          : "note";
+
+
+      // --------------------------------------------------
+      // PREPARE UPDATED NOTE
       // --------------------------------------------------
 
       const updatedNote =
@@ -1102,6 +1230,9 @@ app.put(
             title:
               req.body.title,
 
+            course:
+              req.body.course,
+
             stream:
               req.body.stream,
 
@@ -1110,6 +1241,9 @@ app.put(
 
             subject:
               req.body.subject,
+
+            resourceType:
+              cleanResourceType,
 
             tags:
               cleanTags,
@@ -1192,7 +1326,7 @@ app.delete(
 
 
       // --------------------------------------------------
-      // Check ownership
+      // CHECK OWNERSHIP
       // --------------------------------------------------
 
       if (
@@ -1209,7 +1343,7 @@ app.delete(
 
 
       // --------------------------------------------------
-      // Delete note
+      // DELETE NOTE
       // --------------------------------------------------
 
       const deletedNote =
