@@ -1,0 +1,1605 @@
+/* =========================================================
+   NOTEHUB — NOTES PAGE
+   Complete Page UI
+   ========================================================= */
+
+/* =========================================================
+   01. NOTES PAGE ROOT
+   ========================================================= */
+
+.notes-page {
+  width: 100%;
+  min-height: 100vh;
+
+  position: relative;
+
+  padding: 34px 4.5% 70px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 12% 30%,
+      rgba(0, 157, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 65%,
+      rgba(0, 255, 170, 0.055),
+      transparent 28%
+    ),
+    #02070a;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   02. SOFT BACKGROUND LIGHT EFFECTS
+
+   These create the same atmospheric effect as Profile page.
+   ========================================================= */
+
+.notes-page::before,
+.notes-page::after {
+  content: "";
+
+  position: fixed;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  filter: blur(110px);
+
+  pointer-events: none;
+
+  opacity: 0.16;
+
+  z-index: 0;
+}
+
+.notes-page::before {
+  left: -180px;
+  top: 25%;
+
+  background: rgba(0, 174, 255, 0.35);
+}
+
+.notes-page::after {
+  right: -180px;
+  bottom: 10%;
+
+  background: rgba(0, 255, 190, 0.22);
+}
+
+
+/* =========================================================
+   IMPORTANT
+
+   Keep all Notes content above background effects.
+   ========================================================= */
+
+.notes-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   03. HERO — EXPLORE YOUR KNOWLEDGE
+   ========================================================= */
+
+.notes-hero {
+  width: 100%;
+
+  min-height: 370px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 70px 50px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(0, 174, 255, 0.28);
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 10%,
+      rgba(0, 174, 255, 0.34),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 95% 85%,
+      rgba(99, 57, 255, 0.28),
+      transparent 38%
+    ),
+    linear-gradient(
+      120deg,
+      #06212b,
+      #07131b 45%,
+      #0d0b27
+    );
+
+  box-shadow:
+    0 0 40px rgba(0, 140, 255, 0.07),
+    inset 0 0 40px rgba(0, 150, 255, 0.025);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Hero hover */
+
+.notes-hero:hover {
+  border-color: rgba(0, 174, 255, 0.42);
+
+  box-shadow:
+    0 0 45px rgba(0, 174, 255, 0.11),
+    inset 0 0 45px rgba(0, 150, 255, 0.035);
+}
+
+
+/* =========================================================
+   04. HERO GLOW
+   ========================================================= */
+
+.notes-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  left: -160px;
+  top: -170px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 190, 255, 0.15);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+.notes-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  right: -150px;
+  bottom: -160px;
+
+  border-radius: 50%;
+
+  background: rgba(106, 67, 255, 0.13);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   05. HERO CONTENT
+   ========================================================= */
+
+.notes-hero-content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  padding: 0 120px 0 30px;
+}
+
+
+/* Small NOTEHUB LIBRARY label */
+
+.notes-hero-label {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  color: #00bfff;
+
+  text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.notes-hero h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 78px);
+
+  line-height: 0.98;
+
+  font-weight: 900;
+
+  letter-spacing: -3px;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+
+/* Hero subtitle */
+
+.notes-hero p {
+  margin: 24px auto 0;
+
+  max-width: 650px;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  color: rgba(194, 211, 222, 0.78);
+}
+
+
+/* =========================================================
+   06. FLOATING HERO ICON
+   ========================================================= */
+
+.notes-hero-floating-icon {
+  position: absolute;
+
+  left: 35px;
+  top: 50%;
+
+  width: 76px;
+  height: 76px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(0, 191, 255, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 180, 255, 0.14),
+      rgba(93, 57, 255, 0.09)
+    );
+
+  box-shadow:
+    0 0 25px rgba(0, 180, 255, 0.09),
+    inset 0 0 20px rgba(0, 180, 255, 0.04);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Floating icon hover */
+
+.notes-hero:hover .notes-hero-floating-icon {
+  transform: translateY(-50%) translateY(-5px) rotate(-3deg);
+
+  border-color: rgba(0, 200, 255, 0.65);
+
+  box-shadow:
+    0 0 35px rgba(0, 180, 255, 0.18);
+}
+
+
+/* Icon itself */
+
+.notes-floating-icon-shape {
+  font-size: 32px;
+
+  color: #00c8ff;
+
+  text-shadow:
+    0 0 15px rgba(0, 190, 255, 0.8);
+}
+
+
+/* =========================================================
+   07. RESOURCE COUNTER
+   ========================================================= */
+
+.notes-resource-count {
+  position: absolute;
+
+  right: 42px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 135px;
+  height: 135px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(0, 190, 255, 0.35);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(3, 26, 38, 0.85),
+      rgba(9, 15, 37, 0.88)
+    );
+
+  box-shadow:
+    0 0 25px rgba(0, 174, 255, 0.06),
+    inset 0 0 20px rgba(0, 174, 255, 0.03);
+
+  backdrop-filter: blur(10px);
+
+  z-index: 4;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* Counter hover */
+
+.notes-resource-count:hover {
+  transform: translateY(-50%) scale(1.04);
+
+  border-color: rgba(0, 195, 255, 0.6);
+}
+
+
+/* Number */
+
+.notes-resource-count strong {
+  font-size: 40px;
+
+  line-height: 1;
+
+  color: #00bfff;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 0 18px rgba(0, 191, 255, 0.45);
+}
+
+
+/* Resource text */
+
+.notes-resource-count span {
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  font-weight: 800;
+
+  color: rgba(166, 190, 203, 0.7);
+}
+
+
+/* =========================================================
+   08. BACK NAVIGATION
+
+   IMPORTANT:
+   Back button is now BELOW hero.
+   ========================================================= */
+
+.notes-navigation {
+  width: 100%;
+
+  margin-top: 18px;
+
+  display: flex;
+
+  justify-content: flex-start;
+}
+
+
+/* Back button */
+
+.notes-back-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0, 174, 255, 0.25);
+
+  background:
+    rgba(5, 18, 26, 0.8);
+
+  color: rgba(213, 229, 237, 0.82);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* Back hover */
+
+.notes-back-button:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 191, 255, 0.65);
+
+  background:
+    rgba(0, 130, 190, 0.13);
+
+  transform: translateX(4px);
+
+  box-shadow:
+    0 0 18px rgba(0, 174, 255, 0.1);
+}
+
+
+/* =========================================================
+   09. SEARCH AREA
+
+   Full width — matching Profile/other pages.
+   ========================================================= */
+
+.notes-search-area {
+  width: 100%;
+
+  margin-top: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* Search box */
+
+.notes-search-box {
+  flex: 1;
+
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(120, 150, 165, 0.16);
+
+  background:
+    rgba(7, 16, 22, 0.78);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.notes-search-box:focus-within {
+  border-color: rgba(0, 190, 255, 0.58);
+
+  background:
+    rgba(5, 19, 27, 0.92);
+
+  box-shadow:
+    0 0 22px rgba(0, 174, 255, 0.08);
+}
+
+
+/* Search input */
+
+.notes-search-box input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 14px;
+}
+
+
+.notes-search-box input::placeholder {
+  color: rgba(150, 172, 184, 0.62);
+}
+
+
+/* =========================================================
+   10. FILTER BUTTON
+   ========================================================= */
+
+.notes-filter-button {
+  min-height: 58px;
+
+  padding: 0 22px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(0, 180, 255, 0.25);
+
+  background:
+    rgba(6, 20, 28, 0.82);
+
+  color: #d8e8ef;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    0.25s ease;
+}
+
+
+.notes-filter-button:hover {
+  border-color: rgba(0, 191, 255, 0.62);
+
+  color: #ffffff;
+
+  background:
+    rgba(0, 135, 190, 0.12);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   11. FILTER PANEL
+
+   Existing filter UI can use this wrapper.
+   ========================================================= */
+
+.notes-filter-panel {
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(0, 174, 255, 0.17);
+
+  background:
+    rgba(5, 16, 23, 0.82);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   12. COURSE SECTION
+   ========================================================= */
+
+.notes-course-section {
+  width: 100%;
+
+  margin-top: 48px;
+}
+
+
+/* Center heading */
+
+.notes-section-heading {
+  width: 100%;
+
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+
+/* STEP 01 */
+
+.notes-section-heading > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: #00bfff;
+
+  text-transform: uppercase;
+}
+
+
+/* Choose your course */
+
+.notes-section-heading h2 {
+  margin: 0;
+
+  font-size: clamp(30px, 4vw, 48px);
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  letter-spacing: -1.5px;
+
+  color: #ffffff;
+}
+
+
+/* Subtitle */
+
+.notes-section-heading p {
+  margin: 12px 0 0;
+
+  color: rgba(167, 188, 199, 0.72);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   13. COURSE GRID
+
+   3 columns on desktop.
+   ========================================================= */
+
+.notes-course-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   14. COURSE CARD
+   ========================================================= */
+
+.notes-course-card {
+  min-height: 145px;
+
+  position: relative;
+
+  padding: 28px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 17px;
+
+  border: 1px solid rgba(0, 174, 255, 0.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(9, 25, 34, 0.96),
+      rgba(5, 13, 20, 0.96)
+    );
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* Card decorative glow */
+
+.notes-course-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  right: -45px;
+  bottom: -45px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 174, 255, 0.12);
+
+  filter: blur(2px);
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
+}
+
+
+/* Card hover */
+
+.notes-course-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 190, 255, 0.45);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(9, 31, 43, 0.98),
+      rgba(5, 16, 25, 0.98)
+    );
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(0, 174, 255, 0.07);
+}
+
+
+.notes-course-card:hover::after {
+  width: 140px;
+  height: 140px;
+}
+
+
+/* =========================================================
+   15. COURSE CARD TEXT
+   ========================================================= */
+
+.notes-course-card-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  color: rgba(115, 170, 195, 0.7);
+
+  text-transform: uppercase;
+}
+
+
+.notes-course-card h3 {
+  margin: 0;
+
+  font-size: 25px;
+
+  font-weight: 900;
+
+  color: #ffffff;
+}
+
+
+.notes-course-card p {
+  margin: 6px 0 0;
+
+  font-size: 11px;
+
+  color: rgba(163, 186, 197, 0.65);
+}
+
+
+/* Arrow */
+
+.notes-course-card-arrow {
+  position: absolute;
+
+  right: 20px;
+  bottom: 17px;
+
+  font-size: 25px;
+
+  color: #00bfff;
+
+  z-index: 2;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+
+.notes-course-card:hover .notes-course-card-arrow {
+  transform: translateX(6px);
+
+  color: #42d5ff;
+}
+
+
+/* =========================================================
+   16. SEMESTER GRID
+
+   Course ke andar semester cards ke liye.
+   ========================================================= */
+
+.notes-semester-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  margin-top: 30px;
+}
+
+
+/* Semester card */
+
+.notes-semester-card {
+  min-height: 185px;
+
+  position: relative;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(0, 174, 255, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 25, 34, 0.97),
+      rgba(4, 13, 19, 0.97)
+    );
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.notes-semester-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 190, 255, 0.48);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(0, 174, 255, 0.08);
+}
+
+
+/* Semester label */
+
+.notes-semester-card-label {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  color: rgba(117, 177, 204, 0.72);
+
+  text-transform: uppercase;
+}
+
+
+.notes-semester-card h3 {
+  margin: 0;
+
+  font-size: 28px;
+
+  color: #ffffff;
+}
+
+
+.notes-semester-card p {
+  margin-top: 10px;
+
+  color: rgba(165, 188, 201, 0.68);
+}
+
+
+/* Semester arrow */
+
+.notes-semester-arrow {
+  position: absolute;
+
+  right: 30px;
+  bottom: 25px;
+
+  font-size: 28px;
+
+  color: #00bfff;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.notes-semester-card:hover .notes-semester-arrow {
+  transform: translateX(7px);
+}
+
+
+/* =========================================================
+   17. SEARCH RESULTS
+   ========================================================= */
+
+.notes-search-results {
+  width: 100%;
+
+  margin-top: 55px;
+}
+
+
+/* Center search result heading */
+
+.notes-search-results-header {
+  width: 100%;
+
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+
+.notes-search-results-header > span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  color: #00bfff;
+
+  text-transform: uppercase;
+}
+
+
+.notes-search-results-header h2 {
+  margin: 0;
+
+  font-size: clamp(32px, 4vw, 52px);
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  color: #ffffff;
+}
+
+
+.notes-search-results-header p {
+  margin: 13px auto 0;
+
+  max-width: 700px;
+
+  font-size: 14px;
+
+  color: rgba(161, 184, 197, 0.7);
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   18. EMPTY SEARCH RESULT BOX
+   ========================================================= */
+
+.notes-empty-results {
+  width: 100%;
+
+  min-height: 390px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 45px;
+
+  box-sizing: border-box;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(0, 174, 255, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(7, 22, 30, 0.9),
+      rgba(5, 14, 21, 0.92)
+    );
+}
+
+
+/* Empty icon */
+
+.notes-empty-icon {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 25px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(0, 190, 255, 0.25);
+
+  background: rgba(0, 150, 220, 0.07);
+
+  font-size: 30px;
+
+  box-shadow:
+    0 0 25px rgba(0, 174, 255, 0.06);
+}
+
+
+.notes-empty-results h3 {
+  margin: 0;
+
+  font-size: 23px;
+
+  color: #ffffff;
+}
+
+
+.notes-empty-results p {
+  margin: 12px 0 25px;
+
+  color: rgba(157, 180, 193, 0.7);
+}
+
+
+/* Clear button */
+
+.notes-clear-button {
+  padding: 12px 22px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0, 190, 255, 0.35);
+
+  background:
+    rgba(0, 140, 200, 0.08);
+
+  color: #9cddf5;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    0.25s ease;
+}
+
+
+.notes-clear-button:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 200, 255, 0.65);
+
+  background:
+    rgba(0, 150, 220, 0.14);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   19. WATERMARK
+   ========================================================= */
+
+.notes-watermark {
+  width: 100%;
+
+  margin-top: 55px;
+
+  padding-top: 26px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 13px;
+
+  border-top: 1px solid rgba(150, 180, 195, 0.08);
+
+  color: rgba(115, 145, 159, 0.55);
+
+  font-size: 12px;
+
+  letter-spacing: 0.5px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+
+/* Watermark stars */
+
+.notes-watermark > span:first-child,
+.notes-watermark > span:last-child {
+  color: #00bfff;
+
+  transition:
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+
+/* Watermark hover */
+
+.notes-watermark:hover {
+  color: rgba(188, 218, 230, 0.9);
+
+  text-shadow:
+    0 0 15px rgba(0, 174, 255, 0.18);
+
+  cursor: default;
+}
+
+
+.notes-watermark:hover > span:first-child {
+  transform: translateX(-4px) rotate(-10deg);
+
+  text-shadow:
+    0 0 15px rgba(0, 191, 255, 0.65);
+}
+
+
+.notes-watermark:hover > span:last-child {
+  transform: translateX(4px) rotate(10deg);
+
+  text-shadow:
+    0 0 15px rgba(0, 191, 255, 0.65);
+}
+
+
+.notes-watermark b {
+  color: rgba(90, 125, 140, 0.5);
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   20. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .notes-page {
+    padding: 28px 3.5% 60px;
+  }
+
+
+  .notes-hero {
+    min-height: 330px;
+
+    padding: 60px 35px;
+  }
+
+
+  .notes-hero-content {
+    padding:
+      0 100px
+      0 60px;
+  }
+
+
+  .notes-hero-floating-icon {
+    left: 24px;
+
+    width: 62px;
+    height: 62px;
+  }
+
+
+  .notes-resource-count {
+    right: 24px;
+
+    width: 105px;
+    height: 105px;
+  }
+
+
+  .notes-resource-count strong {
+    font-size: 32px;
+  }
+
+
+  .notes-course-grid,
+  .notes-semester-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   21. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .notes-page {
+    padding:
+      20px 16px 45px;
+  }
+
+
+  /* Hero */
+
+  .notes-hero {
+    min-height: 420px;
+
+    padding:
+      65px 22px 40px;
+
+    border-radius: 18px;
+
+    align-items: center;
+  }
+
+
+  /* Floating icon moves to top */
+
+  .notes-hero-floating-icon {
+    left: 50%;
+
+    top: 28px;
+
+    width: 55px;
+    height: 55px;
+
+    transform: translateX(-50%);
+  }
+
+
+  .notes-hero:hover .notes-hero-floating-icon {
+    transform:
+      translateX(-50%)
+      translateY(-3px);
+  }
+
+
+  /* Hero content */
+
+  .notes-hero-content {
+    padding: 35px 0 90px;
+
+    max-width: 100%;
+  }
+
+
+  .notes-hero-label {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .notes-hero h1 {
+    font-size: 39px;
+
+    letter-spacing: -1.8px;
+  }
+
+
+  .notes-hero p {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+
+  /* Counter moves below */
+
+  .notes-resource-count {
+    top: auto;
+
+    right: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(50%);
+
+    width: 105px;
+    height: 75px;
+
+    border-radius: 15px;
+  }
+
+
+  .notes-resource-count:hover {
+    transform:
+      translateX(50%)
+      scale(1.04);
+  }
+
+
+  .notes-resource-count strong {
+    font-size: 25px;
+  }
+
+
+  .notes-resource-count span {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+
+  /* Search */
+
+  .notes-search-area {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .notes-filter-button {
+    width: 100%;
+  }
+
+
+  /* Course */
+
+  .notes-course-section {
+    margin-top: 38px;
+  }
+
+
+  .notes-section-heading {
+    margin-bottom: 22px;
+  }
+
+
+  .notes-section-heading h2 {
+    font-size: 32px;
+  }
+
+
+  .notes-section-heading p {
+    font-size: 12px;
+  }
+
+
+  /* Course cards */
+
+  .notes-course-grid {
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+  }
+
+
+  .notes-course-card {
+    min-height: 130px;
+
+    padding: 23px;
+  }
+
+
+  /* Semester */
+
+  .notes-semester-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+
+  .notes-semester-card {
+    min-height: 155px;
+
+    padding: 25px;
+  }
+
+
+  /* Search result */
+
+  .notes-search-results {
+    margin-top: 40px;
+  }
+
+
+  .notes-search-results-header h2 {
+    font-size: 34px;
+  }
+
+
+  .notes-search-results-header p {
+    font-size: 12px;
+  }
+
+
+  .notes-empty-results {
+    min-height: 320px;
+
+    padding: 30px 18px;
+  }
+
+
+  /* Watermark */
+
+  .notes-watermark {
+    margin-top: 40px;
+
+    font-size: 10px;
+
+    gap: 8px;
+  }
+}
+
+
+/* =========================================================
+   22. VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .notes-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+  .notes-hero {
+    min-height: 400px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  .notes-hero h1 {
+    font-size: 34px;
+  }
+
+
+  .notes-hero p {
+    font-size: 12px;
+  }
+
+
+  .notes-section-heading h2 {
+    font-size: 29px;
+  }
+
+
+  .notes-course-card h3 {
+    font-size: 22px;
+  }
+}

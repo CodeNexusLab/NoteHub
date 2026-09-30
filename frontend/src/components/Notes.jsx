@@ -1,3 +1,5 @@
+import "./Notes.css";
+
 import {
   useEffect,
   useMemo,
@@ -1057,6 +1059,19 @@ function Notes() {
 
       <header className="library-header">
 
+        {/* ==================================================
+            FLOATING LIBRARY ICON
+            --------------------------------------------------
+            Visual accent for the Explore your knowledge hero.
+            Its glow/animation is controlled from Notes.css.
+        ================================================== */}
+        <div
+          className="library-floating-icon"
+          aria-hidden="true"
+        >
+          📚
+        </div>
+
         <div className="library-header-main">
 
           <div className="library-brand">
@@ -1093,6 +1108,12 @@ function Notes() {
 
       </header>
 
+        {/* ==================================================
+            LIBRARY BACK NAVIGATION
+            --------------------------------------------------
+            This stays below the hero so the Back button does
+            not interfere with the hero layout.
+        ================================================== */}
         <div className="library-back-area">
   <button
     type="button"
@@ -1729,7 +1750,7 @@ function Notes() {
 
             <div className="library-level">
 
-              <div className="library-level-heading">
+              <div className="library-level-heading library-level-heading-centered">
 
                 <div>
 
