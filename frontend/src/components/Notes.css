@@ -1,132 +1,132 @@
 /* =========================================================
    NOTEHUB — NOTES PAGE
-   Complete Page UI
+   FINAL LIBRARY UI
+   ---------------------------------------------------------
+   IMPORTANT:
+   This CSS is written for the CURRENT Notes.jsx classes.
+
+   Main root:
+   .library-page
+
+   Do NOT change these class names in Notes.jsx.
    ========================================================= */
+
 
 /* =========================================================
-   01. NOTES PAGE ROOT
+   01. GLOBAL PAGE
    ========================================================= */
 
-.notes-page {
+.library-page {
   width: 100%;
   min-height: 100vh;
+
+  box-sizing: border-box;
 
   position: relative;
 
   padding: 34px 4.5% 70px;
 
-  box-sizing: border-box;
-
   overflow: hidden;
+
+  color: #ffffff;
 
   background:
     radial-gradient(
-      circle at 12% 30%,
-      rgba(0, 157, 255, 0.08),
+      circle at 8% 25%,
+      rgba(0, 160, 255, 0.08),
       transparent 28%
     ),
     radial-gradient(
-      circle at 88% 65%,
-      rgba(0, 255, 170, 0.055),
+      circle at 92% 65%,
+      rgba(0, 255, 180, 0.055),
       transparent 28%
     ),
     #02070a;
-
-  color: #ffffff;
 }
 
 
-/* =========================================================
-   02. SOFT BACKGROUND LIGHT EFFECTS
+/* Soft background glow */
 
-   These create the same atmospheric effect as Profile page.
-   ========================================================= */
-
-.notes-page::before,
-.notes-page::after {
+.library-page::before,
+.library-page::after {
   content: "";
 
   position: fixed;
 
-  width: 420px;
-  height: 420px;
+  width: 430px;
+  height: 430px;
 
   border-radius: 50%;
 
-  filter: blur(110px);
+  filter: blur(120px);
 
   pointer-events: none;
 
-  opacity: 0.16;
-
   z-index: 0;
+
+  opacity: 0.16;
 }
 
-.notes-page::before {
-  left: -180px;
+.library-page::before {
+  left: -190px;
   top: 25%;
 
   background: rgba(0, 174, 255, 0.35);
 }
 
-.notes-page::after {
-  right: -180px;
-  bottom: 10%;
+.library-page::after {
+  right: -190px;
+  bottom: 8%;
 
   background: rgba(0, 255, 190, 0.22);
 }
 
 
-/* =========================================================
-   IMPORTANT
+/* Keep page content above background */
 
-   Keep all Notes content above background effects.
-   ========================================================= */
-
-.notes-page > * {
+.library-page > * {
   position: relative;
   z-index: 1;
 }
 
 
 /* =========================================================
-   03. HERO — EXPLORE YOUR KNOWLEDGE
+   02. HERO / EXPLORE YOUR KNOWLEDGE
    ========================================================= */
 
-.notes-hero {
+.library-header {
   width: 100%;
 
-  min-height: 370px;
+  min-height: 340px;
 
   position: relative;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   text-align: center;
 
-  padding: 70px 50px;
-
   box-sizing: border-box;
 
-  border: 1px solid rgba(0, 174, 255, 0.28);
-
-  border-radius: 22px;
+  padding: 65px 190px;
 
   overflow: hidden;
 
+  border: 1px solid rgba(0, 180, 255, 0.28);
+
+  border-radius: 24px;
+
   background:
     radial-gradient(
-      circle at 8% 10%,
+      circle at 5% 15%,
       rgba(0, 174, 255, 0.34),
-      transparent 34%
+      transparent 35%
     ),
     radial-gradient(
-      circle at 95% 85%,
-      rgba(99, 57, 255, 0.28),
+      circle at 96% 85%,
+      rgba(105, 65, 255, 0.30),
       transparent 38%
     ),
     linear-gradient(
@@ -137,32 +137,29 @@
     );
 
   box-shadow:
-    0 0 40px rgba(0, 140, 255, 0.07),
-    inset 0 0 40px rgba(0, 150, 255, 0.025);
+    0 0 45px rgba(0, 140, 255, 0.07),
+    inset 0 0 45px rgba(0, 150, 255, 0.025);
 
   transition:
     border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+    box-shadow 0.3s ease;
 }
 
 
 /* Hero hover */
 
-.notes-hero:hover {
-  border-color: rgba(0, 174, 255, 0.42);
+.library-header:hover {
+  border-color: rgba(0, 190, 255, 0.48);
 
   box-shadow:
-    0 0 45px rgba(0, 174, 255, 0.11),
+    0 0 55px rgba(0, 174, 255, 0.12),
     inset 0 0 45px rgba(0, 150, 255, 0.035);
 }
 
 
-/* =========================================================
-   04. HERO GLOW
-   ========================================================= */
+/* Hero glow */
 
-.notes-hero::before {
+.library-header::before {
   content: "";
 
   position: absolute;
@@ -170,85 +167,101 @@
   width: 330px;
   height: 330px;
 
-  left: -160px;
-  top: -170px;
+  left: -150px;
+  top: -160px;
 
   border-radius: 50%;
 
-  background: rgba(0, 190, 255, 0.15);
+  background: rgba(0, 190, 255, 0.16);
 
-  filter: blur(70px);
+  filter: blur(75px);
 
   pointer-events: none;
 }
 
-.notes-hero::after {
+.library-header::after {
   content: "";
 
   position: absolute;
 
-  width: 320px;
-  height: 320px;
+  width: 330px;
+  height: 330px;
 
   right: -150px;
   bottom: -160px;
 
   border-radius: 50%;
 
-  background: rgba(106, 67, 255, 0.13);
+  background: rgba(106, 67, 255, 0.15);
 
-  filter: blur(70px);
+  filter: blur(75px);
 
   pointer-events: none;
 }
 
 
 /* =========================================================
-   05. HERO CONTENT
+   03. HERO MAIN CONTENT
    ========================================================= */
 
-.notes-hero-content {
+.library-header-main {
   position: relative;
 
   z-index: 3;
 
-  max-width: 850px;
+  width: 100%;
+}
 
-  margin: 0 auto;
+.library-brand {
+  display: flex;
 
-  padding: 0 120px 0 30px;
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
 }
 
 
-/* Small NOTEHUB LIBRARY label */
+/* NOTEHUB LIBRARY */
 
-.notes-hero-label {
+.library-kicker {
   display: inline-flex;
 
   align-items: center;
+  justify-content: center;
 
   gap: 8px;
 
   margin-bottom: 18px;
 
+  color: #00bfff;
+
   font-size: 12px;
 
-  font-weight: 800;
+  font-weight: 900;
 
   letter-spacing: 3px;
 
-  color: #00bfff;
-
   text-transform: uppercase;
+
+  text-shadow:
+    0 0 14px rgba(0, 191, 255, 0.35);
 }
 
 
 /* Main heading */
 
-.notes-hero h1 {
+.library-brand h1 {
   margin: 0;
 
-  font-size: clamp(42px, 5vw, 78px);
+  max-width: 850px;
+
+  color: #ffffff;
+
+  font-size: clamp(44px, 5vw, 78px);
 
   line-height: 0.98;
 
@@ -256,33 +269,31 @@
 
   letter-spacing: -3px;
 
-  color: #ffffff;
-
   text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.05);
+    0 0 20px rgba(255, 255, 255, 0.06);
 }
 
 
-/* Hero subtitle */
+/* Subtitle */
 
-.notes-hero p {
-  margin: 24px auto 0;
+.library-brand p {
+  margin: 22px auto 0;
 
-  max-width: 650px;
-
-  font-size: 17px;
-
-  line-height: 1.7;
+  max-width: 680px;
 
   color: rgba(194, 211, 222, 0.78);
+
+  font-size: 16px;
+
+  line-height: 1.7;
 }
 
 
 /* =========================================================
-   06. FLOATING HERO ICON
+   04. FLOATING HERO ICON
    ========================================================= */
 
-.notes-hero-floating-icon {
+.library-floating-icon {
   position: absolute;
 
   left: 35px;
@@ -291,30 +302,33 @@
   width: 76px;
   height: 76px;
 
-  transform: translateY(-50%);
-
   display: flex;
 
   align-items: center;
-
   justify-content: center;
+
+  transform: translateY(-50%);
 
   border-radius: 22px;
 
-  border: 1px solid rgba(0, 191, 255, 0.32);
+  border: 1px solid rgba(0, 191, 255, 0.35);
 
   background:
     linear-gradient(
       145deg,
       rgba(0, 180, 255, 0.14),
-      rgba(93, 57, 255, 0.09)
+      rgba(93, 57, 255, 0.10)
     );
 
   box-shadow:
-    0 0 25px rgba(0, 180, 255, 0.09),
+    0 0 30px rgba(0, 180, 255, 0.10),
     inset 0 0 20px rgba(0, 180, 255, 0.04);
 
   backdrop-filter: blur(12px);
+
+  font-size: 32px;
+
+  z-index: 5;
 
   transition:
     transform 0.35s ease,
@@ -323,51 +337,41 @@
 }
 
 
-/* Floating icon hover */
+/* Icon hover */
 
-.notes-hero:hover .notes-hero-floating-icon {
-  transform: translateY(-50%) translateY(-5px) rotate(-3deg);
+.library-header:hover .library-floating-icon {
+  transform:
+    translateY(-50%)
+    translateY(-6px)
+    rotate(-3deg);
 
-  border-color: rgba(0, 200, 255, 0.65);
+  border-color: rgba(0, 200, 255, 0.70);
 
   box-shadow:
-    0 0 35px rgba(0, 180, 255, 0.18);
-}
-
-
-/* Icon itself */
-
-.notes-floating-icon-shape {
-  font-size: 32px;
-
-  color: #00c8ff;
-
-  text-shadow:
-    0 0 15px rgba(0, 190, 255, 0.8);
+    0 0 40px rgba(0, 180, 255, 0.20);
 }
 
 
 /* =========================================================
-   07. RESOURCE COUNTER
+   05. RESOURCE COUNTER
    ========================================================= */
 
-.notes-resource-count {
+.library-header-stat {
   position: absolute;
 
-  right: 42px;
+  right: 40px;
   top: 50%;
 
   transform: translateY(-50%);
 
-  width: 135px;
-  height: 135px;
+  width: 130px;
+  height: 130px;
 
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 7px;
@@ -379,70 +383,68 @@
   background:
     linear-gradient(
       145deg,
-      rgba(3, 26, 38, 0.85),
-      rgba(9, 15, 37, 0.88)
+      rgba(3, 26, 38, 0.88),
+      rgba(9, 15, 37, 0.90)
     );
 
   box-shadow:
-    0 0 25px rgba(0, 174, 255, 0.06),
+    0 0 25px rgba(0, 174, 255, 0.07),
     inset 0 0 20px rgba(0, 174, 255, 0.03);
 
   backdrop-filter: blur(10px);
 
-  z-index: 4;
+  z-index: 5;
 
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
 }
 
+.library-header-stat:hover {
+  transform:
+    translateY(-50%)
+    scale(1.04);
 
-/* Counter hover */
-
-.notes-resource-count:hover {
-  transform: translateY(-50%) scale(1.04);
-
-  border-color: rgba(0, 195, 255, 0.6);
+  border-color: rgba(0, 195, 255, 0.65);
 }
 
 
 /* Number */
 
-.notes-resource-count strong {
+.library-header-stat strong {
+  color: #00bfff;
+
   font-size: 40px;
 
   line-height: 1;
 
-  color: #00bfff;
-
   font-weight: 900;
 
   text-shadow:
-    0 0 18px rgba(0, 191, 255, 0.45);
+    0 0 18px rgba(0, 191, 255, 0.50);
 }
 
 
-/* Resource text */
+/* RESOURCE text */
 
-.notes-resource-count span {
+.library-header-stat span {
+  color: rgba(166, 190, 203, 0.72);
+
   font-size: 9px;
-
-  letter-spacing: 3px;
 
   font-weight: 800;
 
-  color: rgba(166, 190, 203, 0.7);
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
 }
 
 
 /* =========================================================
-   08. BACK NAVIGATION
-
-   IMPORTANT:
-   Back button is now BELOW hero.
+   06. BACK NAVIGATION
    ========================================================= */
 
-.notes-navigation {
+.library-back-area {
   width: 100%;
 
   margin-top: 18px;
@@ -453,18 +455,15 @@
 }
 
 
-/* Back button */
+.library-back-button {
+  min-height: 42px;
 
-.notes-back-button {
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 8px;
-
-  min-height: 42px;
 
   padding: 0 18px;
 
@@ -473,9 +472,11 @@
   border: 1px solid rgba(0, 174, 255, 0.25);
 
   background:
-    rgba(5, 18, 26, 0.8);
+    rgba(5, 18, 26, 0.82);
 
-  color: rgba(213, 229, 237, 0.82);
+  color: rgba(213, 229, 237, 0.85);
+
+  font-family: inherit;
 
   font-size: 13px;
 
@@ -494,30 +495,26 @@
 }
 
 
-/* Back hover */
-
-.notes-back-button:hover {
+.library-back-button:hover {
   color: #ffffff;
 
   border-color: rgba(0, 191, 255, 0.65);
 
   background:
-    rgba(0, 130, 190, 0.13);
+    rgba(0, 130, 190, 0.14);
 
   transform: translateX(4px);
 
   box-shadow:
-    0 0 18px rgba(0, 174, 255, 0.1);
+    0 0 18px rgba(0, 174, 255, 0.10);
 }
 
 
 /* =========================================================
-   09. SEARCH AREA
-
-   Full width — matching Profile/other pages.
+   07. SEARCH AREA
    ========================================================= */
 
-.notes-search-area {
+.library-search-area {
   width: 100%;
 
   margin-top: 18px;
@@ -530,12 +527,14 @@
 }
 
 
-/* Search box */
+/* Search bar */
 
-.notes-search-box {
+.library-search-bar {
   flex: 1;
 
   min-height: 58px;
+
+  position: relative;
 
   display: flex;
 
@@ -549,10 +548,10 @@
 
   border-radius: 13px;
 
-  border: 1px solid rgba(120, 150, 165, 0.16);
+  border: 1px solid rgba(120, 150, 165, 0.18);
 
   background:
-    rgba(7, 16, 22, 0.78);
+    rgba(7, 16, 22, 0.82);
 
   transition:
     border-color 0.25s ease,
@@ -561,21 +560,32 @@
 }
 
 
-.notes-search-box:focus-within {
-  border-color: rgba(0, 190, 255, 0.58);
+.library-search-bar:focus-within {
+  border-color: rgba(0, 190, 255, 0.60);
 
   background:
-    rgba(5, 19, 27, 0.92);
+    rgba(5, 19, 27, 0.94);
 
   box-shadow:
     0 0 22px rgba(0, 174, 255, 0.08);
 }
 
 
+/* Search icon */
+
+.library-search-icon {
+  flex-shrink: 0;
+
+  font-size: 18px;
+}
+
+
 /* Search input */
 
-.notes-search-box input {
+.library-search-bar input {
   width: 100%;
+
+  min-width: 0;
 
   border: none;
 
@@ -585,28 +595,76 @@
 
   color: #ffffff;
 
+  font-family: inherit;
+
   font-size: 14px;
 }
 
 
-.notes-search-box input::placeholder {
+.library-search-bar input::placeholder {
   color: rgba(150, 172, 184, 0.62);
 }
 
 
-/* =========================================================
-   10. FILTER BUTTON
-   ========================================================= */
+/* Search clear */
 
-.notes-filter-button {
+.library-search-clear {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #aab5c4;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.library-search-clear:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+}
+
+
+/* Search actions */
+
+.library-search-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* Filter button */
+
+.library-filter-toggle {
   min-height: 58px;
 
-  padding: 0 22px;
+  padding: 0 20px;
 
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 8px;
@@ -620,50 +678,107 @@
 
   color: #d8e8ef;
 
+  font-family: inherit;
+
   font-size: 13px;
 
   font-weight: 700;
 
   cursor: pointer;
 
-  transition:
-    0.25s ease;
+  transition: 0.25s ease;
 }
 
 
-.notes-filter-button:hover {
+.library-filter-toggle:hover,
+.library-filter-toggle.active {
   border-color: rgba(0, 191, 255, 0.62);
 
   color: #ffffff;
 
   background:
-    rgba(0, 135, 190, 0.12);
+    rgba(0, 135, 190, 0.13);
 
   transform: translateY(-2px);
 }
 
 
-/* =========================================================
-   11. FILTER PANEL
+.library-filter-toggle strong {
+  min-width: 20px;
+  height: 20px;
 
-   Existing filter UI can use this wrapper.
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #00aaff;
+
+  color: #021019;
+
+  font-size: 10px;
+}
+
+
+/* Reset */
+
+.library-reset-button {
+  min-height: 58px;
+
+  padding: 0 18px;
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: #8999a8;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.library-reset-button:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 190, 255, 0.40);
+
+  background:
+    rgba(0, 150, 220, 0.08);
+}
+
+
+/* =========================================================
+   08. FILTER PANEL
    ========================================================= */
 
-.notes-filter-panel {
+.library-filter-panel {
   width: 100%;
 
   margin-top: 14px;
 
-  padding: 24px;
+  padding: 25px;
 
   box-sizing: border-box;
 
-  border-radius: 16px;
+  border-radius: 18px;
 
   border: 1px solid rgba(0, 174, 255, 0.17);
 
   background:
-    rgba(5, 16, 23, 0.82);
+    rgba(5, 16, 23, 0.84);
 
   box-shadow:
     0 15px 45px rgba(0, 0, 0, 0.18);
@@ -672,21 +787,138 @@
 }
 
 
-/* =========================================================
-   12. COURSE SECTION
-   ========================================================= */
+.library-filter-heading {
+  display: flex;
 
-.notes-course-section {
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 
-  margin-top: 48px;
+  gap: 20px;
+
+  margin-bottom: 20px;
 }
 
 
-/* Center heading */
+.library-filter-heading span {
+  display: block;
 
-.notes-section-heading {
+  margin-bottom: 5px;
+
+  color: #00bfff;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+}
+
+
+.library-filter-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 22px;
+}
+
+
+.library-filter-heading small {
+  color: #728394;
+
+  font-size: 12px;
+}
+
+
+/* Filter grid */
+
+.library-filter-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+
+/* Filter field */
+
+.library-filter-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.library-filter-field > span {
+  color: #8292a3;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.library-filter-field select {
   width: 100%;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(120, 150, 165, 0.16);
+
+  outline: none;
+
+  background:
+    #07131a;
+
+  color: #dce8ee;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.library-filter-field select:focus {
+  border-color: rgba(0, 190, 255, 0.55);
+
+  box-shadow:
+    0 0 15px rgba(0, 174, 255, 0.06);
+}
+
+
+/* =========================================================
+   09. SEARCH RESULTS
+   ========================================================= */
+
+.library-results-view {
+  width: 100%;
+
+  margin-top: 55px;
+}
+
+
+/* Center matching resources */
+
+.library-results-head {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
 
   text-align: center;
 
@@ -694,12 +926,193 @@
 }
 
 
-/* STEP 01 */
+.library-results-head > div {
+  display: flex;
 
-.notes-section-heading > span {
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+.library-results-head > div > span {
   display: block;
 
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+
+  color: #00bfff;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+.library-results-head h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(32px, 4vw, 52px);
+
+  line-height: 1.1;
+
+  font-weight: 900;
+}
+
+
+.library-results-head p {
+  margin: 13px auto 0;
+
+  max-width: 720px;
+
+  color: rgba(161, 184, 197, 0.72);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+.library-results-head > strong {
+  margin-top: 18px;
+
+  color: #00bfff;
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 0 15px rgba(0, 191, 255, 0.40);
+}
+
+
+/* =========================================================
+   10. ACADEMIC BROWSER
+   ========================================================= */
+
+.library-browser {
+  width: 100%;
+
+  margin-top: 30px;
+}
+
+
+.library-path-bar {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 35px;
+
+  color: #65798a;
+
+  font-size: 11px;
+}
+
+
+.library-path-bar button {
+  border: none;
+
+  background: transparent;
+
+  color: #718697;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.library-path-bar button:hover,
+.library-path-bar button.active {
+  color: #00bfff;
+}
+
+
+.library-path-bar .current {
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   11. LIBRARY LEVEL
+   ========================================================= */
+
+.library-level {
+  width: 100%;
+
+  animation:
+    libraryReveal 0.35s ease both;
+}
+
+
+/* Heading */
+
+.library-level-heading {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+
+/* Centered first-level heading */
+
+.library-level-heading-centered {
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.library-level-heading-centered > div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+/* Step label */
+
+.library-level-heading span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #00bfff;
 
   font-size: 10px;
 
@@ -707,16 +1120,14 @@
 
   letter-spacing: 3px;
 
-  color: #00bfff;
-
   text-transform: uppercase;
 }
 
 
-/* Choose your course */
-
-.notes-section-heading h2 {
+.library-level-heading h2 {
   margin: 0;
+
+  color: #ffffff;
 
   font-size: clamp(30px, 4vw, 48px);
 
@@ -725,29 +1136,65 @@
   font-weight: 900;
 
   letter-spacing: -1.5px;
-
-  color: #ffffff;
 }
 
 
-/* Subtitle */
-
-.notes-section-heading p {
-  margin: 12px 0 0;
+.library-level-heading p {
+  margin: 10px 0 0;
 
   color: rgba(167, 188, 199, 0.72);
 
-  font-size: 14px;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   12. INLINE BACK
+   ========================================================= */
+
+.library-inline-back {
+  flex-shrink: 0;
+
+  padding: 10px 15px;
+
+  border-radius: 9px;
+
+  border: 1px solid rgba(0, 174, 255, 0.22);
+
+  background:
+    rgba(0, 140, 200, 0.06);
+
+  color: #8ecbe5;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.library-inline-back:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 191, 255, 0.55);
+
+  background:
+    rgba(0, 150, 220, 0.12);
+
+  transform: translateX(-3px);
 }
 
 
 /* =========================================================
    13. COURSE GRID
-
-   3 columns on desktop.
    ========================================================= */
 
-.notes-course-grid {
+.course-grid {
   width: 100%;
 
   display: grid;
@@ -756,23 +1203,27 @@
     repeat(3, minmax(0, 1fr));
 
   gap: 18px;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
 }
 
 
-/* =========================================================
-   14. COURSE CARD
-   ========================================================= */
+/* Course tile */
 
-.notes-course-card {
-  min-height: 145px;
+.course-tile {
+  min-height: 150px;
 
   position: relative;
 
-  padding: 28px;
+  display: block;
 
-  box-sizing: border-box;
+  padding: 27px;
 
   overflow: hidden;
+
+  text-align: left;
 
   border-radius: 17px;
 
@@ -785,6 +1236,10 @@
       rgba(5, 13, 20, 0.96)
     );
 
+  color: #ffffff;
+
+  font-family: inherit;
+
   cursor: pointer;
 
   transition:
@@ -795,18 +1250,18 @@
 }
 
 
-/* Card decorative glow */
+/* Course glow */
 
-.notes-course-card::after {
+.course-tile::after {
   content: "";
 
   position: absolute;
 
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
 
-  right: -45px;
-  bottom: -45px;
+  right: -50px;
+  bottom: -50px;
 
   border-radius: 50%;
 
@@ -820,12 +1275,10 @@
 }
 
 
-/* Card hover */
+.course-tile:hover {
+  transform: translateY(-6px);
 
-.notes-course-card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(0, 190, 255, 0.45);
+  border-color: rgba(0, 190, 255, 0.48);
 
   background:
     linear-gradient(
@@ -835,71 +1288,92 @@
     );
 
   box-shadow:
-    0 14px 35px rgba(0, 0, 0, 0.25),
-    0 0 25px rgba(0, 174, 255, 0.07);
+    0 15px 38px rgba(0, 0, 0, 0.28),
+    0 0 25px rgba(0, 174, 255, 0.08);
 }
 
 
-.notes-course-card:hover::after {
-  width: 140px;
-  height: 140px;
+.course-tile:hover::after {
+  width: 145px;
+  height: 145px;
 }
 
 
-/* =========================================================
-   15. COURSE CARD TEXT
-   ========================================================= */
+/* Course index */
 
-.notes-course-card-label {
-  display: block;
+.course-tile-index {
+  position: absolute;
 
+  right: 16px;
+  top: 14px;
+
+  color: rgba(110, 175, 205, 0.45);
+
+  font-size: 9px;
+
+  font-weight: 800;
+}
+
+
+/* Course content */
+
+.course-tile-main {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.course-tile-main small {
   margin-bottom: 8px;
+
+  color: rgba(115, 170, 195, 0.72);
 
   font-size: 9px;
 
   font-weight: 800;
 
   letter-spacing: 2px;
-
-  color: rgba(115, 170, 195, 0.7);
-
-  text-transform: uppercase;
 }
 
 
-.notes-course-card h3 {
-  margin: 0;
+.course-tile-main strong {
+  color: #ffffff;
 
   font-size: 25px;
 
   font-weight: 900;
-
-  color: #ffffff;
 }
 
 
-.notes-course-card p {
-  margin: 6px 0 0;
-
-  font-size: 11px;
+.course-tile-main > span {
+  margin-top: 6px;
 
   color: rgba(163, 186, 197, 0.65);
+
+  font-size: 11px;
 }
 
 
 /* Arrow */
 
-.notes-course-card-arrow {
+.course-tile-arrow {
   position: absolute;
 
-  right: 20px;
-  bottom: 17px;
+  right: 19px;
+  bottom: 15px;
 
-  font-size: 25px;
+  z-index: 3;
 
   color: #00bfff;
 
-  z-index: 2;
+  font-size: 25px;
 
   transition:
     transform 0.3s ease,
@@ -907,20 +1381,18 @@
 }
 
 
-.notes-course-card:hover .notes-course-card-arrow {
-  transform: translateX(6px);
+.course-tile:hover .course-tile-arrow {
+  transform: translateX(7px);
 
   color: #42d5ff;
 }
 
 
 /* =========================================================
-   16. SEMESTER GRID
-
-   Course ke andar semester cards ke liye.
+   14. SEMESTER GRID
    ========================================================= */
 
-.notes-semester-grid {
+.semester-grid {
   width: 100%;
 
   display: grid;
@@ -930,18 +1402,24 @@
 
   gap: 20px;
 
-  margin-top: 30px;
+  max-width: 1250px;
+
+  margin: 0 auto;
 }
 
 
-/* Semester card */
+/* Semester tile */
 
-.notes-semester-card {
+.semester-tile {
   min-height: 185px;
 
   position: relative;
 
   padding: 30px;
+
+  box-sizing: border-box;
+
+  text-align: left;
 
   border-radius: 20px;
 
@@ -954,6 +1432,10 @@
       rgba(4, 13, 19, 0.97)
     );
 
+  color: #ffffff;
+
+  font-family: inherit;
+
   cursor: pointer;
 
   transition:
@@ -963,7 +1445,7 @@
 }
 
 
-.notes-semester-card:hover {
+.semester-tile:hover {
   transform: translateY(-5px);
 
   border-color: rgba(0, 190, 255, 0.48);
@@ -974,148 +1456,856 @@
 }
 
 
-/* Semester label */
+/* SEMESTER label */
 
-.notes-semester-card-label {
+.semester-tile > span {
   display: block;
 
   margin-bottom: 20px;
+
+  color: rgba(117, 177, 204, 0.72);
 
   font-size: 11px;
 
   font-weight: 800;
 
   letter-spacing: 2px;
-
-  color: rgba(117, 177, 204, 0.72);
-
-  text-transform: uppercase;
 }
 
 
-.notes-semester-card h3 {
-  margin: 0;
+/* Semester name */
+
+.semester-tile > strong {
+  display: block;
+
+  color: #ffffff;
 
   font-size: 28px;
 
-  color: #ffffff;
+  font-weight: 900;
 }
 
 
-.notes-semester-card p {
-  margin-top: 10px;
+/* Count */
+
+.semester-tile > small {
+  display: block;
+
+  margin-top: 9px;
 
   color: rgba(165, 188, 201, 0.68);
+
+  font-size: 11px;
 }
 
 
 /* Semester arrow */
 
-.notes-semester-arrow {
+.semester-tile > b {
   position: absolute;
 
-  right: 30px;
-  bottom: 25px;
-
-  font-size: 28px;
+  right: 27px;
+  bottom: 22px;
 
   color: #00bfff;
+
+  font-size: 27px;
 
   transition:
     transform 0.3s ease;
 }
 
 
-.notes-semester-card:hover .notes-semester-arrow {
+.semester-tile:hover > b {
   transform: translateX(7px);
 }
 
 
 /* =========================================================
-   17. SEARCH RESULTS
+   15. CENTER "OTHER" SEMESTER
    ========================================================= */
 
-.notes-search-results {
-  width: 100%;
+/*
+   There are 7 semester cards.
 
-  margin-top: 55px;
-}
+   Desktop:
+   1  2  3
+   4  5  6
+      7
 
+   This keeps "Other" perfectly centered.
+*/
 
-/* Center search result heading */
-
-.notes-search-results-header {
-  width: 100%;
-
-  text-align: center;
-
-  margin-bottom: 28px;
-}
-
-
-.notes-search-results-header > span {
-  display: block;
-
-  margin-bottom: 12px;
-
-  font-size: 11px;
-
-  font-weight: 900;
-
-  letter-spacing: 3px;
-
-  color: #00bfff;
-
-  text-transform: uppercase;
-}
-
-
-.notes-search-results-header h2 {
-  margin: 0;
-
-  font-size: clamp(32px, 4vw, 52px);
-
-  line-height: 1.1;
-
-  font-weight: 900;
-
-  color: #ffffff;
-}
-
-
-.notes-search-results-header p {
-  margin: 13px auto 0;
-
-  max-width: 700px;
-
-  font-size: 14px;
-
-  color: rgba(161, 184, 197, 0.7);
-
-  line-height: 1.6;
+.semester-grid .semester-tile:last-child {
+  grid-column: 2;
 }
 
 
 /* =========================================================
-   18. EMPTY SEARCH RESULT BOX
+   16. SUBJECT GRID
    ========================================================= */
 
-.notes-empty-results {
+.subject-grid {
   width: 100%;
 
-  min-height: 390px;
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+
+.subject-tile {
+  min-height: 155px;
+
+  position: relative;
+
+  padding: 27px;
+
+  box-sizing: border-box;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(0, 174, 255, 0.16);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 25, 34, 0.97),
+      rgba(4, 13, 19, 0.97)
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.subject-tile:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 190, 255, 0.48);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(0, 174, 255, 0.08);
+}
+
+
+.subject-tile > span {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: rgba(117, 177, 204, 0.72);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.subject-tile > strong {
+  display: block;
+
+  max-width: 85%;
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  line-height: 1.3;
+
+  font-weight: 900;
+}
+
+
+.subject-tile > small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: rgba(165, 188, 201, 0.68);
+
+  font-size: 10px;
+}
+
+
+.subject-tile > b {
+  position: absolute;
+
+  right: 22px;
+  bottom: 18px;
+
+  color: #00bfff;
+
+  font-size: 25px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.subject-tile:hover > b {
+  transform: translateX(7px);
+}
+
+
+/* =========================================================
+   17. RESOURCE LEVEL HEADER
+   ========================================================= */
+
+.resource-level-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+}
+
+
+.resource-level-header > div:first-child > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #00bfff;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 3px;
+}
+
+
+.resource-level-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(30px, 4vw, 48px);
+
+  font-weight: 900;
+}
+
+
+.resource-level-header p {
+  margin: 7px 0 0;
+
+  color: rgba(167, 188, 199, 0.68);
+
+  font-size: 13px;
+}
+
+
+/* Resource count */
+
+.resource-level-count {
+  min-width: 105px;
+  min-height: 90px;
 
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
+  justify-content: center;
 
+  border-radius: 17px;
+
+  border: 1px solid rgba(0, 190, 255, 0.25);
+
+  background:
+    rgba(0, 150, 220, 0.06);
+}
+
+
+.resource-level-count strong {
+  color: #00bfff;
+
+  font-size: 30px;
+
+  font-weight: 900;
+}
+
+
+.resource-level-count span {
+  color: #708393;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   18. RESOURCE TYPE SWITCHER
+   ========================================================= */
+
+.resource-type-switcher {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-bottom: 28px;
+
+  padding-bottom: 20px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.resource-type-switcher button {
+  min-height: 38px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 13px;
+
+  border-radius: 9px;
+
+  border: 1px solid rgba(0, 174, 255, 0.16);
+
+  background:
+    rgba(0, 150, 220, 0.045);
+
+  color: #8194a4;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.resource-type-switcher button:hover,
+.resource-type-switcher button.active {
+  color: #ffffff;
+
+  border-color: rgba(0, 190, 255, 0.55);
+
+  background:
+    rgba(0, 150, 220, 0.12);
+
+  box-shadow:
+    0 0 15px rgba(0, 174, 255, 0.06);
+}
+
+
+.resource-type-switcher button span {
+  color: #00bfff;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   19. RESOURCE RESULTS HEADER
+   ========================================================= */
+
+.resource-results-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+
+.resource-results-header > div > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #00bfff;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+}
+
+
+.resource-results-header h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 23px;
+}
+
+
+.resource-results-header > strong {
+  color: #00bfff;
+
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   20. RESOURCE GRID
+   ========================================================= */
+
+.resource-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* Resource card */
+
+.resource-card {
+  min-height: 300px;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 23px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(0, 174, 255, 0.15);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 23, 32, 0.96),
+      rgba(4, 13, 19, 0.98)
+    );
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.resource-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 18px;
+  right: 18px;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #149cff,
+      #7b61ff,
+      transparent
+    );
+
+  opacity: 0.75;
+}
+
+
+.resource-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(20, 156, 255, 0.34);
+
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, 0.30),
+    0 0 28px rgba(20, 156, 255, 0.07);
+}
+
+
+/* Card top */
+
+.resource-card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+}
+
+
+.resource-type-pill {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  max-width: 75%;
+
+  padding: 6px 9px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(20, 156, 255, 0.20);
+
+  background:
+    rgba(20, 156, 255, 0.07);
+
+  color: #67c7ff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+.resource-card-symbol {
+  color: #00bfff;
+
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.resource-card:hover .resource-card-symbol {
+  transform: translate(3px, -3px);
+}
+
+
+/* Title */
+
+.resource-card-title {
+  margin: 0 0 13px;
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  line-height: 1.35;
+
+  font-weight: 800;
+
+  word-break: break-word;
+}
+
+
+/* Academic path */
+
+.resource-card-path {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 15px;
+}
+
+
+.resource-card-path span {
+  padding: 5px 8px;
+
+  border-radius: 7px;
+
+  border: 1px solid rgba(124, 77, 255, 0.18);
+
+  background:
+    rgba(124, 77, 255, 0.055);
+
+  color: #a992ef;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* Description */
+
+.resource-card-description {
+  margin: 0 0 15px;
+
+  color: #98a6b8;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* Tags */
+
+.resource-card-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 17px;
+}
+
+
+.resource-card-tags span {
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(124, 77, 255, 0.20);
+
+  background:
+    rgba(124, 77, 255, 0.065);
+
+  color: #ad94ff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+/* Bottom */
+
+.resource-card-bottom {
+  margin-top: auto;
+
+  padding-top: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* Owner */
+
+.resource-owner {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.resource-owner > span {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(20, 156, 255, 0.24);
+
+  background:
+    rgba(20, 156, 255, 0.10);
+
+  color: #72cbff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+.resource-owner > div {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.resource-owner small {
+  margin-bottom: 2px;
+
+  color: #59697c;
+
+  font-size: 9px;
+}
+
+
+.resource-owner strong {
+  max-width: 120px;
+
+  overflow: hidden;
+
+  color: #ced8e4;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+
+/* Open button */
+
+.resource-open-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  border: 1px solid rgba(0, 174, 255, 0.22);
+
+  background:
+    rgba(0, 150, 220, 0.06);
+
+  color: #9bdcff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+
+.resource-open-button:hover {
+  color: #ffffff;
+
+  border-color: rgba(0, 190, 255, 0.55);
+
+  background:
+    rgba(0, 150, 220, 0.13);
+
+  transform: translateY(-2px);
+}
+
+
+.resource-open-button span {
+  font-size: 14px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.resource-open-button:hover span {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   21. EMPTY / LOADING / ERROR STATES
+   ========================================================= */
+
+.library-state {
+  width: 100%;
+
+  min-height: 350px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
   justify-content: center;
 
   text-align: center;
 
-  padding: 45px;
+  padding: 40px;
 
   box-sizing: border-box;
 
@@ -1126,31 +2316,29 @@
   background:
     linear-gradient(
       145deg,
-      rgba(7, 22, 30, 0.9),
+      rgba(7, 22, 30, 0.90),
       rgba(5, 14, 21, 0.92)
     );
 }
 
 
-/* Empty icon */
-
-.notes-empty-icon {
-  width: 78px;
-  height: 78px;
+.library-state-icon {
+  width: 76px;
+  height: 76px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 
   border-radius: 20px;
 
   border: 1px solid rgba(0, 190, 255, 0.25);
 
-  background: rgba(0, 150, 220, 0.07);
+  background:
+    rgba(0, 150, 220, 0.07);
 
   font-size: 30px;
 
@@ -1159,28 +2347,32 @@
 }
 
 
-.notes-empty-results h3 {
+.library-state h3 {
   margin: 0;
 
-  font-size: 23px;
-
   color: #ffffff;
+
+  font-size: 22px;
 }
 
 
-.notes-empty-results p {
-  margin: 12px 0 25px;
+.library-state p {
+  max-width: 550px;
 
-  color: rgba(157, 180, 193, 0.7);
+  margin: 10px 0 22px;
+
+  color: rgba(157, 180, 193, 0.70);
+
+  font-size: 13px;
+
+  line-height: 1.6;
 }
 
 
-/* Clear button */
+.library-state button {
+  padding: 11px 18px;
 
-.notes-clear-button {
-  padding: 12px 22px;
-
-  border-radius: 10px;
+  border-radius: 9px;
 
   border: 1px solid rgba(0, 190, 255, 0.35);
 
@@ -1189,18 +2381,19 @@
 
   color: #9cddf5;
 
-  font-size: 13px;
+  font-family: inherit;
+
+  font-size: 12px;
 
   font-weight: 700;
 
   cursor: pointer;
 
-  transition:
-    0.25s ease;
+  transition: 0.25s ease;
 }
 
 
-.notes-clear-button:hover {
+.library-state button:hover {
   color: #ffffff;
 
   border-color: rgba(0, 200, 255, 0.65);
@@ -1212,43 +2405,42 @@
 }
 
 
+.library-error {
+  border-color:
+    rgba(255, 80, 80, 0.16);
+}
+
+
 /* =========================================================
-   19. WATERMARK
+   22. WATERMARK
    ========================================================= */
 
-.notes-watermark {
+.library-watermark {
   width: 100%;
 
-  margin-top: 55px;
+  margin-top: 65px;
 
-  padding-top: 26px;
+  padding-top: 24px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 13px;
 
-  border-top: 1px solid rgba(150, 180, 195, 0.08);
+  border-top:
+    1px solid rgba(150, 180, 195, 0.08);
 
   color: rgba(115, 145, 159, 0.55);
 
-  font-size: 12px;
+  font-size: 11px;
 
   letter-spacing: 0.5px;
-
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease;
 }
 
 
-/* Watermark stars */
-
-.notes-watermark > span:first-child,
-.notes-watermark > span:last-child {
+.watermark-symbol {
   color: #00bfff;
 
   transition:
@@ -1257,75 +2449,82 @@
 }
 
 
-/* Watermark hover */
-
-.notes-watermark:hover {
-  color: rgba(188, 218, 230, 0.9);
-
-  text-shadow:
-    0 0 15px rgba(0, 174, 255, 0.18);
-
-  cursor: default;
-}
-
-
-.notes-watermark:hover > span:first-child {
-  transform: translateX(-4px) rotate(-10deg);
+.library-watermark:hover .watermark-symbol:first-child {
+  transform:
+    translateX(-4px)
+    rotate(-10deg);
 
   text-shadow:
     0 0 15px rgba(0, 191, 255, 0.65);
 }
 
 
-.notes-watermark:hover > span:last-child {
-  transform: translateX(4px) rotate(10deg);
+.library-watermark:hover .watermark-symbol:last-child {
+  transform:
+    translateX(4px)
+    rotate(10deg);
 
   text-shadow:
     0 0 15px rgba(0, 191, 255, 0.65);
 }
 
 
-.notes-watermark b {
+.library-watermark i {
   color: rgba(90, 125, 140, 0.5);
 
-  font-weight: 400;
+  font-style: normal;
 }
 
 
 /* =========================================================
-   20. RESPONSIVE — TABLET
+   23. ANIMATION
    ========================================================= */
 
-@media (max-width: 1000px) {
+@keyframes libraryReveal {
 
-  .notes-page {
-    padding: 28px 3.5% 60px;
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px);
   }
 
+  to {
+    opacity: 1;
 
-  .notes-hero {
-    min-height: 330px;
-
-    padding: 60px 35px;
+    transform:
+      translateY(0);
   }
+}
 
 
-  .notes-hero-content {
+/* =========================================================
+   24. TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .library-page {
     padding:
-      0 100px
-      0 60px;
+      30px 4% 60px;
   }
 
 
-  .notes-hero-floating-icon {
-    left: 24px;
+  .library-header {
+    padding:
+      60px 150px;
+  }
+
+
+  .library-floating-icon {
+    left: 25px;
 
     width: 62px;
     height: 62px;
   }
 
 
-  .notes-resource-count {
+  .library-header-stat {
     right: 24px;
 
     width: 105px;
@@ -1333,106 +2532,127 @@
   }
 
 
-  .notes-resource-count strong {
+  .library-header-stat strong {
     font-size: 32px;
   }
 
 
-  .notes-course-grid,
-  .notes-semester-grid {
+  .course-grid,
+  .semester-grid,
+  .subject-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
+  }
+
+
+  .resource-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .library-filter-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  /*
+     Keep Other semester centered
+     when using 2-column layout.
+  */
+
+  .semester-grid .semester-tile:last-child {
+    grid-column: auto;
   }
 }
 
 
 /* =========================================================
-   21. RESPONSIVE — MOBILE
+   25. MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
 
-  .notes-page {
+  .library-page {
     padding:
       20px 16px 45px;
   }
 
 
-  /* Hero */
+  /* ---------------------------------------------------------
+     HERO
+     --------------------------------------------------------- */
 
-  .notes-hero {
+  .library-header {
     min-height: 420px;
 
     padding:
-      65px 22px 40px;
+      75px 25px 105px;
 
-    border-radius: 18px;
-
-    align-items: center;
+    border-radius: 19px;
   }
 
 
-  /* Floating icon moves to top */
-
-  .notes-hero-floating-icon {
+  .library-floating-icon {
     left: 50%;
-
     top: 28px;
 
     width: 55px;
     height: 55px;
 
-    transform: translateX(-50%);
+    transform:
+      translateX(-50%);
+
+    font-size: 25px;
   }
 
 
-  .notes-hero:hover .notes-hero-floating-icon {
+  .library-header:hover .library-floating-icon {
     transform:
       translateX(-50%)
       translateY(-3px);
   }
 
 
-  /* Hero content */
-
-  .notes-hero-content {
-    padding: 35px 0 90px;
-
-    max-width: 100%;
+  .library-header-main {
+    width: 100%;
   }
 
 
-  .notes-hero-label {
+  .library-kicker {
     font-size: 9px;
 
     letter-spacing: 2px;
   }
 
 
-  .notes-hero h1 {
-    font-size: 39px;
+  .library-brand h1 {
+    font-size: 40px;
 
     letter-spacing: -1.8px;
   }
 
 
-  .notes-hero p {
+  .library-brand p {
+    margin-top: 15px;
+
     font-size: 13px;
 
     line-height: 1.6;
   }
 
 
-  /* Counter moves below */
+  /* Counter */
 
-  .notes-resource-count {
+  .library-header-stat {
     top: auto;
-
     right: 50%;
 
     bottom: 25px;
 
-    transform: translateX(50%);
+    transform:
+      translateX(50%);
 
     width: 105px;
     height: 75px;
@@ -1441,120 +2661,273 @@
   }
 
 
-  .notes-resource-count:hover {
+  .library-header-stat:hover {
     transform:
       translateX(50%)
       scale(1.04);
   }
 
 
-  .notes-resource-count strong {
+  .library-header-stat strong {
     font-size: 25px;
   }
 
 
-  .notes-resource-count span {
+  .library-header-stat span {
     font-size: 7px;
 
     letter-spacing: 2px;
   }
 
 
-  /* Search */
+  /* ---------------------------------------------------------
+     BACK
+     --------------------------------------------------------- */
 
-  .notes-search-area {
+  .library-back-area {
+    justify-content: flex-start;
+
+    margin-top: 15px;
+  }
+
+
+  /* ---------------------------------------------------------
+     SEARCH
+     --------------------------------------------------------- */
+
+  .library-search-area {
     flex-direction: column;
 
     align-items: stretch;
   }
 
 
-  .notes-filter-button {
+  .library-search-actions {
     width: 100%;
   }
 
 
-  /* Course */
+  .library-filter-toggle,
+  .library-reset-button {
+    flex: 1;
 
-  .notes-course-section {
-    margin-top: 38px;
+    width: 100%;
   }
 
 
-  .notes-section-heading {
-    margin-bottom: 22px;
+  /* ---------------------------------------------------------
+     FILTERS
+     --------------------------------------------------------- */
+
+  .library-filter-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
   }
 
 
-  .notes-section-heading h2 {
-    font-size: 32px;
+  .library-filter-panel {
+    padding: 19px;
   }
 
 
-  .notes-section-heading p {
+  .library-filter-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  /* ---------------------------------------------------------
+     SEARCH RESULTS
+     --------------------------------------------------------- */
+
+  .library-results-view {
+    margin-top: 40px;
+  }
+
+
+  .library-results-head h2 {
+    font-size: 35px;
+  }
+
+
+  .library-results-head p {
     font-size: 12px;
   }
 
 
-  /* Course cards */
+  /* ---------------------------------------------------------
+     LIBRARY PATH
+     --------------------------------------------------------- */
 
-  .notes-course-grid {
+  .library-path-bar {
+    justify-content: center;
+
+    margin-bottom: 28px;
+  }
+
+
+  /* ---------------------------------------------------------
+     LEVEL HEADINGS
+     --------------------------------------------------------- */
+
+  .library-level-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    text-align: left;
+  }
+
+
+  .library-level-heading-centered {
+    align-items: center;
+
+    text-align: center;
+  }
+
+
+  .library-level-heading h2 {
+    font-size: 34px;
+  }
+
+
+  .library-level-heading p {
+    font-size: 12px;
+  }
+
+
+  .library-inline-back {
+    align-self: flex-start;
+  }
+
+
+  /* ---------------------------------------------------------
+     COURSE
+     --------------------------------------------------------- */
+
+  .course-grid {
     grid-template-columns: 1fr;
 
     gap: 13px;
   }
 
 
-  .notes-course-card {
+  .course-tile {
     min-height: 130px;
 
     padding: 23px;
   }
 
 
-  /* Semester */
+  /* ---------------------------------------------------------
+     SEMESTER
+     --------------------------------------------------------- */
 
-  .notes-semester-grid {
+  .semester-grid {
     grid-template-columns: 1fr;
 
     gap: 14px;
   }
 
 
-  .notes-semester-card {
+  .semester-grid .semester-tile:last-child {
+    grid-column: auto;
+  }
+
+
+  .semester-tile {
     min-height: 155px;
 
     padding: 25px;
   }
 
 
-  /* Search result */
+  /* ---------------------------------------------------------
+     SUBJECT
+     --------------------------------------------------------- */
 
-  .notes-search-results {
-    margin-top: 40px;
+  .subject-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
   }
 
 
-  .notes-search-results-header h2 {
-    font-size: 34px;
+  /* ---------------------------------------------------------
+     RESOURCE LEVEL
+     --------------------------------------------------------- */
+
+  .resource-level-header {
+    align-items: flex-start;
+
+    flex-direction: column;
   }
 
 
-  .notes-search-results-header p {
-    font-size: 12px;
+  .resource-level-count {
+    width: 100%;
+
+    min-height: 75px;
   }
 
 
-  .notes-empty-results {
+  .resource-type-switcher {
+    gap: 7px;
+  }
+
+
+  .resource-results-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+
+  /* ---------------------------------------------------------
+     RESOURCE CARDS
+     --------------------------------------------------------- */
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+
+  .resource-card {
+    min-height: 0;
+
+    padding: 20px;
+
+    border-radius: 17px;
+  }
+
+
+  .resource-card-title {
+    font-size: 19px;
+  }
+
+
+  /* ---------------------------------------------------------
+     STATE
+     --------------------------------------------------------- */
+
+  .library-state {
     min-height: 320px;
 
     padding: 30px 18px;
   }
 
 
-  /* Watermark */
+  /* ---------------------------------------------------------
+     WATERMARK
+     --------------------------------------------------------- */
 
-  .notes-watermark {
+  .library-watermark {
     margin-top: 40px;
 
     font-size: 10px;
@@ -1565,41 +2938,276 @@
 
 
 /* =========================================================
-   22. VERY SMALL MOBILE
+   26. SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
 
-  .notes-page {
-    padding-left: 12px;
-    padding-right: 12px;
+  .library-page {
+    padding:
+      15px 12px 40px;
   }
 
 
-  .notes-hero {
-    min-height: 400px;
+  .library-header {
+    min-height: 395px;
 
-    padding-left: 16px;
-    padding-right: 16px;
+    padding:
+      72px 17px 100px;
   }
 
 
-  .notes-hero h1 {
+  .library-brand h1 {
     font-size: 34px;
   }
 
 
-  .notes-hero p {
+  .library-brand p {
     font-size: 12px;
   }
 
 
-  .notes-section-heading h2 {
+  .library-search-bar {
+    min-height: 52px;
+  }
+
+
+  .library-filter-toggle,
+  .library-reset-button {
+    min-height: 52px;
+  }
+
+
+  .library-level-heading h2 {
     font-size: 29px;
   }
 
 
-  .notes-course-card h3 {
+  .course-tile {
+    padding: 20px;
+  }
+
+
+  .course-tile-main strong {
     font-size: 22px;
   }
+
+
+  .semester-tile {
+    padding: 22px;
+  }
+
+
+  .semester-tile > strong {
+    font-size: 24px;
+  }
+
+
+  .subject-tile {
+    padding: 22px;
+  }
+
+
+  .resource-card {
+    padding: 17px;
+  }
+
+
+  .resource-card-title {
+    font-size: 18px;
+  }
+
+
+  .resource-owner strong {
+    max-width: 100px;
+  }
+}
+
+
+/* =========================================================
+   END OF NOTEHUB NOTES CSS
+   ========================================================= */
+   /* =========================================================
+   NOTEHUB NOTES / LIBRARY PAGE
+   FULL-WIDTH LAYOUT FIX
+   ========================================================= */
+
+/* 1. Remove any width restriction from the main Notes page */
+.library-page {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  margin: 0 !important;
+  padding: 40px 5% 80px !important;
+
+  box-sizing: border-box;
+}
+
+
+/* 2. Make the parent container use the complete available width */
+main:has(.library-page) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* 3. Also remove possible restriction from React root */
+#root:has(.library-page) {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* 4. Header should use the available page width */
+.library-header {
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box;
+}
+
+
+/* 5. Search section */
+.library-search-area {
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box;
+}
+
+
+/* 6. Main library browser */
+.library-browser {
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box;
+}
+
+
+/* 7. Course cards should actually use the available width */
+.course-grid {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+}
+
+
+/* 8. Course tile */
+.course-tile {
+  width: 100% !important;
+  min-width: 0 !important;
+
+  box-sizing: border-box;
+}
+
+
+/* 9. Semester cards */
+.semester-grid {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+}
+
+
+/* 10. Subject cards */
+.subject-grid {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+}
+
+
+/* 11. Resource cards */
+.resource-grid {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .library-page {
+    padding: 30px 20px 60px !important;
+  }
+
+  .course-grid,
+  .semester-grid,
+  .subject-grid,
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .library-page {
+    padding: 20px 14px 50px !important;
+  }
+
+  .course-grid,
+  .semester-grid,
+  .subject-grid,
+  .resource-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================
+   BACK NAVIGATION — ALIGN WITH NOTES CONTENT
+   ========================================================= */
+
+.library-back-area {
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box;
+
+  /* Keep the button aligned with the main content */
+  padding: 0 !important;
+}
+
+
+/* Back button itself */
+.library-back-area button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  margin: 0 !important;
 }
