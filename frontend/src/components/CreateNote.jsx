@@ -65,7 +65,6 @@ function CreateNote() {
 
   // =========================================================
   // BCA SUBJECT STRUCTURE
-  // NOTEHUB GENERAL SUBJECT NAMES
   // =========================================================
 
   const bcaSubjects = {
@@ -114,13 +113,26 @@ function CreateNote() {
 
   // =========================================================
   // RESOURCE TYPES
+  // Backend-compatible values
   // =========================================================
 
   const resourceTypes = [
-    "Notes",
-    "Previous Year Question Paper",
-    "Study Material",
-    "Other",
+    {
+      label: "Notes",
+      value: "note",
+    },
+    {
+      label: "Previous Year Question Paper",
+      value: "previous-paper",
+    },
+    {
+      label: "Study Material",
+      value: "other",
+    },
+    {
+      label: "Other",
+      value: "other",
+    },
   ];
 
   // =========================================================
@@ -132,7 +144,7 @@ function CreateNote() {
 
     setStream(selectedStream);
 
-    // Reset semester and subject whenever stream changes
+    // Reset dependent fields
     setSemester("");
     setSubject("");
   };
@@ -200,9 +212,9 @@ function CreateNote() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // -------------------------------------------------------
+    // =======================================================
     // CLEAN VALUES
-    // -------------------------------------------------------
+    // =======================================================
 
     const cleanTitle = title.trim();
     const cleanSubject = subject.trim();
@@ -211,9 +223,9 @@ function CreateNote() {
     const cleanSemester = semester.trim();
     const cleanResourceType = resourceType.trim();
 
-    // -------------------------------------------------------
+    // =======================================================
     // TAG PROCESSING
-    // -------------------------------------------------------
+    // =======================================================
 
     const cleanTags = tags
       .split(",")
@@ -274,6 +286,9 @@ function CreateNote() {
 
       const newNote = {
         title: cleanTitle,
+
+        // Backend requires both course and stream
+        course: cleanStream,
 
         stream: cleanStream,
 
@@ -420,7 +435,7 @@ function CreateNote() {
           />
 
           {/* =================================================
-              STREAM
+              STREAM / COURSE
           ================================================= */}
 
           <select
@@ -552,10 +567,10 @@ function CreateNote() {
             {resourceTypes.map(
               (type) => (
                 <option
-                  key={type}
-                  value={type}
+                  key={type.label}
+                  value={type.value}
                 >
-                  {type}
+                  {type.label}
                 </option>
               )
             )}
