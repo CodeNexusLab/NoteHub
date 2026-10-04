@@ -31,7 +31,6 @@ const authenticateToken = (req, res, next) => {
     authHeader &&
     authHeader.split(" ")[1];
 
-
   if (!token) {
 
     return res.status(401).json({
@@ -40,7 +39,6 @@ const authenticateToken = (req, res, next) => {
     });
 
   }
-
 
   try {
 
@@ -107,12 +105,10 @@ app.post(
         password
       } = req.body;
 
-
       const existingUser =
         await User.findOne({
           email
         });
-
 
       if (existingUser) {
 
@@ -123,13 +119,11 @@ app.post(
 
       }
 
-
       const hashedPassword =
         await bcrypt.hash(
           password,
           10
         );
-
 
       const newUser =
         new User({
@@ -139,10 +133,8 @@ app.post(
             hashedPassword
         });
 
-
       const savedUser =
         await newUser.save();
-
 
       res.status(201).json({
 
@@ -195,12 +187,10 @@ app.post(
         password
       } = req.body;
 
-
       const user =
         await User.findOne({
           email
         });
-
 
       if (!user) {
 
@@ -211,13 +201,11 @@ app.post(
 
       }
 
-
       const isPasswordCorrect =
         await bcrypt.compare(
           password,
           user.password
         );
-
 
       if (!isPasswordCorrect) {
 
@@ -227,7 +215,6 @@ app.post(
         });
 
       }
-
 
       const token =
         jwt.sign(
@@ -248,7 +235,6 @@ app.post(
           }
 
         );
-
 
       res.json({
 
@@ -307,7 +293,6 @@ app.get(
           "-password"
         );
 
-
       if (!user) {
 
         return res.status(404).json({
@@ -316,7 +301,6 @@ app.get(
         });
 
       }
-
 
       res.json({
 
@@ -372,7 +356,6 @@ app.put(
         name
       } = req.body;
 
-
       if (
         !name ||
         !name.trim()
@@ -385,10 +368,8 @@ app.put(
 
       }
 
-
       const cleanName =
         name.trim();
-
 
       if (
         cleanName.length < 2
@@ -401,7 +382,6 @@ app.put(
 
       }
 
-
       if (
         cleanName.length > 50
       ) {
@@ -413,12 +393,10 @@ app.put(
 
       }
 
-
       const user =
         await User.findById(
           req.user.id
         );
-
 
       if (!user) {
 
@@ -429,14 +407,11 @@ app.put(
 
       }
 
-
       user.name =
         cleanName;
 
-
       const updatedUser =
         await user.save();
-
 
       res.json({
 
@@ -483,25 +458,6 @@ app.put(
 // CREATE NOTE API
 // JWT PROTECTED
 // ======================================================
-//
-// Supports:
-//
-// - Title
-// - Course
-// - Stream
-// - Semester
-// - Subject
-// - Resource Type
-// - Tags
-// - Content
-// - File
-//
-// Resource Types:
-//
-// note
-// previous-paper
-// other
-// ======================================================
 
 app.post(
   "/api/notes",
@@ -523,16 +479,10 @@ app.post(
         fileData
       } = req.body;
 
-
-      // --------------------------------------------------
-      // Find verified user
-      // --------------------------------------------------
-
       const user =
         await User.findById(
           req.user.id
         );
-
 
       if (!user) {
 
@@ -542,11 +492,6 @@ app.post(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // Basic validation
-      // --------------------------------------------------
 
       if (
         !title ||
@@ -560,11 +505,6 @@ app.post(
 
       }
 
-
-      // --------------------------------------------------
-      // COURSE
-      // --------------------------------------------------
-
       if (
         !course ||
         !course.trim()
@@ -576,11 +516,6 @@ app.post(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // STREAM
-      // --------------------------------------------------
 
       if (
         !stream ||
@@ -594,11 +529,6 @@ app.post(
 
       }
 
-
-      // --------------------------------------------------
-      // SEMESTER
-      // --------------------------------------------------
-
       if (
         !semester ||
         !semester.trim()
@@ -610,11 +540,6 @@ app.post(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // SUBJECT
-      // --------------------------------------------------
 
       if (
         !subject ||
@@ -628,11 +553,6 @@ app.post(
 
       }
 
-
-      // --------------------------------------------------
-      // CONTENT
-      // --------------------------------------------------
-
       if (
         !content ||
         !content.trim()
@@ -645,17 +565,11 @@ app.post(
 
       }
 
-
-      // --------------------------------------------------
-      // RESOURCE TYPE
-      // --------------------------------------------------
-
       const allowedResourceTypes = [
         "note",
         "previous-paper",
         "other",
       ];
-
 
       const cleanResourceType =
         resourceType &&
@@ -664,11 +578,6 @@ app.post(
         )
           ? resourceType
           : "note";
-
-
-      // --------------------------------------------------
-      // CLEAN TAGS
-      // --------------------------------------------------
 
       const cleanTags =
         Array.isArray(tags)
@@ -683,11 +592,6 @@ app.post(
               )
 
           : [];
-
-
-      // --------------------------------------------------
-      // CREATE NEW NOTE
-      // --------------------------------------------------
 
       const newNote =
         new Note({
@@ -720,9 +624,6 @@ app.post(
 
           fileData,
 
-          // Owner comes from
-          // verified JWT user
-
           ownerEmail:
             user.email,
 
@@ -731,14 +632,8 @@ app.post(
 
         });
 
-
-      // --------------------------------------------------
-      // SAVE NOTE
-      // --------------------------------------------------
-
       const savedNote =
         await newNote.save();
-
 
       res.status(201).json({
 
@@ -771,20 +666,6 @@ app.post(
 // ======================================================
 // GET ALL NOTES
 // ======================================================
-//
-// Supports:
-//
-// 1. Advanced Search
-// 2. Course Filter
-// 3. Stream Filter
-// 4. Semester Filter
-// 5. Subject Filter
-// 6. Resource Type Filter
-// 7. Tag Filter
-// 8. Sorting
-//
-// fileData is excluded from listing response.
-// ======================================================
 
 app.get(
   "/api/notes",
@@ -803,29 +684,7 @@ app.get(
         sort
       } = req.query;
 
-
-      // --------------------------------------------------
-      // MongoDB filter
-      // --------------------------------------------------
-
       const filter = {};
-
-
-      // --------------------------------------------------
-      // ADVANCED SEARCH
-      // --------------------------------------------------
-      //
-      // Search across:
-      //
-      // - Title
-      // - Subject
-      // - Content
-      // - Owner
-      // - Course
-      // - Stream
-      // - Semester
-      // - Tags
-      // --------------------------------------------------
 
       if (
         search &&
@@ -837,7 +696,6 @@ app.get(
             search.trim(),
             "i"
           );
-
 
         filter.$or = [
 
@@ -885,11 +743,6 @@ app.get(
 
       }
 
-
-      // --------------------------------------------------
-      // COURSE FILTER
-      // --------------------------------------------------
-
       if (
         course &&
         course.trim()
@@ -899,11 +752,6 @@ app.get(
           course.trim();
 
       }
-
-
-      // --------------------------------------------------
-      // STREAM FILTER
-      // --------------------------------------------------
 
       if (
         stream &&
@@ -915,11 +763,6 @@ app.get(
 
       }
 
-
-      // --------------------------------------------------
-      // SEMESTER FILTER
-      // --------------------------------------------------
-
       if (
         semester &&
         semester.trim()
@@ -929,11 +772,6 @@ app.get(
           semester.trim();
 
       }
-
-
-      // --------------------------------------------------
-      // SUBJECT FILTER
-      // --------------------------------------------------
 
       if (
         subject &&
@@ -945,11 +783,6 @@ app.get(
 
       }
 
-
-      // --------------------------------------------------
-      // RESOURCE TYPE FILTER
-      // --------------------------------------------------
-
       if (
         resourceType &&
         resourceType.trim()
@@ -959,11 +792,6 @@ app.get(
           resourceType.trim();
 
       }
-
-
-      // --------------------------------------------------
-      // TAG FILTER
-      // --------------------------------------------------
 
       if (
         tag &&
@@ -980,23 +808,9 @@ app.get(
 
       }
 
-
-      // --------------------------------------------------
-      // SORTING
-      // --------------------------------------------------
-      //
-      // Supported:
-      //
-      // newest
-      // oldest
-      // title-asc
-      // title-desc
-      // --------------------------------------------------
-
       let sortOption = {
         createdAt: -1
       };
-
 
       if (
         sort === "oldest"
@@ -1024,11 +838,6 @@ app.get(
 
       }
 
-
-      // --------------------------------------------------
-      // FETCH NOTES
-      // --------------------------------------------------
-
       const notes =
         await Note.find(
           filter
@@ -1040,11 +849,6 @@ app.get(
             sortOption
           )
           .lean();
-
-
-      // --------------------------------------------------
-      // SEND RESPONSE
-      // --------------------------------------------------
 
       res.json(
         notes
@@ -1083,7 +887,6 @@ app.get(
           req.params.id
         );
 
-
       if (!note) {
 
         return res.status(404).json({
@@ -1092,7 +895,6 @@ app.get(
         });
 
       }
-
 
       res.json(
         note
@@ -1118,21 +920,7 @@ app.get(
 
 // ======================================================
 // UPDATE NOTE
-// ======================================================
-//
 // JWT + OWNER PROTECTED
-//
-// Supports:
-//
-// - Title
-// - Course
-// - Stream
-// - Semester
-// - Subject
-// - Resource Type
-// - Tags
-// - Content
-// - File
 // ======================================================
 
 app.put(
@@ -1147,7 +935,6 @@ app.put(
           req.params.id
         );
 
-
       if (!note) {
 
         return res.status(404).json({
@@ -1156,11 +943,6 @@ app.put(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // CHECK OWNERSHIP
-      // --------------------------------------------------
 
       if (
         note.ownerEmail !==
@@ -1173,11 +955,6 @@ app.put(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // PREPARE TAGS
-      // --------------------------------------------------
 
       const cleanTags =
         Array.isArray(
@@ -1195,17 +972,11 @@ app.put(
 
           : [];
 
-
-      // --------------------------------------------------
-      // RESOURCE TYPE
-      // --------------------------------------------------
-
       const allowedResourceTypes = [
         "note",
         "previous-paper",
         "other",
       ];
-
 
       const cleanResourceType =
         req.body.resourceType &&
@@ -1214,11 +985,6 @@ app.put(
         )
           ? req.body.resourceType
           : "note";
-
-
-      // --------------------------------------------------
-      // PREPARE UPDATED NOTE
-      // --------------------------------------------------
 
       const updatedNote =
         await Note.findByIdAndUpdate(
@@ -1266,7 +1032,6 @@ app.put(
 
         );
 
-
       res.json({
 
         message:
@@ -1297,8 +1062,6 @@ app.put(
 
 // ======================================================
 // DELETE NOTE
-// ======================================================
-//
 // JWT + OWNER PROTECTED
 // ======================================================
 
@@ -1314,7 +1077,6 @@ app.delete(
           req.params.id
         );
 
-
       if (!note) {
 
         return res.status(404).json({
@@ -1323,11 +1085,6 @@ app.delete(
         });
 
       }
-
-
-      // --------------------------------------------------
-      // CHECK OWNERSHIP
-      // --------------------------------------------------
 
       if (
         note.ownerEmail !==
@@ -1341,16 +1098,10 @@ app.delete(
 
       }
 
-
-      // --------------------------------------------------
-      // DELETE NOTE
-      // --------------------------------------------------
-
       const deletedNote =
         await Note.findByIdAndDelete(
           req.params.id
         );
-
 
       res.json({
 
@@ -1392,7 +1143,6 @@ app.post(
       req.body
     );
 
-
     res.json({
 
       message:
@@ -1418,6 +1168,34 @@ app.get(
     res.send(
       "NoteHub Backend is Running 🚀"
     );
+
+  }
+);
+
+
+// ======================================================
+// HEALTH CHECK API
+// ======================================================
+//
+// Used by UptimeRobot to check that
+// the NoteHub backend is running.
+//
+// GET /api/health
+// ======================================================
+
+app.get(
+  "/api/health",
+  (req, res) => {
+
+    res.status(200).json({
+
+      status:
+        "ok",
+
+      message:
+        "NoteHub backend is running 🚀"
+
+    });
 
   }
 );
