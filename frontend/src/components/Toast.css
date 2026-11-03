@@ -1,0 +1,139 @@
+/* NoteHub Admin — accessible toast notifications */
+.nh-toast-viewport {
+  position: fixed;
+  z-index: 2500;
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  width: min(410px, calc(100vw - 28px));
+  pointer-events: none;
+}
+
+.nh-toast {
+  --toast-accent: #57ddf5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 15px 13px 17px;
+  overflow: hidden;
+  color: #f3f6ff;
+  background: linear-gradient(135deg, rgba(19, 31, 51, 0.98), rgba(10, 18, 32, 0.98));
+  border: 1px solid color-mix(in srgb, var(--toast-accent) 42%, transparent);
+  border-radius: 15px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42), 0 0 25px color-mix(in srgb, var(--toast-accent) 10%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  pointer-events: auto;
+  animation: nhToastEnter 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.nh-toast-success { --toast-accent: #4ce2a0; }
+.nh-toast-error { --toast-accent: #ff8499; }
+.nh-toast-info { --toast-accent: #57ddf5; }
+.nh-toast-warning { --toast-accent: #ffc66d; }
+
+.nh-toast-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 39px;
+  width: 39px;
+  height: 39px;
+  color: var(--toast-accent);
+  background: color-mix(in srgb, var(--toast-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--toast-accent) 28%, transparent);
+  border-radius: 12px;
+}
+
+.nh-toast-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.nh-toast-copy strong {
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.nh-toast-copy > span {
+  color: #c6d2e5;
+  font-size: 0.79rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.nh-toast-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: #b9c7dc;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.nh-toast-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,.13);
+}
+
+.nh-toast-close:focus-visible {
+  outline: 2px solid var(--toast-accent);
+  outline-offset: 3px;
+}
+
+.nh-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--toast-accent);
+  transform-origin: left;
+  animation: nhToastProgress 3800ms linear both;
+  opacity: .82;
+}
+
+@keyframes nhToastEnter {
+  from { opacity: 0; transform: translate3d(18px, -6px, 0) scale(.98); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes nhToastProgress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@media (max-width: 560px) {
+  .nh-toast-viewport {
+    top: max(10px, env(safe-area-inset-top));
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+  .nh-toast { padding: 12px 10px 14px; gap: 9px; border-radius: 13px; }
+  .nh-toast-icon { flex-basis: 34px; width: 34px; height: 34px; }
+  .nh-toast-copy strong { font-size: .83rem; }
+  .nh-toast-copy > span { font-size: .75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nh-toast { animation: none; }
+  .nh-toast-progress { animation: none; transform: scaleX(.35); }
+  .nh-toast-close { transition: none; }
+}

@@ -1,6 +1,7 @@
 import { apiFetch } from "../api";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
+import "./MyNotes.css";
 
 function MyNotes() {
   const [notes, setNotes] = useState([]);
@@ -58,8 +59,8 @@ function MyNotes() {
     const fetchNotes = async () => {
       try {
         const response = await apiFetch(
-          "/api/notes"
-        );
+  "/api/my-notes"
+);
 
         const data = await response.json();
 
@@ -861,6 +862,36 @@ function MyNotes() {
           )}
 
         </div>
+
+{/* Visibility & Status Badges */}
+
+<div className="my-note-badges">
+
+  <span
+    className={`my-note-badge ${
+      note.visibility === "private"
+        ? "private"
+        : "public"
+    }`}
+  >
+    {note.visibility === "private"
+      ? "🔒 Private"
+      : "🌍 Public"}
+  </span>
+
+  <span
+    className={`my-note-badge ${
+      note.status === "disabled"
+        ? "disabled"
+        : "active"
+    }`}
+  >
+    {note.status === "disabled"
+      ? "🚫 Hidden by Admin"
+      : "🟢 Active"}
+  </span>
+
+</div>
 
         {/* Content */}
 

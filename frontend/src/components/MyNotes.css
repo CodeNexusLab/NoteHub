@@ -1,0 +1,69 @@
+/* =====================================
+   MY NOTES - VISIBILITY & STATUS BADGES
+===================================== */
+
+.my-note-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.my-note-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Public Badge */
+.my-note-badge.public {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* Private Badge */
+.my-note-badge.private {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.3);
+}
+
+/* Active Badge */
+.my-note-badge.active {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+/* Hidden by Admin Badge */
+.my-note-badge.disabled {
+  color: #fb7185;
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.3);
+}
+
+/* Hover Animation */
+.my-note-badge:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .my-note-badges {
+    gap: 7px;
+  }
+
+  .my-note-badge {
+    font-size: 11px;
+    padding: 5px 9px;
+  }
+}

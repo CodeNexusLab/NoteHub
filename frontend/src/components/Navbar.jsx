@@ -49,6 +49,15 @@ function Navbar() {
           Contact
         </NavLink>
 
+        {/* ===== Admin Login ===== */}
+
+<NavLink
+  to="/admin-login"
+  className="nav-admin"
+>
+  🔐 Admin Login
+</NavLink>
+
         {loggedInUser ? (
           <>
             {/* ===== User Identity ===== */}

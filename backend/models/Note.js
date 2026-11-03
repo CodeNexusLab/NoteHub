@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const noteSchema = new mongoose.Schema(
@@ -23,11 +24,9 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
 
-
     // =========================================
     // ACADEMIC COURSE
-    // Example:
-    // BCA
+    // Example: BCA
     // =========================================
 
     course: {
@@ -36,14 +35,9 @@ const noteSchema = new mongoose.Schema(
       trim: true,
     },
 
-
     // =========================================
     // SEMESTER
-    // Example:
-    // 1st Semester
-    // 2nd Semester
-    // ...
-    // 6th Semester
+    // Example: 1st Semester, 2nd Semester
     // =========================================
 
     semester: {
@@ -52,13 +46,10 @@ const noteSchema = new mongoose.Schema(
       trim: true,
     },
 
-
     // =========================================
     // ACADEMIC STREAM
     // Kept for backward compatibility
     // with existing NoteHub notes.
-    // Example:
-    // BCA
     // =========================================
 
     stream: {
@@ -67,38 +58,52 @@ const noteSchema = new mongoose.Schema(
       trim: true,
     },
 
-
     // =========================================
     // RESOURCE TYPE
-    //
-    // note            → Normal study note
-    // previous-paper  → Previous year question paper
-    // other            → Other / uncategorized
     // =========================================
 
     resourceType: {
       type: String,
-      enum: [
-        "note",
-        "previous-paper",
-        "other",
-      ],
+      enum: ["note", "previous-paper", "other"],
       default: "note",
       trim: true,
     },
 
+    // =========================================
+    // NOTE STATUS — SUPER ADMIN MODERATION
+    //
+    // active   → Note is enabled
+    // disabled → Note is disabled by Super Admin
+    // =========================================
+
+    status: {
+      type: String,
+      enum: ["active", "disabled"],
+      default: "active",
+      index: true,
+    },
+
+    // =========================================
+// NOTE VISIBILITY — PUBLIC / PRIVATE
+// =========================================
+
+visibility: {
+  type: String,
+  enum: ["public", "private"],
+  default: "public",
+  required: true,
+  index: true,
+},
 
     // =========================================
     // NOTE TAGS
-    // Example:
-    // ["javascript", "react", "frontend"]
+    // Example: ["javascript", "react", "frontend"]
     // =========================================
 
     tags: {
       type: [String],
       default: [],
     },
-
 
     // =========================================
     // NOTE OWNER INFORMATION
@@ -114,7 +119,6 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
 
-
     // =========================================
     // OPTIONAL FILE INFORMATION
     // =========================================
@@ -127,7 +131,6 @@ const noteSchema = new mongoose.Schema(
       type: String,
     },
   },
-
   {
     // Automatically creates:
     // createdAt
@@ -136,12 +139,8 @@ const noteSchema = new mongoose.Schema(
   }
 );
 
-
 // =========================================
 // EXPORT NOTE MODEL
 // =========================================
 
-module.exports = mongoose.model(
-  "Note",
-  noteSchema
-);
+module.exports = mongoose.model("Note", noteSchema);

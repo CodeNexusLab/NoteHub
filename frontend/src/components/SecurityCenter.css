@@ -1,0 +1,1108 @@
+/* =========================================
+   NOTEHUB — SECURITY CENTER
+   Unified Dark Theme
+========================================= */
+
+.security-center {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 28px clamp(18px, 3vw, 42px);
+  box-sizing: border-box;
+  overflow-x: hidden;
+  color: #e8eefc;
+  font-family: inherit;
+  background:
+    radial-gradient(
+      ellipse at 80% 0%,
+      rgba(92, 92, 230, 0.1),
+      transparent 34%
+    ),
+    linear-gradient(145deg, #080d18, #0b1222 55%, #080d18);
+}
+
+.security-center *,
+.security-center *::before,
+.security-center *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.security-center .security-center-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 155px;
+  margin: 0 0 26px;
+  padding: 18px 60px 26px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  background: transparent !important;
+  text-align: center;
+}
+
+.security-center .security-center-header > div:first-child {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+.security-center .security-eyebrow {
+  margin: 0 0 12px;
+  color: #9298ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.security-center .security-center-header h1 {
+  margin: 0;
+  color: #f3f6ff;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.security-center .security-subtitle {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #9eacc5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Header controls */
+
+.security-center .security-header-actions {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.security-center .security-status-badge {
+  display: none;
+}
+
+.security-center .security-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  padding: 0;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 14px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  transition:
+    transform 350ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+.security-center .security-close-btn:hover {
+  transform: rotate(180deg) scale(1.08);
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(248, 113, 113, 0.75);
+  box-shadow: 0 0 22px rgba(239, 68, 68, 0.18);
+}
+
+.security-center .security-close-btn:focus-visible {
+  outline: 2px solid #fca5a5;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   OVERVIEW CARDS
+========================================= */
+
+.security-center .security-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0 0 26px;
+}
+
+.security-center .security-overview-card {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid #253550;
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    rgba(20, 32, 53, 0.96),
+    rgba(12, 21, 38, 0.98)
+  );
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.13);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.security-center .security-overview-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(129, 140, 248, 0.45);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.security-center .security-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  border-radius: 14px;
+  background: rgba(99, 102, 241, 0.13);
+  font-size: 22px;
+}
+
+.security-center .security-overview-card > p {
+  margin: 0 0 9px;
+  color: #aab7ce;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.security-center .security-overview-card h2 {
+  margin: 0 0 10px;
+  color: #f1f5ff;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.security-center .security-overview-card > span:last-child {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   DETAILS PANEL AND TABS
+========================================= */
+
+.security-center .security-details-panel {
+  overflow: hidden;
+  border: 1px solid #263550;
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    rgba(17, 29, 49, 0.98),
+    rgba(11, 19, 35, 0.98)
+  );
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.security-center .security-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px 0;
+  border-bottom: 1px solid #263550;
+  background: rgba(9, 17, 31, 0.65);
+}
+
+.security-center .security-tabs button.security-tab {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 16px 14px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #aab7ce;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 200ms ease, background 200ms ease;
+}
+
+.security-center .security-tabs button.security-tab:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: #c7d2fe;
+}
+
+.security-center .security-tabs button.security-tab.active {
+  background: transparent;
+  color: #a5b4fc;
+}
+
+.security-center .security-tabs button.security-tab.active::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #818cf8;
+  content: "";
+}
+
+.security-center .security-tab-content {
+  min-height: 230px;
+  padding: 30px;
+}
+
+.security-center .security-tab-content h2 {
+  margin: 0 0 12px;
+  color: #f1f5ff;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.security-center .security-tab-content > p {
+  margin: 0 0 24px;
+  color: #9eacc5;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   INFORMATION ROWS
+========================================= */
+
+.security-center .security-information-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.13);
+  color: #d8e2f5;
+  font-size: 14px;
+}
+
+.security-center .security-information-row strong {
+  color: #86efac;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.security-center .security-note {
+  margin-top: 20px !important;
+  padding: 14px 16px;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.12);
+  color: #bfdbfe !important;
+}
+
+/* =========================================
+   SECURITY ACTIVITY HEADER
+========================================= */
+
+.security-center .security-activity-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.security-center .security-activity-heading > div {
+  min-width: 0;
+}
+
+.security-center .security-activity-heading h2 {
+  margin: 0 0 10px;
+  color: #f1f5ff;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.security-center .security-activity-heading p {
+  margin: 0;
+  color: #9eacc5;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.security-center .security-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  border-radius: 11px;
+  background: rgba(99, 102, 241, 0.14);
+  color: #c7d2fe;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.security-center .security-refresh-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(165, 180, 252, 0.65);
+  background: rgba(99, 102, 241, 0.25);
+}
+
+.security-center .security-refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.security-center .security-refresh-btn:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   ACTIVITY SUMMARY
+========================================= */
+
+.security-center .security-activity-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 18px 22px;
+  border: 1px solid #263550;
+  border-radius: 14px;
+  background: rgba(7, 14, 27, 0.5);
+}
+
+.security-center .security-activity-summary .security-information-row {
+  min-width: 0;
+  padding: 8px 0;
+  border-bottom: none;
+  font-size: 13px;
+}
+
+.security-center .security-activity-summary .security-information-row strong {
+  color: #a5b4fc;
+  font-size: 17px;
+}
+
+/* =========================================
+   ACTIVITY LIST AND CARDS
+========================================= */
+
+.security-center .security-activity-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.security-center .security-activity-item {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 22px;
+  border: 1px solid #293953;
+  border-left: 3px solid #818cf8;
+  border-radius: 14px;
+  background: linear-gradient(
+    110deg,
+    rgba(19, 31, 52, 0.95),
+    rgba(11, 20, 36, 0.96)
+  );
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.security-center .security-activity-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(129, 140, 248, 0.5);
+  background: linear-gradient(
+    110deg,
+    rgba(24, 38, 63, 0.98),
+    rgba(13, 23, 41, 0.98)
+  );
+}
+
+.security-center .security-activity-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.security-center .security-activity-item-header > div {
+  min-width: 0;
+}
+
+.security-center .security-activity-item-header h3 {
+  margin: 12px 0 0;
+  color: #edf2ff;
+  font-size: 15px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.security-center .security-activity-item-header time {
+  flex-shrink: 0;
+  max-width: 45%;
+  color: #91a0ba;
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+/* Event badges */
+
+.security-center .security-event-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.security-center .security-event-login_success {
+  border-color: rgba(74, 222, 128, 0.25);
+  background: rgba(22, 163, 74, 0.13);
+  color: #86efac;
+}
+
+.security-center .security-event-login_failed {
+  border-color: rgba(248, 113, 113, 0.3);
+  background: rgba(220, 38, 38, 0.13);
+  color: #fca5a5;
+}
+
+.security-center .security-event-account_suspended {
+  border-color: rgba(251, 146, 60, 0.3);
+  background: rgba(234, 88, 12, 0.13);
+  color: #fdba74;
+}
+
+.security-center .security-event-account_reactivated {
+  border-color: rgba(96, 165, 250, 0.3);
+  background: rgba(37, 99, 235, 0.13);
+  color: #93c5fd;
+}
+
+.security-center .security-event-admin_action {
+  border-color: rgba(192, 132, 252, 0.3);
+  background: rgba(147, 51, 234, 0.13);
+  color: #d8b4fe;
+}
+
+/* Event details */
+
+.security-center .security-activity-description {
+  margin: 0 0 16px !important;
+  color: #c5d1e6 !important;
+  font-size: 13px !important;
+  line-height: 1.8 !important;
+  overflow-wrap: anywhere;
+}
+
+.security-center .security-activity-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.security-center .security-activity-meta span {
+  max-width: 100%;
+  padding: 6px 9px;
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 7px;
+  background: rgba(8, 15, 29, 0.45);
+  color: #aab7ce;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.security-center .security-activity-footnote {
+  margin: 18px 0 0 !important;
+  color: #8292ad !important;
+  font-size: 11px !important;
+}
+
+/* =========================================
+   EMPTY, LOADING AND ERROR STATES
+========================================= */
+
+.security-center .security-empty-state,
+.security-center .security-error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 38px 24px;
+  border: 1px dashed #34435d;
+  border-radius: 14px;
+  background: rgba(8, 15, 29, 0.62);
+  text-align: center;
+}
+
+.security-center .security-empty-state > span,
+.security-center .security-error-state > span {
+  margin-bottom: 14px;
+  font-size: 32px;
+}
+
+.security-center .security-empty-state h3,
+.security-center .security-error-state h3 {
+  margin: 0 0 10px;
+  color: #e2e8f0;
+  font-size: 17px;
+}
+
+.security-center .security-empty-state p,
+.security-center .security-error-state p {
+  max-width: 480px;
+  margin: 0 0 18px;
+  color: #9eacc5;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.security-center .security-error-state {
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(127, 29, 29, 0.08);
+}
+
+.security-center .security-error-state h3 {
+  color: #fca5a5;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.security-center .security-center-footer {
+  margin-top: 24px;
+  padding: 0;
+  background: transparent !important;
+  text-align: center;
+}
+
+.security-center .security-center-footer p {
+  margin: 0;
+  color: #71819c;
+  font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 1000px) {
+  .security-center {
+    padding: 24px;
+  }
+
+  .security-center .security-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .security-center .security-overview-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .security-center .security-tab-content {
+    padding: 24px 20px;
+  }
+
+  .security-center .security-activity-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .security-center .security-refresh-btn {
+    align-self: flex-start;
+  }
+
+  .security-center .security-activity-summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding: 15px 18px;
+  }
+
+  .security-center .security-activity-item {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .security-center {
+    padding: 18px 14px;
+  }
+
+  .security-center .security-center-header {
+    min-height: 150px;
+    padding: 55px 8px 22px;
+  }
+
+  .security-center .security-header-actions {
+    top: 0;
+    right: 0;
+  }
+
+  .security-center .security-center-header h1 {
+    font-size: 27px;
+  }
+
+  .security-center .security-subtitle {
+    font-size: 12px;
+  }
+
+  .security-center .security-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .security-center .security-overview-card:last-child {
+    grid-column: auto;
+  }
+
+  .security-center .security-overview-card {
+    padding: 21px;
+  }
+
+  .security-center .security-tabs {
+    gap: 0;
+    overflow-x: auto;
+    padding: 8px 8px 0;
+  }
+
+  .security-center .security-tabs button.security-tab {
+    padding: 14px 11px;
+    font-size: 12px;
+  }
+
+  .security-center .security-tab-content {
+    min-height: 0;
+    padding: 22px 16px;
+  }
+
+  .security-center .security-information-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .security-center .security-information-row strong {
+    text-align: left;
+  }
+
+  .security-center .security-activity-item-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .security-center .security-activity-item-header time {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .security-center .security-activity-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .security-center .security-activity-meta span {
+    width: 100%;
+  }
+
+  .security-center .security-empty-state,
+  .security-center .security-error-state {
+    padding: 28px 16px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .security-center *,
+  .security-center *::before,
+  .security-center *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================
+   SECURITY ACTIVITY — SEARCH & FILTERS
+========================================= */
+
+.security-center .security-activity-filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 0 12px;
+  padding: 20px;
+  border: 1px solid #263550;
+  border-radius: 14px;
+  background: rgba(7, 14, 27, 0.5);
+}
+
+.security-center .security-search-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1 1 280px;
+  min-width: 0;
+  min-height: 44px;
+  gap: 10px;
+  padding: 0 13px;
+  border: 1px solid #34435d;
+  border-radius: 10px;
+  background: #0b1425;
+  color: #a5b4fc;
+}
+
+.security-center .security-search-wrapper:focus-within {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.security-center .security-search-input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #e8eefc;
+  font: inherit;
+  font-size: 12px;
+}
+
+.security-center .security-search-input::placeholder {
+  color: #8292ad;
+}
+
+.security-center .security-search-input:focus-visible {
+  outline: none;
+}
+
+.security-center .security-filter-wrapper {
+  display: flex;
+  flex: 0 1 220px;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.security-center .security-filter-wrapper label {
+  color: #aab7ce;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.security-center .security-event-filter {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #34435d;
+  border-radius: 10px;
+  outline: none;
+  background: #0b1425;
+  color: #e8eefc;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.security-center .security-event-filter:focus-visible {
+  border-color: #818cf8;
+  outline: 2px solid rgba(129, 140, 248, 0.2);
+  outline-offset: 2px;
+}
+
+.security-center .security-event-filter option {
+  background: #0b1425;
+  color: #e8eefc;
+}
+
+.security-center .security-clear-filters-btn {
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.09);
+  color: #fca5a5;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.security-center .security-clear-filters-btn:hover {
+  border-color: rgba(248, 113, 113, 0.65);
+  background: rgba(239, 68, 68, 0.17);
+}
+
+.security-center .security-filter-results {
+  margin: 0 0 18px;
+  color: #8292ad;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.security-center .security-filter-results strong {
+  color: #c7d2fe;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .security-center .security-activity-filters {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 13px;
+    padding: 15px;
+  }
+
+  .security-center .security-search-wrapper,
+  .security-center .security-filter-wrapper {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .security-center .security-clear-filters-btn {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================
+   NOTEHUB SECURITY CENTER
+   MOBILE ALIGNMENT IMPROVEMENTS
+========================================== */
+
+@media (max-width: 600px) {
+
+  /* ---------- OVERVIEW CARDS ---------- */
+
+  .security-center .security-overview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 0;
+    padding: 24px 16px;
+  }
+
+  .security-center .security-card-icon {
+    margin: 0 auto 16px;
+    flex-shrink: 0;
+  }
+
+  .security-center .security-overview-card > p,
+  .security-center .security-overview-card h2,
+  .security-center .security-overview-card > span:last-child {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- SECURITY ACTIVITY HEADER ---------- */
+
+  .security-center .security-activity-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .security-center .security-activity-heading > div {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .security-center .security-activity-heading h2,
+  .security-center .security-activity-heading p {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-refresh-btn {
+    align-self: center;
+    max-width: 100%;
+  }
+
+  /* ---------- EVENT SUMMARY ---------- */
+
+  .security-center .security-activity-summary {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    text-align: center;
+  }
+
+  .security-center .security-activity-summary .security-information-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .security-center .security-activity-summary .security-information-row span,
+  .security-center .security-activity-summary .security-information-row strong {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- SEARCH AND FILTER RESULTS ---------- */
+
+  .security-center .security-filter-results {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-clear-filters-btn {
+    align-self: center;
+  }
+
+  /* ---------- ACTIVITY CARDS ---------- */
+
+  .security-center .security-activity-item {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    padding: 22px 16px;
+  }
+
+  .security-center .security-activity-item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .security-center .security-activity-item-header > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .security-center .security-activity-item-header h3 {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-activity-item-header time {
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-event-badge {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .security-center .security-activity-description {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-activity-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .security-center .security-activity-meta span {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-activity-footnote {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- LOADING AND ERROR STATES ---------- */
+
+  .security-center .security-empty-state,
+  .security-center .security-error-state {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ---------- SECURITY INFORMATION ---------- */
+
+  .security-center .security-information-row {
+    align-items: center;
+    text-align: center;
+  }
+
+  .security-center .security-information-row > span,
+  .security-center .security-information-row > strong {
+    width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .security-center .security-note {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  .security-center .security-center-footer {
+    text-align: center;
+  }
+}

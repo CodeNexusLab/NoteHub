@@ -19691,3 +19691,150 @@ body,
     justify-content: center;
   }
 }
+
+/* ========================================
+   NOTEHUB ADMIN DASHBOARD
+======================================== */
+
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 30px;
+  background: #f4f7fb;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, #111827, #312e81);
+  color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.12);
+}
+
+.admin-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.admin-header p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.admin-header button {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.admin-header button:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.admin-header button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-welcome {
+  padding: 25px;
+  margin-bottom: 25px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.admin-welcome h2 {
+  margin-top: 0;
+  color: #312e81;
+}
+
+.admin-welcome p {
+  line-height: 1.7;
+  color: #475569;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-card {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.admin-card h3 {
+  margin-top: 0;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+.admin-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.admin-card span {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #eef2ff;
+  color: #4338ca;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 16px;
+  }
+
+  .admin-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .admin-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-welcome {
+    padding: 20px;
+  }
+
+  .admin-card {
+    padding: 20px;
+  }
+}

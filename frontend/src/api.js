@@ -1,4 +1,6 @@
-const API_URL = "https://notehub-0jad.onrender.com";
+const API_URL = import.meta.env.DEV
+  ? "http://localhost:5000"
+  : "https://notehub-0jad.onrender.com";
 
 export const apiFetch = async (endpoint, options = {}) => {
   const token = localStorage.getItem("token");
@@ -23,15 +25,26 @@ export const apiFetch = async (endpoint, options = {}) => {
     }
   );
 
-  // Handle invalid or expired JWT
-  if (response.status === 401 || response.status === 403) {
+  // Handle authentication failures separately
+  if (response.status === 401) {
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem("token");
 
-    window.location.href = "/login";
+    // Avoid redirecting repeatedly if already on login pages
+    const currentPath = window.location.pathname;
 
-    return response;
+    if (
+      currentPath !== "/login" &&
+      currentPath !== "/admin-login"
+    ) {
+      window.location.href = "/login";
+    }
   }
+
+  // IMPORTANT:
+  // A 403 means the request is forbidden.
+  // Do not automatically log out the user.
+  // The calling component can display the error message.
 
   return response;
 };
