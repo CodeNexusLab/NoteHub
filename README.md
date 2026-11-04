@@ -59,7 +59,19 @@ It provides a simple and user-friendly interface where users can manage their no
 
 ## 📸 Project Screenshots
 
-Screenshots of the NoteHub application will be added here to showcase its interface and functionality.
+Explore the user interface of NoteHub.
+
+| About NoteHub | Create Note |
+|:---:|:---:|
+| ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/createNote.png) |
+
+| Notes Page | Admin Dashboard |
+|:---:|:---:|
+| ![Notes](screenshots/Notes.png) | ![Admin](screenshots/Admin.png) |
+
+| User Profile |
+|:---:|
+| ![Profile](screenshots/Profile.png) |
 
 ---
 
@@ -171,18 +183,4 @@ This project is developed for educational and learning purposes.
 
 ---
 
-## 📸 Project Screenshots
 
-Explore the user interface of NoteHub.
-
-| About NoteHub | Create Note |
-|:---:|:---:|
-| ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/createNote.png) |
-
-| Notes Page | Admin Dashboard |
-|:---:|:---:|
-| ![Notes](screenshots/Notes.png) | ![Admin](screenshots/Admin.png) |
-
-| User Profile |
-|:---:|
-| ![Profile](screenshots/Profile.png) |
