@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { apiFetch } from "../api";
+import "./Register.css";  
 
 function Register() {
   const [name, setName] = useState("");

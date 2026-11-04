@@ -1,5 +1,6 @@
 import { apiFetch } from "../api";
 import { useState } from "react";
+import "./CreateNote.css";
 
 function CreateNote() {
   // =========================================================

@@ -1,0 +1,519 @@
+/* =========================================
+   NOTEHUB — CREATE NOTE PREMIUM UI
+   ========================================= */
+
+/* MAIN PAGE */
+
+.create-note-page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 85vh;
+  padding: 65px 24px 85px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 5% 20%,
+      rgba(0, 155, 255, 0.10),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 95% 35%,
+      rgba(100, 45, 255, 0.10),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(0, 190, 210, 0.07),
+      transparent 45%
+    );
+}
+
+/* BACKGROUND LIGHT EFFECTS */
+
+.create-note-page::before,
+.create-note-page::after {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.16;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.create-note-page::before {
+  top: 10%;
+  left: -240px;
+  background: #008cff;
+  animation: createBlueGlow 12s ease-in-out infinite alternate;
+}
+
+.create-note-page::after {
+  top: 35%;
+  right: -240px;
+  background: #713cff;
+  animation: createPurpleGlow 14s ease-in-out infinite alternate;
+}
+
+/* =========================================
+   MAIN FORM CARD
+   ========================================= */
+
+.create-note-page .create-note-card {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  padding: 48px 50px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 5% 5%,
+      rgba(0, 155, 255, 0.13),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 95% 100%,
+      rgba(110, 55, 255, 0.12),
+      transparent 38%
+    ),
+    linear-gradient(135deg, #081a29, #080d19 60%, #0b1020);
+
+  border: 1px solid rgba(0, 174, 255, 0.28);
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 35px rgba(0, 140, 255, 0.06),
+    inset 0 0 35px rgba(0, 150, 255, 0.035);
+
+  animation: createCardEnter 0.85s ease both;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.create-note-page .create-note-card:hover {
+  border-color: rgba(0, 190, 255, 0.42);
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(0, 150, 255, 0.08);
+}
+
+/* TOP DECORATIVE LINE */
+
+.create-note-page .create-note-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00c8ff,
+    #8255ff,
+    transparent
+  );
+
+  box-shadow: 0 0 15px rgba(0, 190, 255, 0.6);
+}
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.create-note-page .create-note-card h1 {
+  margin: 0 0 15px;
+  text-align: center;
+
+  font-size: clamp(32px, 5vw, 43px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+
+  background: linear-gradient(
+    100deg,
+    #ffffff 20%,
+    #5bd8ff 55%,
+    #b49aff 90%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.create-note-page .create-note-card > p {
+  margin: 0 0 35px;
+  text-align: center;
+
+  color: #9fb1c5;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   FORM LAYOUT
+   ========================================= */
+
+.create-note-page .create-note-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+/* =========================================
+   INPUTS / SELECT / TEXTAREA
+   ========================================= */
+
+.create-note-page .create-note-card form input:not([type="file"]),
+.create-note-page .create-note-card form select,
+.create-note-page .create-note-card form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 14px 17px;
+
+  box-sizing: border-box;
+
+  color: #edf7ff;
+  font-family: inherit;
+  font-size: 14px;
+
+  background: rgba(5, 16, 28, 0.85);
+
+  border: 1px solid #23364a;
+  border-radius: 11px;
+  outline: none;
+
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* PLACEHOLDER */
+
+.create-note-page .create-note-card form input::placeholder,
+.create-note-page .create-note-card form textarea::placeholder {
+  color: #70849a;
+  opacity: 1;
+}
+
+/* FOCUS EFFECT */
+
+.create-note-page .create-note-card form input:focus,
+.create-note-page .create-note-card form select:focus,
+.create-note-page .create-note-card form textarea:focus {
+  border-color: #08bfff;
+
+  background: rgba(7, 25, 42, 0.98);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 174, 255, 0.10),
+    0 0 20px rgba(0, 174, 255, 0.12);
+
+  transform: translateY(-2px);
+}
+
+/* DISABLED FIELDS */
+
+.create-note-page .create-note-card form input:disabled,
+.create-note-page .create-note-card form select:disabled,
+.create-note-page .create-note-card form textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   DROPDOWN
+   ========================================= */
+
+.create-note-page .create-note-card form select {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+.create-note-page .create-note-card form select option {
+  color: #edf7ff;
+  background: #0b1725;
+}
+
+/* =========================================
+   FILE UPLOAD
+   ========================================= */
+
+.create-note-page .create-note-card form input[type="file"] {
+  width: 100%;
+  min-height: 58px;
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  color: #aebfd2;
+  font-family: inherit;
+  font-size: 13px;
+
+  background: rgba(5, 16, 28, 0.85);
+
+  border: 1px dashed rgba(0, 174, 255, 0.45);
+  border-radius: 11px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.create-note-page .create-note-card form input[type="file"]:hover {
+  background: rgba(8, 31, 51, 0.95);
+  border-color: #08c5ff;
+
+  box-shadow: 0 0 20px rgba(0, 174, 255, 0.10);
+}
+
+.create-note-page .create-note-card form input[type="file"]::file-selector-button {
+  margin-right: 14px;
+  padding: 10px 17px;
+
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+
+  background: linear-gradient(110deg, #087fca, #5144ca);
+
+  border: none;
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.create-note-page .create-note-card form input[type="file"]::file-selector-button:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   CONTENT TEXTAREA
+   ========================================= */
+
+.create-note-page .create-note-card form textarea {
+  min-height: 220px;
+  resize: vertical;
+
+  line-height: 1.8;
+  padding: 17px;
+}
+
+/* =========================================
+   PUBLISH BUTTON
+   ========================================= */
+
+.create-note-page .create-note-card form button {
+  position: relative;
+  width: 100%;
+  min-height: 53px;
+  margin-top: 8px;
+  padding: 14px 20px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+
+  background: linear-gradient(
+    110deg,
+    #087fca,
+    #3158d8,
+    #7144d8
+  );
+
+  border: 1px solid rgba(105, 194, 255, 0.4);
+  border-radius: 11px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 125, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* BUTTON HOVER */
+
+.create-note-page .create-note-card form button:hover:not(:disabled) {
+  transform: translateY(-4px);
+
+  filter: brightness(1.15);
+
+  box-shadow:
+    0 13px 32px rgba(0, 130, 255, 0.35),
+    0 0 22px rgba(0, 174, 255, 0.18);
+}
+
+/* BUTTON CLICK */
+
+.create-note-page .create-note-card form button:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* LOADING / DISABLED */
+
+.create-note-page .create-note-card form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes createCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes createBlueGlow {
+  from {
+    transform: translate(0, 0) scale(0.9);
+  }
+
+  to {
+    transform: translate(100px, 80px) scale(1.2);
+  }
+}
+
+@keyframes createPurpleGlow {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-100px, -70px) scale(1.2);
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .create-note-page {
+    padding: 45px 20px 65px;
+  }
+
+  .create-note-page .create-note-card {
+    max-width: 650px;
+    padding: 38px 30px;
+  }
+
+  .create-note-page .create-note-card form {
+    gap: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+   ========================================= */
+
+@media (max-width: 480px) {
+  .create-note-page {
+    min-height: 80vh;
+    padding: 30px 13px 45px;
+  }
+
+  .create-note-page .create-note-card {
+    padding: 32px 19px;
+    border-radius: 16px;
+  }
+
+  .create-note-page .create-note-card h1 {
+    font-size: 30px;
+  }
+
+  .create-note-page .create-note-card > p {
+    font-size: 12px;
+    margin-bottom: 27px;
+  }
+
+  .create-note-page .create-note-card form {
+    gap: 15px;
+  }
+
+  .create-note-page .create-note-card form input:not([type="file"]),
+  .create-note-page .create-note-card form select,
+  .create-note-page .create-note-card form textarea {
+    font-size: 13px;
+    padding: 13px;
+  }
+
+  .create-note-page .create-note-card form textarea {
+    min-height: 180px;
+  }
+
+  .create-note-page .create-note-card form button {
+    min-height: 50px;
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .create-note-page *,
+  .create-note-page *::before,
+  .create-note-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fix Create a Note heading clipping */
+
+.create-note-page .create-note-card h1 {
+  display: block;
+  width: 100%;
+  padding: 6px 0 10px;
+  line-height: 1.3;
+  overflow: visible;
+  box-sizing: border-box;
+}
