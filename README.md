@@ -168,3 +168,21 @@ Interested in building practical web applications and exploring modern web techn
 ## 📄 License
 
 This project is developed for educational and learning purposes.
+
+---
+
+## 📸 Project Screenshots
+
+Explore the user interface of NoteHub.
+
+| About NoteHub | Create Note |
+|:---:|:---:|
+| ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/createNote.png) |
+
+| Notes Page | Admin Dashboard |
+|:---:|:---:|
+| ![Notes](screenshots/Notes.png) | ![Admin](screenshots/Admin.png) |
+
+| User Profile |
+|:---:|
+| ![Profile](screenshots/Profile.png) |
