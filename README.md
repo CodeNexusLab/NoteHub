@@ -74,6 +74,7 @@ Explore the user interface of NoteHub.
 | ![Profile](screenshots/Profile.png) |![Home Page](screenshots/Home-Page.png)
 
 | Admin Dashboard |
+|:---:|
 ![Admin Dashboard](screenshots/Admin-Dashboard.png)
 
 ---
