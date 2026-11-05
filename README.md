@@ -63,7 +63,7 @@ Explore the user interface of NoteHub.
 
 | About NoteHub | Create Note |
 |:---:|:---:|
-| ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/createNote.png) |
+| ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/Create Note.png) |
 
 | Notes Page | Admin Dashboard |
 |:---:|:---:|
