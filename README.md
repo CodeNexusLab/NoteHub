@@ -65,12 +65,12 @@ Explore the user interface of NoteHub.
 |:---:|:---:|
 | ![About NoteHub](screenshots/About%20NoteHub.png) | ![Create Note](screenshots/createNote.png) |
 
-| Notes Page | My-Notes |
+| Notes Page | My Notes |
 |:---:|:---:|
 | ![Notes](screenshots/Notes.png) | ![My Notes](screenshots/My-Notes.png) |
 
 | User Profile | Home Page |
-|:---:|
+|:---:|:---:|
 | ![Profile](screenshots/Profile.png) |![Home Page](screenshots/Home-Page.png)
 
 | Admin Dashboard |
