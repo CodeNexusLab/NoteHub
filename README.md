@@ -67,7 +67,7 @@ Explore the user interface of NoteHub.
 
 | Notes Page | Admin Dashboard |
 |:---:|:---:|
-| ![Notes](screenshots/Notes.png) | ![Admin](screenshots/AdminPannel.png) |
+| ![Notes](screenshots/Notes.png) | ![Admin Dashboard](screenshots/Admin-Dashboard.png) |
 
 | User Profile |
 |:---:|
